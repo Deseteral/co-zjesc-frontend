@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
+import styles from './App.css';
 
 function App() {
   return (
-    <div>App</div>
+    <h1 className={styles['title']}>Co zjeść?</h1>
   );
 }
 
