@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@deseteral/react-scripts": "1.0.13-9",
+    "@deseteral/react-scripts": "1.0.13-10",
+    "fetch-check-http-status": "2.0.0",
     "react": "16.1.1",
-    "react-dom": "16.1.1"
+    "react-dom": "16.1.1",
+    "react-redux": "5.0.6",
+    "redux": "3.7.2",
+    "redux-saga": "0.16.0"
+  },
+  "devDependencies": {
+    "cross-env": "5.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env SERVICE_URL=http://cozjesc.azurewebsites.net react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
