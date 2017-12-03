@@ -1,11 +1,14 @@
 {
   "name": "co-zjesc-frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@deseteral/react-scripts": "1.0.13-10",
+    "classnames": "2.2.5",
     "fetch-check-http-status": "2.0.0",
+    "prop-types": "15.6.0",
     "react": "16.1.1",
+    "react-autocomplete": "1.7.2",
     "react-dom": "16.1.1",
     "react-redux": "5.0.6",
     "redux": "3.7.2",

@@ -21,4 +21,4 @@ sagaMiddleware.run(saga);
 
 store.dispatch(productsFetch());
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App store={store} />, document.getElementById('root'));
