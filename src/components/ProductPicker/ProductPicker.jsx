@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Autocomplete from 'react-autocomplete';
 import PropTypes from 'prop-types';
 import css from 'classnames';
+import SelectedProductsStripe from '../SelectedProductsStripe/SelectedProductsStripe';
 import styles from './ProductPicker.css';
 
 class ProductPicker extends Component {
@@ -71,11 +72,9 @@ class ProductPicker extends Component {
             justifyContent: 'center',
           })}
         />
-        <ul>
-          {this.state.selectedProducts.map(p => (
-            <li key={p.id}>{p.name}</li>
-          ))}
-        </ul>
+        <SelectedProductsStripe
+          selectedProducts={this.state.selectedProducts}
+        />
       </div>
     );
   }
