@@ -12,7 +12,7 @@ class ProductPicker extends Component {
     );
 
     return (
-      <div className={className}>
+      <div key={item.id} className={className}>
         {item.name}
       </div>
     );
@@ -49,11 +49,19 @@ class ProductPicker extends Component {
             ProductPicker.renderItem(item, highlighted)
           )}
           renderInput={props => (
-            <input className={styles['input']} {...props} />
+            <input id="product-picker-input" className={styles['input']} {...props} />
           )}
-          renderMenu={(items, value, style) => (
-            <div style={style} className={styles['menu']}>{items}</div>
-          )}
+          renderMenu={(items, value, defaultStyle) => {
+            const input = document.getElementById('product-picker-input');
+            const style = {
+              top: defaultStyle.top,
+              width: input.offsetWidth,
+              left: input.offsetLeft,
+            };
+            return (
+              <div style={style} className={styles['menu']}>{items}</div>
+            );
+          }}
           value={this.state.currentValue}
           onChange={e => this.setState({ currentValue: e.target.value })}
           onSelect={value => this.addProductByValue(value)}

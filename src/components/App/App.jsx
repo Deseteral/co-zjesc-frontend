@@ -1,15 +1,17 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
-import ProductPickerContainer from '../../container/ProductPickerContainer';
+import RecipeSuggesterPage from '../RecipeSuggesterPage/RecipeSuggesterPage';
 import styles from './App.css';
 
 function App(props) {
   return (
     <Provider store={props.store}>
-      <div>
+      <div className={styles['app-container']}>
         <h1 className={styles['title']}>Co zjeść?</h1>
-        <ProductPickerContainer />
+        <div className={styles['container']}>
+          <RecipeSuggesterPage />
+        </div>
       </div>
     </Provider>
   );
