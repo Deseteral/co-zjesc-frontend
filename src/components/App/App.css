@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 8px;
 }
 
 .container {
   width: 100%;
   max-width: 700px;
-  padding: 8px;
 }
 
 .title {

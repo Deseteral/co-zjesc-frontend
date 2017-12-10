@@ -72,9 +72,19 @@ class ProductPicker extends Component {
             justifyContent: 'center',
           })}
         />
-        <SelectedProductsStripe
-          selectedProducts={this.state.selectedProducts}
-        />
+        <section className={styles['section']}>
+          <h3 className={styles['section--header']}>
+            Wybrane przez Ciebie produkty
+          </h3>
+          <SelectedProductsStripe
+            selectedProducts={this.state.selectedProducts}
+          />
+        </section>
+        <section className={styles['section']}>
+          <h3 className={styles['section--header']}>
+            Dobrane przepisy
+          </h3>
+        </section>
       </div>
     );
   }
