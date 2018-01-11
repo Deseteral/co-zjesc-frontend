@@ -1,7 +1,6 @@
 .input {
   width: 100%;
   height: 16px;
-  margin: 0 8px;
   padding: 16px;
   font-size: 22px;
   background-color: #FFECB3;
@@ -16,6 +15,7 @@
   background-color: #FFECB3;
   border-radius: 8px;
   margin-top: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .item {
@@ -36,9 +36,11 @@
   }
 }
 
-@media (min-width: 480px) {
-  .input {
-    width: 50%;
-    margin: 0;
+.section {
+  margin-bottom: 32px;
+
+  &--header {
+    color: #EF5350;
+    font-size: 16px;
   }
 }
