@@ -8,10 +8,10 @@ function productsFetch() {
   };
 }
 
-function productsFetchSucceeded(payload) {
+function productsFetchSucceeded(products) {
   return {
     type: PRODUCTS_FETCH_SUCCEEDED,
-    payload,
+    payload: products,
   };
 }
 
