@@ -17,7 +17,7 @@ function SelectedProductsStripe({ selectedProducts }) {
 SelectedProductsStripe.propTypes = {
   selectedProducts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       name: PropTypes.string,
     }),
   ).isRequired,

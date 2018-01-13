@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import css from 'classnames';
 import SelectedProductsStripe from '../SelectedProductsStripe/SelectedProductsStripe';
 import styles from './ProductPicker.css';
+import commonStyles from '../../common.css';
 
 class ProductPicker extends Component {
   static renderItem(item, highlighted) {
@@ -73,19 +74,16 @@ class ProductPicker extends Component {
             justifyContent: 'center',
           })}
         />
-        <section className={styles['section']}>
-          <h3 className={styles['section--header']}>
-            Wybrane przez Ciebie produkty
-          </h3>
-          <SelectedProductsStripe
-            selectedProducts={this.state.selectedProducts}
-          />
-        </section>
-        <section className={styles['section']}>
-          <h3 className={styles['section--header']}>
-            Dobrane przepisy
-          </h3>
-        </section>
+        {this.state.selectedProducts.length !== 0 && (
+          <section className={commonStyles['section']}>
+            <h3 className={commonStyles['section--header']}>
+              Wybrane przez Ciebie produkty
+            </h3>
+            <SelectedProductsStripe
+              selectedProducts={this.state.selectedProducts}
+            />
+          </section>
+        )}
       </div>
     );
   }
