@@ -1,9 +1,13 @@
 import React from 'react';
 import ProductPickerContainer from '../../container/ProductPickerContainer';
+import SuggesterRecipeListing from '../../container/SuggesterRecipeListing';
 
 function RecipeSuggesterPage() {
   return (
-    <ProductPickerContainer />
+    <div>
+      <ProductPickerContainer />
+      <SuggesterRecipeListing />
+    </div>
   );
 }
 

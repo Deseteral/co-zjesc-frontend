@@ -10,9 +10,28 @@ function getProducts() {
   });
 }
 
+function getRecipesByProducts(productIds) {
+  return new Promise((resolve, reject) => {
+    fetch(`${SERVICE_URL}/api/recipes/getRecipesByProducts`, {
+      method: 'POST',
+      body: JSON.stringify(productIds),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(recipes => resolve(recipes))
+      .catch(e => reject(e));
+  });
+}
+
 const CoZjescService = {
   products: {
     get: getProducts,
+  },
+  recipes: {
+    getByProducts: getRecipesByProducts,
   },
 };
 

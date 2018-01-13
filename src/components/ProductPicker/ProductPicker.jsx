@@ -38,6 +38,7 @@ class ProductPicker extends Component {
       currentValue: '',
       selectedProducts,
     });
+    this.props.getSuggestedProducts(selectedProducts);
   }
 
   render() {
@@ -98,6 +99,7 @@ ProductPicker.propTypes = {
       image: PropTypes.string,
     }),
   ).isRequired,
+  getSuggestedProducts: PropTypes.func.isRequired,
 };
 
 export default ProductPicker;
