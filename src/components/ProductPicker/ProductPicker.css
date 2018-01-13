@@ -8,6 +8,11 @@
   border-radius: 8px;
   border: none;
   outline: none;
+  font-family: 'Lato', sans-serif;
+
+  &::placeholder {
+    color: #E57373;
+  }
 }
 
 .menu {

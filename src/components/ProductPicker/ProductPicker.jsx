@@ -74,6 +74,9 @@ class ProductPicker extends Component {
             width: '100%',
             justifyContent: 'center',
           })}
+          inputProps={({
+            placeholder: 'Wpisz nazwę składnika...',
+          })}
         />
         <SelectedProductsStripe
           selectedProducts={this.state.selectedProducts}
