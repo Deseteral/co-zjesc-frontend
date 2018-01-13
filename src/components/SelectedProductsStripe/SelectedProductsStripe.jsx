@@ -4,6 +4,10 @@ import styles from './SelectedProductsStripe.css';
 import commonStyles from '../../common.css';
 
 function SelectedProductsStripe({ selectedProducts }) {
+  if (selectedProducts.length === 0) {
+    return <div />;
+  }
+
   return (
     <section className={commonStyles['section']}>
       <h3 className={commonStyles['section--header']}>
