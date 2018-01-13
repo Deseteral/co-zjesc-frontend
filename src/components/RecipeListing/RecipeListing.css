@@ -11,8 +11,12 @@
   height: 48px;
   list-style: none;
   border-bottom: 1px lightgrey solid;
-}
 
-.item:last-of-type {
-  border-bottom: none;
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: lightgrey;
+  }
 }

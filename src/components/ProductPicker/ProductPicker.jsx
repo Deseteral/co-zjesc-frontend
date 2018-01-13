@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import css from 'classnames';
 import SelectedProductsStripe from '../SelectedProductsStripe/SelectedProductsStripe';
 import styles from './ProductPicker.css';
-import commonStyles from '../../common.css';
 
 class ProductPicker extends Component {
   static renderItem(item, highlighted) {
@@ -39,7 +38,9 @@ class ProductPicker extends Component {
       currentValue: '',
       selectedProducts,
     });
-    this.props.getSuggestedProducts(selectedProducts);
+
+    const selectedProductsIds = selectedProducts.map(s => s.id);
+    this.props.getSuggestedProducts(selectedProductsIds);
   }
 
   render() {
@@ -74,16 +75,9 @@ class ProductPicker extends Component {
             justifyContent: 'center',
           })}
         />
-        {this.state.selectedProducts.length !== 0 && (
-          <section className={commonStyles['section']}>
-            <h3 className={commonStyles['section--header']}>
-              Wybrane przez Ciebie produkty
-            </h3>
-            <SelectedProductsStripe
-              selectedProducts={this.state.selectedProducts}
-            />
-          </section>
-        )}
+        <SelectedProductsStripe
+          selectedProducts={this.state.selectedProducts}
+        />
       </div>
     );
   }
