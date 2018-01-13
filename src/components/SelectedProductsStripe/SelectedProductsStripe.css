@@ -8,6 +8,13 @@
 }
 
 .item {
+  display: flex;
+  align-items: center;
   list-style: none;
   padding: 16px;
+}
+
+.button {
+  color: lightgrey;
+  cursor: pointer;
 }

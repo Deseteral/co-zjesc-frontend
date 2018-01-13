@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import css from 'classnames';
 import styles from './SelectedProductsStripe.css';
 import commonStyles from '../../common.css';
 
-function SelectedProductsStripe({ selectedProducts }) {
+function SelectedProductsStripe({ selectedProducts, onRemoveProduct }) {
   if (selectedProducts.length === 0) {
     return <div />;
   }
@@ -16,6 +17,13 @@ function SelectedProductsStripe({ selectedProducts }) {
       <ul className={styles['list']}>
         {selectedProducts.map(p => (
           <li key={p.id} className={styles['item']}>
+            <i
+              className={css('material-icons', styles['button'])}
+              onClick={() => onRemoveProduct(p.id)}
+              aria-hidden="true"
+            >
+              close
+            </i>
             {p.name}
           </li>
         ))}
@@ -31,6 +39,7 @@ SelectedProductsStripe.propTypes = {
       name: PropTypes.string,
     }),
   ).isRequired,
+  onRemoveProduct: PropTypes.func.isRequired,
 };
 
 export default SelectedProductsStripe;

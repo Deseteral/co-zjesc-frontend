@@ -39,6 +39,19 @@ class ProductPicker extends Component {
       selectedProducts,
     });
 
+    this.refreshSuggestedProducts(selectedProducts);
+  }
+
+  removeProduct(id) {
+    const selectedProducts = this.state.selectedProducts.slice();
+    const removeIndex = selectedProducts.findIndex(p => p.id === id);
+    selectedProducts.splice(removeIndex, 1);
+
+    this.setState({ selectedProducts });
+    this.refreshSuggestedProducts(selectedProducts);
+  }
+
+  refreshSuggestedProducts(selectedProducts) {
     const selectedProductsIds = selectedProducts.map(s => s.id);
     this.props.getSuggestedProducts(selectedProductsIds);
   }
@@ -80,6 +93,7 @@ class ProductPicker extends Component {
         />
         <SelectedProductsStripe
           selectedProducts={this.state.selectedProducts}
+          onRemoveProduct={id => this.removeProduct(id)}
         />
       </div>
     );
