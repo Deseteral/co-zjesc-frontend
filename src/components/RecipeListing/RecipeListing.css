@@ -10,7 +10,6 @@
   align-items: center;
   list-style: none;
   border-bottom: 1px lightgrey solid;
-  padding: 16px;
 
   &:first-of-type {
     border-top-left-radius: 4px;
@@ -26,4 +25,11 @@
   &:hover {
     background-color: lightgrey;
   }
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  padding: 16px;
 }

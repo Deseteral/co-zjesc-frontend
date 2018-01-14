@@ -8,6 +8,11 @@ import styles from './App.css';
 
 const DEFAULT_ROUTE = '/suggester';
 
+function extractIdFromUrl(props, callback) {
+  const id = parseInt(props.match.params.id, 10);
+  return callback(id);
+}
+
 function App(props) {
   return (
     <Provider store={props.store}>
@@ -28,7 +33,7 @@ function App(props) {
                 />
                 <Route
                   path="/recipe/:id"
-                  component={(({ match }) => <RecipeViewPage recipeId={match.params.id} />)}
+                  component={p => extractIdFromUrl(p, id => <RecipeViewPage recipeId={id} />)}
                 />
               </Switch>
             </div>
