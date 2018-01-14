@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import styles from './RecipeListing.css';
 import commonStyles from '../../common.css';
 
@@ -16,7 +17,9 @@ function RecipeListing({ recipes }) {
       <ul className={styles['card']}>
         {recipes.map(recipe => (
           <li className={styles['item']} key={recipe.id}>
-            {recipe.title}
+            <NavLink to={`/recipe/${recipe.id}`} className={styles['link']}>
+              {recipe.title}
+            </NavLink>
           </li>
         ))}
       </ul>
