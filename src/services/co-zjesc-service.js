@@ -26,12 +26,23 @@ function getRecipesByProducts(productIds) {
   });
 }
 
+function getRecipe(recipeId) {
+  return new Promise((resolve, reject) => {
+    fetch(`${SERVICE_URL}/api/recipes/${recipeId}`)
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(recipe => resolve(recipe))
+      .catch(e => reject(e));
+  });
+}
+
 const CoZjescService = {
   products: {
     get: getProducts,
   },
   recipes: {
     getByProducts: getRecipesByProducts,
+    getById: getRecipe,
   },
 };
 
