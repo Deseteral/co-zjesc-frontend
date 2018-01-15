@@ -1,6 +1,6 @@
 import React from 'react';
 
-function RecipeView({ recipe }) {
+function RecipeView({ recipe }) { // eslint-disable-line
   return <div>{JSON.stringify(recipe, null, 2)}</div>;
 }
 
