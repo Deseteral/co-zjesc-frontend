@@ -57,13 +57,13 @@ class ProductPicker extends Component {
   }
 
   render() {
-    const items = this.props.products
+    const renderItems = this.props.products
       .filter(p => !this.state.selectedProducts.find(s => s.id === p.id));
 
     return (
       <div>
         <Autocomplete
-          items={items}
+          items={renderItems}
           getItemValue={item => item.name}
           renderItem={(item, highlighted) => (
             ProductPicker.renderItem(item, highlighted)
