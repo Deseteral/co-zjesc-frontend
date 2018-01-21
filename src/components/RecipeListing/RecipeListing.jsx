@@ -14,7 +14,7 @@ function RecipeListing({ recipes }) {
       <h3 className={commonStyles['section--header']}>
         Dobrane przepisy
       </h3>
-      <ul className={styles['card']}>
+      <ul className={commonStyles['card']}>
         {recipes.map(recipe => (
           <li className={styles['item']} key={recipe.id}>
             <NavLink to={`/recipe/${recipe.id}`} className={styles['link']}>
