@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RecipeView from '../RecipeView/RecipeView';
 import CoZjescService from '../../services/co-zjesc-service';
+import styles from './RecipeViewPage.css';
 
 function mapDifficultyLevel(level) {
   if (level === 1) return 'bardzo łatwy';
@@ -54,7 +55,7 @@ class RecipeViewPage extends Component {
 
   render() {
     if (!this.state.recipe) {
-      return (<div>spinner</div>);
+      return (<div className={styles['loader']}>Wczytywanie...</div>);
     }
 
     const data = mapRecipeToProps(this.state.recipe);
