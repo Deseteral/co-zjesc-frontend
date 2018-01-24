@@ -4,7 +4,7 @@ import css from 'classnames';
 import styles from './RecipeView.css';
 import commonStyles from '../../common.css';
 
-function RecipeView({ title, products, description, tiles, tags }) {
+function RecipeView({ title, images, products, description, tiles, tags }) {
   return (
     <div className={css(commonStyles['card'], styles['card'])}>
       <h1>{title}</h1>
@@ -35,6 +35,7 @@ function RecipeView({ title, products, description, tiles, tags }) {
 
 RecipeView.propTypes = {
   title: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     label: PropTypes.string,

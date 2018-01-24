@@ -18,6 +18,10 @@ function mapDifficultyLevel(level) {
 function mapRecipeToProps(recipe) {
   const { title, description, tags } = recipe;
 
+  const images = recipe
+    .images
+    .map(i => `${SERVICE_URL}${i}`);
+
   const products = recipe
     .products
     .map(p => ({ id: p.id, label: `${p.name} ${p.amount}${p.unit.label}` }));
@@ -31,6 +35,7 @@ function mapRecipeToProps(recipe) {
 
   return {
     title,
+    images,
     products,
     description,
     tiles,
