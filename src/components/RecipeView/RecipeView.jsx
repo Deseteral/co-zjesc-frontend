@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from 'classnames';
 import ImageGallery from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
 import styles from './RecipeView.css';
 import commonStyles from '../../common.css';
+import './recipe-gallery.public.css';
 
 function RecipeView({ title, images, products, description, tiles, tags }) {
   return (
@@ -13,7 +13,7 @@ function RecipeView({ title, images, products, description, tiles, tags }) {
       <section>
         <ImageGallery
           items={images}
-          showNav={false}
+          showNav
           showThumbnails={false}
           showFullscreenButton={false}
           showPlayButton={false}
