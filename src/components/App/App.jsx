@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import RecipeSuggesterPage from '../RecipeSuggesterPage/RecipeSuggesterPage';
 import RecipeViewPage from '../RecipeViewPage/RecipeViewPage';
+import LoginPage from '../LoginPage/LoginPage';
 import styles from './App.css';
 
 const DEFAULT_ROUTE = '/suggester';
@@ -34,6 +35,10 @@ function App(props) {
                 <Route
                   path="/recipe/:id"
                   component={p => extractIdFromUrl(p, id => <RecipeViewPage recipeId={id} />)}
+                />
+                <Route
+                  path="/login"
+                  component={LoginPage}
                 />
               </Switch>
             </div>

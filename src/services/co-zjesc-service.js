@@ -1,8 +1,9 @@
 import checkStatus from 'fetch-check-http-status';
+import serviceFetch from './service-fetch';
 
 function getProducts() {
   return new Promise((resolve, reject) => {
-    fetch(`${SERVICE_URL}/api/products`)
+    serviceFetch('/api/products')
       .then(checkStatus)
       .then(data => data.json())
       .then(products => resolve(products))
@@ -12,7 +13,7 @@ function getProducts() {
 
 function getRecipesByProducts(productIds) {
   return new Promise((resolve, reject) => {
-    fetch(`${SERVICE_URL}/api/recipes/getRecipesByProducts`, {
+    serviceFetch('/api/recipes/getRecipesByProducts', {
       method: 'POST',
       body: JSON.stringify(productIds),
       headers: {
@@ -28,7 +29,7 @@ function getRecipesByProducts(productIds) {
 
 function getRecipe(recipeId) {
   return new Promise((resolve, reject) => {
-    fetch(`${SERVICE_URL}/api/recipes/${recipeId}`)
+    serviceFetch(`/api/recipes/${recipeId}`)
       .then(checkStatus)
       .then(data => data.json())
       .then(recipe => resolve(recipe))
