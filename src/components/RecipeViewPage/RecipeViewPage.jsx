@@ -20,7 +20,7 @@ function mapRecipeToProps(recipe) {
 
   const images = recipe
     .images
-    .map(i => `${SERVICE_URL}${i}`);
+    .map(i => ({ original: `${SERVICE_URL}${i}` }));
 
   const products = recipe
     .products
