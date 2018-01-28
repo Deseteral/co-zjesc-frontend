@@ -1,1 +1,28 @@
 @import '../../../node_modules/react-image-gallery/styles/css/image-gallery.css';
+
+.image-gallery-image {
+  text-align: center;
+}
+
+.image-gallery-image img {
+  width: auto;
+  max-height: 100px;
+}
+
+@media (min-width: 320px) {
+  .image-gallery-image img {
+    max-height: 160px;
+  }
+}
+
+@media (min-width: 490px) {
+  .image-gallery-image img {
+    max-height: 270px;
+  }
+}
+
+@media (min-width: 700px) {
+  .image-gallery-image img {
+    max-height: 400px;
+  }
+}
