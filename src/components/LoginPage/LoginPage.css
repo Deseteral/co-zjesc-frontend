@@ -1,4 +1,44 @@
 .card {
   display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.form {
+  display: flex;
   flex-direction: column;
+  max-width: 250px;
+  width: 100%;
+}
+
+.input {
+  margin-bottom: 8px;
+  padding: 8px;
+  font-size: 14px;
+  background-color: #FFECB3;
+  color: #EF5350;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-family: 'Lato', sans-serif;
+
+  &::placeholder {
+    color: #E57373;
+  }
+}
+
+.button {
+  padding: 8px;
+  font-size: 14px;
+  color: #FFECB3;
+  background-color: #EF5350;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-family: 'Lato', sans-serif;
+  transition: background-color 300ms ease;
+
+  &:hover {
+    background-color: #E53935;
+  }
 }
