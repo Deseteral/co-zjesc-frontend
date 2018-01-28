@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import css from 'classnames';
+import ImageGallery from 'react-image-gallery';
 import styles from './RecipeView.css';
 import commonStyles from '../../common.css';
+import './recipe-gallery.public.css';
 
-function RecipeView({ title, products, description, tiles, tags }) {
+function RecipeView({ title, images, products, description, tiles, tags }) {
   return (
     <div className={css(commonStyles['card'], styles['card'])}>
       <h1>{title}</h1>
+      <section>
+        <ImageGallery
+          items={images}
+          showNav
+          showThumbnails={false}
+          showFullscreenButton={false}
+          showPlayButton={false}
+        />
+      </section>
       <section>
         <h2>Składniki</h2>
         <ul>
@@ -35,6 +46,9 @@ function RecipeView({ title, products, description, tiles, tags }) {
 
 RecipeView.propTypes = {
   title: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    original: PropTypes.string,
+  })).isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     label: PropTypes.string,
