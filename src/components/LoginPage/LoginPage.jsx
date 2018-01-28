@@ -25,6 +25,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className={css(commonStyles['card'], styles['card'])}>
+        <h1 className={styles['header']}>Zaloguj się</h1>
         <form
           className={styles['form']}
           action={`${SERVICE_URL}/token`}
