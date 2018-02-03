@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import css from 'classnames';
+import Cookies from 'js-cookie';
+import { login } from '../../services/login-service';
 import styles from './LoginPage.css';
 import commonStyles from '../../common.css';
 
@@ -9,6 +11,7 @@ class LoginPage extends Component {
     this.state = {
       username: '',
       password: '',
+      error: '',
     };
   }
 
@@ -17,12 +20,27 @@ class LoginPage extends Component {
   }
 
   handleSubmit(event) {
-    const { username, password } = this.state;
-    console.log(username, password);
     event.preventDefault();
+
+    const { username, password } = this.state;
+    login(username, password)
+      .then((authData) => {
+        console.log(authData);
+        if (authData.access_token) {
+          Cookies.set('token', authData.access_token);
+        } else {
+          throw new Error();
+        }
+      })
+      .catch((e) => {
+        this.setState({ error: 'Logowanie nie powiodło się' });
+        console.error(e);
+      });
   }
 
   render() {
+    const { error } = this.state;
+
     return (
       <div className={css(commonStyles['card'], styles['card'])}>
         <h1 className={styles['header']}>Zaloguj się</h1>
@@ -48,7 +66,7 @@ class LoginPage extends Component {
             onChange={e => this.handleChange(e, 'password')}
             type="password"
           />
-          <input type="hidden" name="grant_type" value="password" />
+          {error && <div className={styles['error-message']}>{error}</div>}
           <input className={styles['button']} type="submit" value="Zaloguj" />
         </form>
       </div>
