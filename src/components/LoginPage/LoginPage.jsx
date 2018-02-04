@@ -44,12 +44,7 @@ class LoginPage extends Component {
     return (
       <div className={css(commonStyles['card'], styles['card'])}>
         <h1 className={styles['header']}>Zaloguj się</h1>
-        <form
-          className={styles['form']}
-          action={`${SERVICE_URL}/token`}
-          method="POST"
-          onSubmit={e => this.handleSubmit(e)}
-        >
+        <div className={styles['input-container']}>
           <input
             className={styles['input']}
             name="username"
@@ -67,8 +62,13 @@ class LoginPage extends Component {
             type="password"
           />
           {error && <div className={styles['error-message']}>{error}</div>}
-          <input className={styles['button']} type="submit" value="Zaloguj" />
-        </form>
+          <button
+            className={styles['button']}
+            onClick={e => this.handleSubmit(e)}
+          >
+            Zaloguj
+          </button>
+        </div>
       </div>
     );
   }
