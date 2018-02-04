@@ -22,8 +22,19 @@ function login(username, password) {
   });
 }
 
-function register() {
-
+function register(userName, password, confirmPassword) {
+  return new Promise((resolve, reject) => {
+    serviceFetch('/api/account/register', {
+      method: 'POST',
+      body: JSON.stringify({ userName, password, confirmPassword }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(checkStatus)
+      .then(data => data.json())
+      .catch(e => reject(e));
+  });
 }
 
 export {
