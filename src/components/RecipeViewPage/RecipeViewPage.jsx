@@ -16,7 +16,7 @@ function mapDifficultyLevel(level) {
 // TODO: Foolproof it!
 // TODO: Move it!
 function mapRecipeToProps(recipe) {
-  const { title, description, tags } = recipe;
+  const { id, title, description, tags } = recipe;
 
   const images = recipe
     .images
@@ -34,6 +34,7 @@ function mapRecipeToProps(recipe) {
   ].map((t, i) => ({ id: i, ...t }));
 
   return {
+    id,
     title,
     images,
     products,
