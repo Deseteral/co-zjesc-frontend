@@ -2,11 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from 'classnames';
 import ImageGallery from 'react-image-gallery';
+import { DiscussionEmbed } from 'disqus-react';
 import styles from './RecipeView.css';
 import commonStyles from '../../common.css';
 import './recipe-gallery.public.css';
 
-function RecipeView({ title, images, products, description, tiles, tags }) {
+function RecipeView({ id, title, images, products, description, tiles, tags }) {
+  const disqusConfig = {
+    url: `http://cozjesc.netlify.com/recipe/${id}`,
+    identifier: `recipe-${id}`,
+    title,
+  };
+
   return (
     <div className={css(commonStyles['card'], styles['card'])}>
       <h1>{title}</h1>
@@ -40,11 +47,15 @@ function RecipeView({ title, images, products, description, tiles, tags }) {
       <section className={styles['section--tags']}>
         {tags.map(t => <div key={t.id} className={styles['soap']}>{t.name}</div>)}
       </section>
+      <section>
+        <DiscussionEmbed config={disqusConfig} shortname="cozjesc" />
+      </section>
     </div>
   );
 }
 
 RecipeView.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.shape({
     original: PropTypes.string,
