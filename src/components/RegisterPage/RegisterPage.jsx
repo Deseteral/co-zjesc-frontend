@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import css from 'classnames';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import { register } from '../../services/login-service';
 import styles from './RegisterPage.css';
 import commonStyles from '../../common.css';
