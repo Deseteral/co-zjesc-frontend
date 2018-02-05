@@ -32,11 +32,11 @@ class RegisterPage extends Component {
 
     register(username, password, confirmPassword)
       .then((authData) => {
-        console.log(authData);
+        console.log(authData); // eslint-disable-line
       })
       .catch((e) => {
         this.setState({ error: 'Rejestracja nie powiodła się, spróbuj ponownie' });
-        console.error(e);
+        console.error(e); // eslint-disable-line
       });
   }
 

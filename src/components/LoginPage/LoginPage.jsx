@@ -25,7 +25,7 @@ class LoginPage extends Component {
     const { username, password } = this.state;
     login(username, password)
       .then((authData) => {
-        console.log(authData);
+        console.log(authData); // eslint-disable-line
         if (authData.access_token) {
           Cookies.set('token', authData.access_token);
         } else {
@@ -34,7 +34,7 @@ class LoginPage extends Component {
       })
       .catch((e) => {
         this.setState({ error: 'Logowanie nie powiodło się' });
-        console.error(e);
+        console.error(e); // eslint-disable-line
       });
   }
 
