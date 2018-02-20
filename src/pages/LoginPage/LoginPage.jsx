@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import Card from '../../components/Card/Card';
+import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
 import Button from '../../components/Button/Button';
 import { login } from '../../services/login-service';
@@ -44,7 +45,9 @@ class LoginPage extends Component {
 
     return (
       <Card className={styles['card']}>
-        <h1 className={styles['header']}>Zaloguj się</h1>
+        <CardHeader>
+          Zaloguj się
+        </CardHeader>
         <div className={styles['input-container']}>
           <TextField
             name="username"
