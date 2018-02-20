@@ -6,7 +6,7 @@ import RecipeSuggesterPage from '../RecipeSuggesterPage/RecipeSuggesterPage';
 import RecipeViewPage from '../RecipeViewPage/RecipeViewPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage';
-import RecipeEditPage from '../RecipeEditPage/RecipeEditPage';
+import RecipeEditPage from '../../pages/RecipeEditPage/RecipeEditPage';
 import styles from './App.css';
 
 const DEFAULT_ROUTE = '/suggester';

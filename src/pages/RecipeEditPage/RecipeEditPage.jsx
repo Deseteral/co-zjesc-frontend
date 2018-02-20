@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import commonStyles from '../../common.css';
+import Card from '../../components/Card/Card';
 
 class RecipeEditPage extends Component {
   constructor(props) {
@@ -11,9 +11,9 @@ class RecipeEditPage extends Component {
 
   render() {
     return (
-      <div className={commonStyles['card']}>
+      <Card>
         RecipeEditPage
-      </div>
+      </Card>
     );
   }
 }
