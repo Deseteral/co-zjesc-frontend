@@ -6,6 +6,7 @@ import RecipeSuggesterPage from '../RecipeSuggesterPage/RecipeSuggesterPage';
 import RecipeViewPage from '../RecipeViewPage/RecipeViewPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import RecipeEditPage from '../RecipeEditPage/RecipeEditPage';
 import styles from './App.css';
 
 const DEFAULT_ROUTE = '/suggester';
@@ -32,6 +33,10 @@ function App(props) {
                 <Route
                   path="/suggester"
                   component={RecipeSuggesterPage}
+                />
+                <Route
+                  path="/recipe/add"
+                  component={RecipeEditPage}
                 />
                 <Route
                   path="/recipe/:id"
