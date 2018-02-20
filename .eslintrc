@@ -1,3 +1,6 @@
 {
-  "extends": "./node_modules/@deseteral/react-scripts/config/eslint.json"
+  "extends": "./node_modules/@deseteral/react-scripts/config/eslint.json",
+  "rules": {
+    "react/prop-types": "off"
+  }
 }

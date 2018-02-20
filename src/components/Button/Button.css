@@ -1,0 +1,20 @@
+.button {
+  padding: 8px;
+  font-size: 14px;
+  color: #FFECB3;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-family: 'Lato', sans-serif;
+  transition: background-color 300ms ease;
+}
+
+.primary {
+  color: var(--light-primary-color);
+  background-color: var(--accent-color);
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: var(--accent-color);
+  }
+}

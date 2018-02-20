@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import RecipeSuggesterPage from '../RecipeSuggesterPage/RecipeSuggesterPage';
 import RecipeViewPage from '../RecipeViewPage/RecipeViewPage';
-import LoginPage from '../LoginPage/LoginPage';
+import LoginPage from '../../pages/LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import RecipeEditPage from '../RecipeEditPage/RecipeEditPage';
 import styles from './App.css';

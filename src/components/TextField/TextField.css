@@ -1,0 +1,15 @@
+.input {
+  margin-bottom: 8px;
+  padding: 8px;
+  font-size: 14px;
+  background-color: var(--primary-background-color);
+  color: var(--accent-color);
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-family: 'Lato', sans-serif;
+
+  &::placeholder {
+    color: var(--light-primary-color);
+  }
+}

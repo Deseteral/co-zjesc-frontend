@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import css from 'classnames';
 import Cookies from 'js-cookie';
+import Card from '../../components/Card/Card';
+import TextField from '../../components/TextField/TextField';
+import Button from '../../components/Button/Button';
 import { login } from '../../services/login-service';
 import styles from './LoginPage.css';
-import commonStyles from '../../common.css';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -15,8 +16,8 @@ class LoginPage extends Component {
     };
   }
 
-  handleChange(event, part) {
-    this.setState({ [part]: event.target.value });
+  handleChange(value, part) {
+    this.setState({ [part]: value });
   }
 
   handleSubmit(event) {
@@ -42,34 +43,28 @@ class LoginPage extends Component {
     const { error } = this.state;
 
     return (
-      <div className={css(commonStyles['card'], styles['card'])}>
+      <Card className={styles['card']}>
         <h1 className={styles['header']}>Zaloguj się</h1>
         <div className={styles['input-container']}>
-          <input
-            className={styles['input']}
+          <TextField
             name="username"
             value={this.state.login}
             placeholder="Nazwa użytkownika"
-            onChange={e => this.handleChange(e, 'username')}
-            type="text"
+            onChange={value => this.handleChange(value, 'username')}
           />
-          <input
-            className={styles['input']}
+          <TextField
             name="password"
             value={this.state.password}
             placeholder="Hasło"
-            onChange={e => this.handleChange(e, 'password')}
-            type="password"
+            onChange={value => this.handleChange(value, 'password')}
+            password
           />
           {error && <div className={styles['error-message']}>{error}</div>}
-          <button
-            className={styles['button']}
-            onClick={e => this.handleSubmit(e)}
-          >
+          <Button primary onClick={e => this.handleSubmit(e)}>
             Zaloguj
-          </button>
+          </Button>
         </div>
-      </div>
+      </Card>
     );
   }
 }
