@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import RecipeSuggesterPage from '../RecipeSuggesterPage/RecipeSuggesterPage';
+import RecipeSuggesterPage from '../../pages/RecipeSuggesterPage/RecipeSuggesterPage';
 import RecipeViewPage from '../../pages/RecipeViewPage/RecipeViewPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage';
