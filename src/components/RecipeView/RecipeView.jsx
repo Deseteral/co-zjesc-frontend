@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import css from 'classnames';
 import ImageGallery from 'react-image-gallery';
 import { DiscussionEmbed } from 'disqus-react';
+import Card from '../Card/Card';
+import CardHeader from '../CardHeader/CardHeader';
 import styles from './RecipeView.css';
-import commonStyles from '../../common.css';
 import './recipe-gallery.public.css';
 
 function RecipeView({ id, title, images, products, description, tiles, tags }) {
@@ -15,8 +14,8 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
   };
 
   return (
-    <div className={css(commonStyles['card'], styles['card'])}>
-      <h1>{title}</h1>
+    <Card>
+      <CardHeader>{title}</CardHeader>
       <section>
         <ImageGallery
           items={images}
@@ -50,30 +49,8 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
       <section>
         <DiscussionEmbed config={disqusConfig} shortname="cozjesc" />
       </section>
-    </div>
+    </Card>
   );
 }
-
-RecipeView.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(PropTypes.shape({
-    original: PropTypes.string,
-  })).isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    label: PropTypes.string,
-  })).isRequired,
-  description: PropTypes.string.isRequired,
-  tiles: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    value: PropTypes.string,
-  })).isRequired,
-  tags: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  })).isRequired,
-};
 
 export default RecipeView;
