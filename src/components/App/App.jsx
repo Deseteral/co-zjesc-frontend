@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import RecipeSuggesterPage from '../RecipeSuggesterPage/RecipeSuggesterPage';
-import RecipeViewPage from '../RecipeViewPage/RecipeViewPage';
+import RecipeViewPage from '../../pages/RecipeViewPage/RecipeViewPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage';
 import RecipeEditPage from '../../pages/RecipeEditPage/RecipeEditPage';
