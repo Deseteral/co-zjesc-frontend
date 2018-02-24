@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Card from '../Card/Card';
+import SuggesterSection from '../SuggesterSection/SuggesterSection';
 import styles from './RecipeListing.css';
-import commonStyles from '../../common.css';
 
 function RecipeListing({ recipes }) {
   if (recipes.length === 0) {
@@ -10,10 +10,7 @@ function RecipeListing({ recipes }) {
   }
 
   return (
-    <section className={commonStyles['section']}>
-      <h3 className={commonStyles['section--header']}>
-        Dobrane przepisy
-      </h3>
+    <SuggesterSection title="Dobrane przepisy">
       <Card className={styles['card']}>
         {recipes.map(recipe => (
           <li className={styles['item']} key={recipe.id}>
@@ -23,7 +20,7 @@ function RecipeListing({ recipes }) {
           </li>
         ))}
       </Card>
-    </section>
+    </SuggesterSection>
   );
 }
 

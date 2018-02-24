@@ -1,6 +1,7 @@
 import React from 'react';
 import css from 'classnames';
 import Card from '../Card/Card';
+import SuggesterSection from '../SuggesterSection/SuggesterSection';
 import styles from './SelectedProductsStripe.css';
 import commonStyles from '../../common.css';
 
@@ -10,10 +11,7 @@ function SelectedProductsStripe({ selectedProducts, onRemoveProduct }) {
   }
 
   return (
-    <section className={commonStyles['section']}>
-      <h3 className={commonStyles['section--header']}>
-        Wybrane przez Ciebie produkty
-      </h3>
+    <SuggesterSection title="Wybrane przez Ciebie produkty">
       <Card className={styles['card']}>
         {selectedProducts.map(p => (
           <li key={p.id} className={styles['item']}>
@@ -28,7 +26,7 @@ function SelectedProductsStripe({ selectedProducts, onRemoveProduct }) {
           </li>
         ))}
       </Card>
-    </section>
+    </SuggesterSection>
   );
 }
 
