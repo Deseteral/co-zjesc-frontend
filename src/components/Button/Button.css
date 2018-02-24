@@ -1,7 +1,7 @@
 .button {
   padding: 8px;
   font-size: 14px;
-  color: #FFECB3;
+  color: var(--light-primary-color);
   border-radius: 8px;
   border: none;
   outline: none;

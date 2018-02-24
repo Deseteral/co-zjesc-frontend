@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import css from 'classnames';
+import Card from '../Card/Card';
 import styles from './SelectedProductsStripe.css';
 import commonStyles from '../../common.css';
 
@@ -14,7 +14,7 @@ function SelectedProductsStripe({ selectedProducts, onRemoveProduct }) {
       <h3 className={commonStyles['section--header']}>
         Wybrane przez Ciebie produkty
       </h3>
-      <ul className={styles['list']}>
+      <Card className={styles['card']}>
         {selectedProducts.map(p => (
           <li key={p.id} className={styles['item']}>
             <i
@@ -27,19 +27,9 @@ function SelectedProductsStripe({ selectedProducts, onRemoveProduct }) {
             {p.name}
           </li>
         ))}
-      </ul>
+      </Card>
     </section>
   );
 }
-
-SelectedProductsStripe.propTypes = {
-  selectedProducts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    }),
-  ).isRequired,
-  onRemoveProduct: PropTypes.func.isRequired,
-};
 
 export default SelectedProductsStripe;

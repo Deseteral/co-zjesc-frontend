@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Autocomplete from 'react-autocomplete';
-import PropTypes from 'prop-types';
 import css from 'classnames';
 import SelectedProductsStripe from '../SelectedProductsStripe/SelectedProductsStripe';
 import styles from './ProductPicker.css';
@@ -102,16 +101,5 @@ class ProductPicker extends Component {
     );
   }
 }
-
-ProductPicker.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      image: PropTypes.string,
-    }),
-  ).isRequired,
-  getSuggestedProducts: PropTypes.func.isRequired,
-};
 
 export default ProductPicker;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import RecipeSuggesterPage from '../../pages/RecipeSuggesterPage/RecipeSuggesterPage';
 import RecipeViewPage from '../../pages/RecipeViewPage/RecipeViewPage';
@@ -58,9 +57,5 @@ function App(props) {
     </Provider>
   );
 }
-
-App.propTypes = {
-  store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
 
 export default App;

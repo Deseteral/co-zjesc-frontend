@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import Card from '../Card/Card';
 import styles from './RecipeListing.css';
 import commonStyles from '../../common.css';
 
@@ -14,7 +14,7 @@ function RecipeListing({ recipes }) {
       <h3 className={commonStyles['section--header']}>
         Dobrane przepisy
       </h3>
-      <ul className={commonStyles['card']}>
+      <Card className={styles['card']}>
         {recipes.map(recipe => (
           <li className={styles['item']} key={recipe.id}>
             <NavLink to={`/recipe/${recipe.id}`} className={styles['link']}>
@@ -22,17 +22,10 @@ function RecipeListing({ recipes }) {
             </NavLink>
           </li>
         ))}
-      </ul>
+      </Card>
     </section>
   );
 }
-
-RecipeListing.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-  })),
-};
 
 RecipeListing.defaultProps = {
   recipes: [],
