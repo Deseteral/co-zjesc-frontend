@@ -24,6 +24,7 @@
   "scripts": {
     "start": "cross-env SERVICE_URL=http://cozjesc.azurewebsites.net react-scripts start",
     "build": "react-scripts build",
-    "test": "exit 0"
+    "test": "exit 0",
+    "lint": "react-scripts test --env=jsdom"
   }
 }
