@@ -3,7 +3,6 @@ import css from 'classnames';
 import Card from '../Card/Card';
 import SuggesterSection from '../SuggesterSection/SuggesterSection';
 import styles from './SelectedProductsStripe.css';
-import commonStyles from '../../common.css';
 
 function SelectedProductsStripe({ selectedProducts, onRemoveProduct }) {
   if (selectedProducts.length === 0) {
