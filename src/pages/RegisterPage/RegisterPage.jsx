@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import css from 'classnames';
 // import Cookies from 'js-cookie';
+import Card from '../../components/Card/Card';
+import CardHeader from '../../components/CardHeader/CardHeader';
+import TextField from '../../components/TextField/TextField';
+import Button from '../../components/Button/Button';
 import { register } from '../../services/login-service';
 import styles from './RegisterPage.css';
-import commonStyles from '../../common.css';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -16,8 +19,8 @@ class RegisterPage extends Component {
     };
   }
 
-  handleChange(event, part) {
-    this.setState({ [part]: event.target.value });
+  handleChange(value, part) {
+    this.setState({ [part]: value });
   }
 
   handleSubmit(event) {
@@ -44,42 +47,37 @@ class RegisterPage extends Component {
     const { error } = this.state;
 
     return (
-      <div className={css(commonStyles['card'], styles['card'])}>
-        <h1 className={styles['header']}>Zarejestruj się</h1>
+      <Card className={styles['card']}>
+        <CardHeader>
+          Zarejestruj się
+        </CardHeader>
         <div className={styles['input-container']}>
-          <input
-            className={styles['input']}
+          <TextField
             name="username"
             value={this.state.login}
             placeholder="Nazwa użytkownika"
-            onChange={e => this.handleChange(e, 'username')}
-            type="text"
+            onChange={value => this.handleChange(value, 'username')}
           />
-          <input
-            className={styles['input']}
+          <TextField
             name="password"
             value={this.state.password}
             placeholder="Hasło"
-            onChange={e => this.handleChange(e, 'password')}
-            type="password"
+            onChange={value => this.handleChange(value, 'password')}
+            password
           />
-          <input
-            className={styles['input']}
+          <TextField
             name="confirmPassword"
             value={this.state.confirmPassword}
             placeholder="Potwierdź hasło"
-            onChange={e => this.handleChange(e, 'confirmPassword')}
-            type="password"
+            onChange={value => this.handleChange(value, 'confirmPassword')}
+            password
           />
           {error && <div className={styles['error-message']}>{error}</div>}
-          <button
-            className={styles['button']}
-            onClick={e => this.handleSubmit(e)}
-          >
+          <Button primary onClick={e => this.handleSubmit(e)}>
             Zarejestruj
-          </button>
+          </Button>
         </div>
-      </div>
+      </Card>
     );
   }
 }

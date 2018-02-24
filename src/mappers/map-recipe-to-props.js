@@ -1,8 +1,3 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import RecipeView from '../RecipeView/RecipeView';
-import CoZjescService from '../../services/co-zjesc-service';
-import styles from './RecipeViewPage.css';
 
 function mapDifficultyLevel(level) {
   if (level === 1) return 'bardzo łatwy';
@@ -44,34 +39,4 @@ function mapRecipeToProps(recipe) {
   };
 }
 
-class RecipeViewPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      recipe: null,
-    };
-  }
-
-  componentDidMount() {
-    CoZjescService
-      .recipes
-      .getById(this.props.recipeId)
-      .then(recipe => this.setState({ recipe }));
-  }
-
-  render() {
-    if (!this.state.recipe) {
-      return (<div className={styles['loader']}>Wczytywanie...</div>);
-    }
-
-    const data = mapRecipeToProps(this.state.recipe);
-
-    return (<RecipeView {...data} />);
-  }
-}
-
-RecipeViewPage.propTypes = {
-  recipeId: PropTypes.number.isRequired,
-};
-
-export default RecipeViewPage;
+export default mapRecipeToProps;

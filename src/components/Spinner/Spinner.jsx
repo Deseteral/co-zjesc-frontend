@@ -1,0 +1,10 @@
+import React from 'react';
+import styles from './Spinner.css';
+
+function Spinner() {
+  return (
+    <div className={styles['loader']}>Wczytywanie...</div>
+  );
+}
+
+export default Spinner;
