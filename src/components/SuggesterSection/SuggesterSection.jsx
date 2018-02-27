@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './SuggesterSection.css';
 
 function SuggesterSection({ title, children }) {
@@ -11,5 +12,10 @@ function SuggesterSection({ title, children }) {
     </section>
   );
 }
+
+SuggesterSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default SuggesterSection;

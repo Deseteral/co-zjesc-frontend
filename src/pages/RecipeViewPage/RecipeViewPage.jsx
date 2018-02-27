@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import RecipeView from '../../components/RecipeView/RecipeView';
 import Spinner from '../../components/Spinner/Spinner';
 import mapRecipeToProps from '../../mappers/map-recipe-to-props';
@@ -29,5 +30,9 @@ class RecipeViewPage extends Component {
     return (<RecipeView {...data} />);
   }
 }
+
+RecipeViewPage.propTypes = {
+  recipeId: PropTypes.number.isRequired,
+};
 
 export default RecipeViewPage;

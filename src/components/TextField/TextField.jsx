@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './TextField.css';
 
 function TextField({ name, value, placeholder, onChange, password }) {
@@ -15,5 +16,18 @@ function TextField({ name, value, placeholder, onChange, password }) {
     />
   );
 }
+
+TextField.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  password: PropTypes.bool,
+};
+
+TextField.defaultProps = {
+  placeholder: '',
+  password: false,
+};
 
 export default TextField;

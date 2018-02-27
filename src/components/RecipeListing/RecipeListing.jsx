@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Card from '../Card/Card';
 import SuggesterSection from '../SuggesterSection/SuggesterSection';
@@ -23,6 +24,10 @@ function RecipeListing({ recipes }) {
     </SuggesterSection>
   );
 }
+
+RecipeListing.propTypes = {
+  recipes: PropTypes.arrayOf(PropTypes.object),
+};
 
 RecipeListing.defaultProps = {
   recipes: [],

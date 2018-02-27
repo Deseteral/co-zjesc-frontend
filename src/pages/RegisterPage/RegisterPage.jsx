@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import css from 'classnames';
 // import Cookies from 'js-cookie';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';

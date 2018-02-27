@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ImageGallery from 'react-image-gallery';
 import { DiscussionEmbed } from 'disqus-react';
 import Card from '../Card/Card';
@@ -52,5 +53,15 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
     </Card>
   );
 }
+
+RecipeView.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  description: PropTypes.string.isRequired,
+  tiles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default RecipeView;

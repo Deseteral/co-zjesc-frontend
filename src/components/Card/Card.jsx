@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import css from 'classnames';
 import styles from './Card.css';
 
@@ -14,5 +15,14 @@ function Card({ className, children }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+Card.defaultProps = {
+  className: null,
+};
 
 export default Card;

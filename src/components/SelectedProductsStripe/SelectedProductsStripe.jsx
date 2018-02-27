@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import css from 'classnames';
 import Card from '../Card/Card';
 import SuggesterSection from '../SuggesterSection/SuggesterSection';
@@ -28,5 +29,14 @@ function SelectedProductsStripe({ selectedProducts, onRemoveProduct }) {
     </SuggesterSection>
   );
 }
+
+SelectedProductsStripe.propTypes = {
+  selectedProducts: PropTypes.arrayOf(PropTypes.object),
+  onRemoveProduct: PropTypes.func.isRequired,
+};
+
+SelectedProductsStripe.defaultProps = {
+  selectedProducts: [],
+};
 
 export default SelectedProductsStripe;

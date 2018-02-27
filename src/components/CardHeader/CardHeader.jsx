@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './CardHeader.css';
 
 function CardHeader({ children }) {
@@ -8,5 +9,9 @@ function CardHeader({ children }) {
     </h1>
   );
 }
+
+CardHeader.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default CardHeader;
