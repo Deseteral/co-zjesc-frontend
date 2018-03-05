@@ -53,7 +53,7 @@ class RegisterPage extends Component {
         <div className={styles['input-container']}>
           <TextField
             name="username"
-            value={this.state.login}
+            value={this.state.username}
             placeholder="Nazwa użytkownika"
             onChange={value => this.handleChange(value, 'username')}
           />

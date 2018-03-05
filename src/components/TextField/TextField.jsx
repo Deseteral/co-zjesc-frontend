@@ -19,13 +19,14 @@ function TextField({ name, value, placeholder, onChange, password }) {
 
 TextField.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   password: PropTypes.bool,
 };
 
 TextField.defaultProps = {
+  value: '',
   placeholder: '',
   password: false,
 };
