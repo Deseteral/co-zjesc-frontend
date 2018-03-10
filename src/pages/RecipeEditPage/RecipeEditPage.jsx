@@ -4,10 +4,15 @@ import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
 import Button from '../../components/Button/Button';
+import Select from '../../components/Select/Select';
 import styles from './RecipeEditPage.css';
 
 function mapStateToJson(state) {
-  const { title, products, description } = state;
+  const { title, description } = state;
+
+  const products = state.products
+    .filter(p => (p.name.length > 0 && !!p.unit))
+    .map(p => ({ name: p.name, unit: parseInt(p.unit, 10) }));
 
   return {
     title,
@@ -23,6 +28,7 @@ class RecipeEditPage extends Component {
       title: '',
       products: [{ name: '' }],
       description: RichTextEditor.createEmptyValue(),
+      units: [{ id: 1, name: 'kg' }, { id: 2, name: 'g' }, { id: 3, name: 'ml' }],
     };
   }
 
@@ -30,9 +36,9 @@ class RecipeEditPage extends Component {
     this.setState({ [part]: value });
   }
 
-  handleChangeProductsName(value, index) {
+  handleChangeProducts(value, part, index) {
     const products = this.state.products;
-    products[index].name = value;
+    products[index][part] = value;
     this.setState({ products });
   }
 
@@ -62,9 +68,15 @@ class RecipeEditPage extends Component {
           {this.state.products.map((p, index) => (
             <div className={styles['product-list-element']}>
               <TextField
-                name={`product-${index}`}
+                name={`product-${index}-name`}
                 value={this.state.products[index].name}
-                onChange={value => this.handleChangeProductsName(value, index)}
+                placeholder="Nazwa składnika"
+                onChange={value => this.handleChangeProducts(value, 'name', index)}
+              />
+              <Select
+                name={`product-${index}-unit`}
+                options={this.state.units}
+                onChange={value => this.handleChangeProducts(value, 'unit', index)}
               />
             </div>
           ))}
