@@ -23,7 +23,7 @@
     "cross-env": "5.1.1"
   },
   "scripts": {
-    "start": "cross-env SERVICE_URL=https://cozjesc.azurewebsites.net react-scripts start",
+    "start": "cross-env SERVICE_URL=http://cozjesc.azurewebsites.net react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "lint": "eslint src --ext js,jsx"

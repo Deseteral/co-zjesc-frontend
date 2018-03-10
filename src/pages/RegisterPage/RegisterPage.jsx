@@ -69,6 +69,7 @@ class RegisterPage extends Component {
             value={this.state.confirmPassword}
             placeholder="Potwierdź hasło"
             onChange={value => this.handleChange(value, 'confirmPassword')}
+            onEnterPress={e => this.handleSubmit(e)}
             password
           />
           {error && <div className={styles['error-message']}>{error}</div>}
