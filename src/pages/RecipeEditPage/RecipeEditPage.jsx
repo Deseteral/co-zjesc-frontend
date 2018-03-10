@@ -6,11 +6,12 @@ import TextField from '../../components/TextField/TextField';
 import Button from '../../components/Button/Button';
 
 function mapStateToJson(state) {
-  const { title } = state;
+  const { title, products, description } = state;
 
   return {
     title,
-    description: state.description.toString('markdown'),
+    products,
+    description: description.toString('markdown'),
   };
 }
 
@@ -19,12 +20,25 @@ class RecipeEditPage extends Component {
     super(props);
     this.state = {
       title: '',
+      products: [{ name: '' }],
       description: RichTextEditor.createEmptyValue(),
     };
   }
 
   handleChange(value, part) {
     this.setState({ [part]: value });
+  }
+
+  handleChangeProductsName(value, index) {
+    const products = this.state.products;
+    products[index].name = value;
+    this.setState({ products });
+  }
+
+  addNewProduct() {
+    const { products } = this.state;
+    products.push({ name: '' });
+    this.setState({ products });
   }
 
   render() {
@@ -44,6 +58,18 @@ class RecipeEditPage extends Component {
         </section>
         <section>
           <CardHeader secondary>Składniki</CardHeader>
+          {this.state.products.map((p, index) => (
+            <div>
+              <TextField
+                name={`product-${index}`}
+                value={this.state.products[index].name}
+                onChange={value => this.handleChangeProductsName(value, index)}
+              />
+            </div>
+          ))}
+          <Button onClick={() => this.addNewProduct()}>
+            Dodaj składnik
+          </Button>
         </section>
         <section>
           <CardHeader secondary>Opis</CardHeader>
