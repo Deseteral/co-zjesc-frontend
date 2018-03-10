@@ -67,6 +67,7 @@ class LoginPage extends Component {
             value={this.state.password}
             placeholder="Hasło"
             onChange={value => this.handleChange(value, 'password')}
+            onEnterPress={e => this.handleSubmit(e)}
             password
           />
           {error && <div className={styles['error-message']}>{error}</div>}
