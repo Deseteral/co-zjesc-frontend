@@ -4,6 +4,7 @@ import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
 import Button from '../../components/Button/Button';
+import styles from './RecipeEditPage.css';
 
 function mapStateToJson(state) {
   const { title, products, description } = state;
@@ -59,7 +60,7 @@ class RecipeEditPage extends Component {
         <section>
           <CardHeader secondary>Składniki</CardHeader>
           {this.state.products.map((p, index) => (
-            <div>
+            <div className={styles['product-list-element']}>
               <TextField
                 name={`product-${index}`}
                 value={this.state.products[index].name}
