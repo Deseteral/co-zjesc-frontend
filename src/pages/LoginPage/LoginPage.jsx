@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 import Cookies from 'js-cookie';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
@@ -14,6 +15,7 @@ class LoginPage extends Component {
       username: '',
       password: '',
       error: '',
+      loggedIn: false,
     };
   }
 
@@ -29,7 +31,8 @@ class LoginPage extends Component {
       .then((authData) => {
         console.log(authData); // eslint-disable-line
         if (authData.access_token) {
-          Cookies.set('token', authData.access_token);
+          Cookies.set('token', authData.access_token, { expires: 1 });
+          this.setState({ loggedIn: true });
         } else {
           throw new Error();
         }
@@ -43,6 +46,10 @@ class LoginPage extends Component {
   render() {
     const { error } = this.state;
 
+    if (this.state.loggedIn) {
+      return (<Redirect to="/" />);
+    }
+
     return (
       <Card className={styles['card']}>
         <CardHeader>
@@ -51,7 +58,7 @@ class LoginPage extends Component {
         <div className={styles['input-container']}>
           <TextField
             name="username"
-            value={this.state.login}
+            value={this.state.username}
             placeholder="Nazwa użytkownika"
             onChange={value => this.handleChange(value, 'username')}
           />
