@@ -8,11 +8,11 @@ import Select from '../../components/Select/Select';
 import styles from './RecipeEditPage.css';
 
 const DIFFICULTY_LEVELS = [
-  { value: 1, name: 'bardzo łatwy' },
-  { value: 2, name: 'łatwy' },
-  { value: 3, name: 'średni' },
-  { value: 4, name: 'trudny' },
-  { value: 5, name: 'bardzo trudny' },
+  { id: 1, name: 'bardzo łatwy' },
+  { id: 2, name: 'łatwy' },
+  { id: 3, name: 'średni' },
+  { id: 4, name: 'trudny' },
+  { id: 5, name: 'bardzo trudny' },
 ];
 
 function mapStateToJson(state) {
@@ -27,18 +27,22 @@ function mapStateToJson(state) {
   } = state;
 
   const products = state.products
-    .filter(p => (p.name.length > 0 && !!p.unit))
-    .map(p => ({ name: p.name, amount: parseFloat(p.amount), unit: parseInt(p.unit, 10) }));
+    .filter(p => (p.name.length > 0 && !!p.amount && !!p.unit))
+    .map(p => ({
+      name: p.name,
+      amount: parseFloat(p.amount),
+      unit: parseInt(p.unit, 10),
+    }));
 
   return {
-    title,
+    title: title.trim(),
     images: [],
     products,
     description: description.toString('markdown'),
-    difficulty,
-    estimatedCost,
-    portionCount,
-    timeToPrepare,
+    difficulty: parseInt(difficulty, 10),
+    estimatedCost: parseInt(estimatedCost, 10),
+    portionCount: parseInt(portionCount, 10),
+    timeToPrepare: parseInt(timeToPrepare, 10),
     tags: tags.split(',').map(s => s.trim()).filter(s => s.length),
   };
 }
