@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RichTextEditor from 'react-rte';
+import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
@@ -59,8 +60,12 @@ class RecipeEditPage extends Component {
       portionCount: '',
       timeToPrepare: '',
       tags: '',
-      units: [{ id: 1, name: 'kg' }, { id: 2, name: 'g' }, { id: 3, name: 'ml' }],
+      units: [],
     };
+  }
+
+  componentDidMount() {
+    CoZjescService.units.get().then(units => this.setState({ units }));
   }
 
   handleChange(value, part) {
@@ -77,6 +82,14 @@ class RecipeEditPage extends Component {
     const { products } = this.state;
     products.push({ name: '', amount: '' });
     this.setState({ products });
+  }
+
+  submit() {
+    const recipe = mapStateToJson(this.state);
+    console.log(recipe);
+    CoZjescService.recipes.add(recipe)
+      .then(() => console.log('Added recipe'))
+      .catch(e => console.log(e));
   }
 
   render() {
@@ -177,7 +190,7 @@ class RecipeEditPage extends Component {
         </section>
         <section>
           <Button
-            onClick={() => console.log(mapStateToJson(this.state))}
+            onClick={() => this.submit()}
             primary
           >
             Dodaj przepis
