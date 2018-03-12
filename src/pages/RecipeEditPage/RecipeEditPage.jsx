@@ -27,7 +27,7 @@ function mapStateToJson(state) {
 
   const products = state.products
     .filter(p => (p.name.length > 0 && !!p.unit))
-    .map(p => ({ name: p.name, unit: parseInt(p.unit, 10) }));
+    .map(p => ({ name: p.name, amount: parseFloat(p.amount), unit: parseInt(p.unit, 10) }));
 
   return {
     title,
@@ -46,7 +46,7 @@ class RecipeEditPage extends Component {
     super(props);
     this.state = {
       title: '',
-      products: [{ name: '' }],
+      products: [{ name: '', amount: '' }],
       description: RichTextEditor.createEmptyValue(),
       units: [{ id: 1, name: 'kg' }, { id: 2, name: 'g' }, { id: 3, name: 'ml' }],
     };
@@ -64,7 +64,7 @@ class RecipeEditPage extends Component {
 
   addNewProduct() {
     const { products } = this.state;
-    products.push({ name: '' });
+    products.push({ name: '', amount: '' });
     this.setState({ products });
   }
 
@@ -92,6 +92,12 @@ class RecipeEditPage extends Component {
                 value={this.state.products[index].name}
                 placeholder="Nazwa składnika"
                 onChange={value => this.handleChangeProducts(value, 'name', index)}
+              />
+              <TextField
+                name={`product-${index}-amount`}
+                value={this.state.products[index].amount}
+                placeholder="Ilość"
+                onChange={value => this.handleChangeProducts(value, 'amount', index)}
               />
               <Select
                 name={`product-${index}-unit`}
