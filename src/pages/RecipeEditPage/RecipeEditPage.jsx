@@ -23,6 +23,7 @@ function mapStateToJson(state) {
     estimatedCost,
     portionCount,
     timeToPrepare,
+    tags,
   } = state;
 
   const products = state.products
@@ -38,6 +39,7 @@ function mapStateToJson(state) {
     estimatedCost,
     portionCount,
     timeToPrepare,
+    tags: tags.split(',').map(s => s.trim()).filter(s => s.length),
   };
 }
 
@@ -48,6 +50,11 @@ class RecipeEditPage extends Component {
       title: '',
       products: [{ name: '', amount: '' }],
       description: RichTextEditor.createEmptyValue(),
+      difficulty: '',
+      estimatedCost: '',
+      portionCount: '',
+      timeToPrepare: '',
+      tags: '',
       units: [{ id: 1, name: 'kg' }, { id: 2, name: 'g' }, { id: 3, name: 'ml' }],
     };
   }
@@ -153,6 +160,14 @@ class RecipeEditPage extends Component {
                 onChange={value => this.handleChange(value, 'timeToPrepare')}
               />
               minut
+            </li>
+            <li>
+              <TextField
+                name="tags"
+                value={this.state.tags}
+                placeholder="Lista tagów"
+                onChange={value => this.handleChange(value, 'tags')}
+              />
             </li>
           </ul>
         </section>
