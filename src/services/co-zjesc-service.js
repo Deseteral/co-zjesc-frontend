@@ -1,6 +1,25 @@
 import checkStatus from 'fetch-check-http-status';
 import serviceFetch from './service-fetch';
 
+function postImages(formData) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json', // eslint-disable-line quote-props
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+
+    serviceFetch('/api/recipes/uploadRecipeImages', options)
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(images => resolve(images))
+      .catch(e => reject(e));
+  });
+}
+
 function getUnits() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/units')
@@ -64,6 +83,9 @@ function postRecipe(recipe) {
 }
 
 const CoZjescService = {
+  images: {
+    post: postImages,
+  },
   units: {
     get: getUnits,
   },

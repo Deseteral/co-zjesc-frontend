@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RichTextEditor from 'react-rte';
+import Dropzone from 'react-dropzone';
 import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
@@ -53,6 +54,7 @@ class RecipeEditPage extends Component {
     super(props);
     this.state = {
       title: '',
+      images: [],
       products: [{ name: '', amount: '' }],
       description: RichTextEditor.createEmptyValue(),
       difficulty: '',
@@ -84,6 +86,21 @@ class RecipeEditPage extends Component {
     this.setState({ products });
   }
 
+  onFileDrop(files) {
+    const formData = new FormData();
+    files.forEach(file => formData.append('files', file));
+
+    CoZjescService.images
+      .post(formData)
+      .then((uploadedImages) => {
+        const { images } = this.state;
+        images.concat(uploadedImages);
+
+        console.log(images);
+        this.setState({ images });
+      });
+  }
+
   submit() {
     const recipe = mapStateToJson(this.state);
     console.log(recipe);
@@ -106,6 +123,10 @@ class RecipeEditPage extends Component {
         </section>
         <section>
           <CardHeader secondary>Zdjęcia</CardHeader>
+          <Dropzone
+            onDrop={files => this.onFileDrop(files)}
+            accept="image/*"
+          />
         </section>
         <section>
           <CardHeader secondary>Składniki</CardHeader>
