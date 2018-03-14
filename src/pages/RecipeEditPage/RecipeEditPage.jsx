@@ -70,6 +70,21 @@ class RecipeEditPage extends Component {
     CoZjescService.units.get().then(units => this.setState({ units }));
   }
 
+  onFileDrop(files) {
+    const formData = new FormData();
+    files.forEach(file => formData.append('files', file));
+
+    CoZjescService.images
+      .post(formData)
+      .then((uploadedImages) => {
+        const { images } = this.state;
+        images.concat(uploadedImages);
+
+        console.log(images);
+        this.setState({ images });
+      });
+  }
+
   handleChange(value, part) {
     this.setState({ [part]: value });
   }
@@ -84,21 +99,6 @@ class RecipeEditPage extends Component {
     const { products } = this.state;
     products.push({ name: '', amount: '' });
     this.setState({ products });
-  }
-
-  onFileDrop(files) {
-    const formData = new FormData();
-    files.forEach(file => formData.append('files', file));
-
-    CoZjescService.images
-      .post(formData)
-      .then((uploadedImages) => {
-        const { images } = this.state;
-        images.concat(uploadedImages);
-
-        console.log(images);
-        this.setState({ images });
-      });
   }
 
   submit() {
