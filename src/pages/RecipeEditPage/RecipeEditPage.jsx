@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { Component } from 'react';
 import RichTextEditor from 'react-rte';
 import Dropzone from 'react-dropzone';
