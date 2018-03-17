@@ -18,5 +18,9 @@
 
 .error-message {
   color: var(--accent-color);
-  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.button {
+  margin-top: 8px;
 }

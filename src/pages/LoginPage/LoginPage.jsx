@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import Button from 'material-ui/Button';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
-import Button from '../../components/Button/Button';
 import { login } from '../../services/login-service';
 import styles from './LoginPage.css';
 
@@ -53,9 +53,15 @@ class LoginPage extends Component {
             password
           />
           {error && <div className={styles['error-message']}>{error}</div>}
-          <Button primary onClick={e => this.handleSubmit(e)}>
-            Zaloguj
-          </Button>
+          <div className={styles['button']}>
+            <Button
+              variant="raised"
+              color="primary"
+              onClick={e => this.handleSubmit(e)}
+            >
+              Zaloguj
+            </Button>
+          </div>
         </div>
       </Card>
     );
