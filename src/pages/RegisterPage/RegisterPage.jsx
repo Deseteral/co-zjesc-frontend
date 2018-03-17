@@ -32,7 +32,6 @@ class RegisterPage extends Component {
     }
 
     register(username, password, confirmPassword)
-      .then(() => this.setState({ loggedIn: true }))
       .catch((e) => {
         this.setState({ error: 'Rejestracja nie powiodła się, spróbuj ponownie' });
         console.error(e); // eslint-disable-line

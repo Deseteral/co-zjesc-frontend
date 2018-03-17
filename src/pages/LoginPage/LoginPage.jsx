@@ -25,7 +25,6 @@ class LoginPage extends Component {
 
     const { username, password } = this.state;
     login(username, password)
-      .then(() => this.setState({ loggedIn: true }))
       .catch((e) => {
         this.setState({ error: 'Logowanie nie powiodło się' });
         console.error(e); // eslint-disable-line
