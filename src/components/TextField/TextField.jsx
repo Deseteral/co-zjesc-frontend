@@ -1,6 +1,7 @@
+/* eslint-disable import/no-named-default */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './TextField.css';
+import { default as MaterialTextField } from 'material-ui/TextField';
 
 function handleKeyPress(event, onEnterPress) {
   if (event.key === 'Enter') {
@@ -8,26 +9,25 @@ function handleKeyPress(event, onEnterPress) {
   }
 }
 
-function TextField({ name, value, placeholder, onChange, onEnterPress, password }) {
+function TextField({ value, label, onChange, onEnterPress, password }) {
   const type = password ? 'password' : 'text';
 
   return (
-    <input
-      className={styles['input']}
-      name={name}
+    <MaterialTextField
+      label={label}
       value={value}
-      placeholder={placeholder}
       onChange={e => onChange(e.target.value)}
-      onKeyPress={e => handleKeyPress(e, onEnterPress)}
+      inputProps={({
+        onKeyPress: (e => handleKeyPress(e, onEnterPress)),
+      })}
       type={type}
     />
   );
 }
 
 TextField.propTypes = {
-  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   value: PropTypes.string,
-  placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onEnterPress: PropTypes.func,
   password: PropTypes.bool,
@@ -35,7 +35,6 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
   value: '',
-  placeholder: '',
   onEnterPress: (() => {}),
   password: false,
 };

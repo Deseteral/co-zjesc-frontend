@@ -48,22 +48,19 @@ class RegisterPage extends Component {
         </CardHeader>
         <div className={styles['input-container']}>
           <TextField
-            name="username"
+            label="Nazwa użytkownika"
             value={this.state.username}
-            placeholder="Nazwa użytkownika"
             onChange={value => this.handleChange(value, 'username')}
           />
           <TextField
-            name="password"
+            label="Hasło"
             value={this.state.password}
-            placeholder="Hasło"
             onChange={value => this.handleChange(value, 'password')}
             password
           />
           <TextField
-            name="confirmPassword"
+            label="Potwierdź hasło"
             value={this.state.confirmPassword}
-            placeholder="Potwierdź hasło"
             onChange={value => this.handleChange(value, 'confirmPassword')}
             onEnterPress={e => this.handleSubmit(e)}
             password

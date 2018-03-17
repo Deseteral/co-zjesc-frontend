@@ -41,15 +41,13 @@ class LoginPage extends Component {
         </CardHeader>
         <div className={styles['input-container']}>
           <TextField
-            name="username"
             value={this.state.username}
-            placeholder="Nazwa użytkownika"
+            label="Nazwa użytkownika"
             onChange={value => this.handleChange(value, 'username')}
           />
           <TextField
-            name="password"
             value={this.state.password}
-            placeholder="Hasło"
+            label="Hasło"
             onChange={value => this.handleChange(value, 'password')}
             onEnterPress={e => this.handleSubmit(e)}
             password
