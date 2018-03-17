@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
@@ -14,7 +13,6 @@ class LoginPage extends Component {
       username: '',
       password: '',
       error: '',
-      loggedIn: false,
     };
   }
 
@@ -36,10 +34,6 @@ class LoginPage extends Component {
 
   render() {
     const { error } = this.state;
-
-    if (this.state.loggedIn) {
-      return (<Redirect to="/" />);
-    }
 
     return (
       <Card className={styles['card']}>

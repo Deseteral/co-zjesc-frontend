@@ -2,6 +2,10 @@ import checkStatus from 'fetch-check-http-status';
 import Cookies from 'js-cookie';
 import serviceFetch from './service-fetch';
 
+function hardRedirectToMainPage() {
+  window.location.replace('/');
+}
+
 function login(username, password) {
   return new Promise((resolve, reject) => {
     const formData = new URLSearchParams();
@@ -19,10 +23,9 @@ function login(username, password) {
       .then(checkStatus)
       .then(data => data.json())
       .then((authData) => {
-        console.log(authData); // eslint-disable-line
         if (authData.access_token) {
           Cookies.set('token', authData.access_token, { expires: 1 });
-          resolve();
+          hardRedirectToMainPage();
         } else {
           throw new Error();
         }
@@ -42,12 +45,17 @@ function register(userName, password, confirmPassword) {
     })
       .then(checkStatus)
       .then(() => login(userName, password))
-      .then(() => resolve())
+      .then(() => hardRedirectToMainPage())
       .catch(e => reject(e));
   });
+}
+
+function isLoggedIn() {
+  return Cookies.get('token') !== undefined;
 }
 
 export {
   login,
   register,
+  isLoggedIn,
 };
