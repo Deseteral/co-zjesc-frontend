@@ -1,4 +1,5 @@
 import checkStatus from 'fetch-check-http-status';
+import Cookies from 'js-cookie';
 import serviceFetch from './service-fetch';
 
 function login(username, password) {
@@ -17,7 +18,15 @@ function login(username, password) {
     })
       .then(checkStatus)
       .then(data => data.json())
-      .then(authData => resolve(authData))
+      .then((authData) => {
+        console.log(authData); // eslint-disable-line
+        if (authData.access_token) {
+          Cookies.set('token', authData.access_token, { expires: 1 });
+          resolve();
+        } else {
+          throw new Error();
+        }
+      })
       .catch(e => reject(e));
   });
 }

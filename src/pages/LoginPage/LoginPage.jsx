@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import Cookies from 'js-cookie';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
@@ -28,15 +27,7 @@ class LoginPage extends Component {
 
     const { username, password } = this.state;
     login(username, password)
-      .then((authData) => {
-        console.log(authData); // eslint-disable-line
-        if (authData.access_token) {
-          Cookies.set('token', authData.access_token, { expires: 1 });
-          this.setState({ loggedIn: true });
-        } else {
-          throw new Error();
-        }
-      })
+      .then(() => this.setState({ loggedIn: true }))
       .catch((e) => {
         this.setState({ error: 'Logowanie nie powiodło się' });
         console.error(e); // eslint-disable-line
