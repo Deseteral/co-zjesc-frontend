@@ -2,6 +2,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Header from '../Header/Header';
 import RecipeSuggesterPage from '../../pages/RecipeSuggesterPage/RecipeSuggesterPage';
 import RecipeViewPage from '../../pages/RecipeViewPage/RecipeViewPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
@@ -27,7 +28,7 @@ function App(props) {
             component={(() => <Redirect to={DEFAULT_ROUTE} />)}
           />
           <div className={styles['app-container']}>
-            <h1 className={styles['title']}>Co zjeść?</h1>
+            <Header />
             <div className={styles['container']}>
               <Switch>
                 <Route

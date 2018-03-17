@@ -1,5 +1,10 @@
 import checkStatus from 'fetch-check-http-status';
+import Cookies from 'js-cookie';
 import serviceFetch from './service-fetch';
+
+function hardRedirectToMainPage() {
+  window.location.replace('/');
+}
 
 function login(username, password) {
   return new Promise((resolve, reject) => {
@@ -17,9 +22,21 @@ function login(username, password) {
     })
       .then(checkStatus)
       .then(data => data.json())
-      .then(authData => resolve(authData))
+      .then((authData) => {
+        if (authData.access_token) {
+          Cookies.set('token', authData.access_token, { expires: 1 });
+          hardRedirectToMainPage();
+        } else {
+          throw new Error();
+        }
+      })
       .catch(e => reject(e));
   });
+}
+
+function logout() {
+  Cookies.remove('token');
+  hardRedirectToMainPage();
 }
 
 function register(userName, password, confirmPassword) {
@@ -32,12 +49,30 @@ function register(userName, password, confirmPassword) {
       },
     })
       .then(checkStatus)
-      .then(data => data.json())
+      .then(() => login(userName, password))
+      .then(() => hardRedirectToMainPage())
       .catch(e => reject(e));
   });
 }
 
+function getUserName() {
+  return new Promise((resolve, reject) => {
+    serviceFetch('/api/user')
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(data => resolve(data.login))
+      .catch(e => reject(e));
+  });
+}
+
+function isLoggedIn() {
+  return Cookies.get('token') !== undefined;
+}
+
 export {
   login,
+  logout,
   register,
+  isLoggedIn,
+  getUserName,
 };

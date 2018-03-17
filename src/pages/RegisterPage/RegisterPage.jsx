@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Cookies from 'js-cookie';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
@@ -33,9 +32,6 @@ class RegisterPage extends Component {
     }
 
     register(username, password, confirmPassword)
-      .then((authData) => {
-        console.log(authData); // eslint-disable-line
-      })
       .catch((e) => {
         this.setState({ error: 'Rejestracja nie powiodła się, spróbuj ponownie' });
         console.error(e); // eslint-disable-line
@@ -69,6 +65,7 @@ class RegisterPage extends Component {
             value={this.state.confirmPassword}
             placeholder="Potwierdź hasło"
             onChange={value => this.handleChange(value, 'confirmPassword')}
+            onEnterPress={e => this.handleSubmit(e)}
             password
           />
           {error && <div className={styles['error-message']}>{error}</div>}

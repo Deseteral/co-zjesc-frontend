@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Cookies from 'js-cookie';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
@@ -26,14 +25,6 @@ class LoginPage extends Component {
 
     const { username, password } = this.state;
     login(username, password)
-      .then((authData) => {
-        console.log(authData); // eslint-disable-line
-        if (authData.access_token) {
-          Cookies.set('token', authData.access_token);
-        } else {
-          throw new Error();
-        }
-      })
       .catch((e) => {
         this.setState({ error: 'Logowanie nie powiodło się' });
         console.error(e); // eslint-disable-line
@@ -51,7 +42,7 @@ class LoginPage extends Component {
         <div className={styles['input-container']}>
           <TextField
             name="username"
-            value={this.state.login}
+            value={this.state.username}
             placeholder="Nazwa użytkownika"
             onChange={value => this.handleChange(value, 'username')}
           />
@@ -60,6 +51,7 @@ class LoginPage extends Component {
             value={this.state.password}
             placeholder="Hasło"
             onChange={value => this.handleChange(value, 'password')}
+            onEnterPress={e => this.handleSubmit(e)}
             password
           />
           {error && <div className={styles['error-message']}>{error}</div>}
