@@ -25,7 +25,9 @@ class Header extends Component {
 
     return (
       <header className={styles['container']}>
-        <h1 className={styles['title']}>Co zjeść?</h1>
+        <NavLink to="/" className={styles['title']}>
+          Co zjeść?
+        </NavLink>
         <div className={styles['container--right']}>
           {!loggedIn && <NavLink to="/login">Zaloguj</NavLink>}
           {hasUsername && <div>Witaj, {username}!</div>}
