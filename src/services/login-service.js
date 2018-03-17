@@ -41,7 +41,8 @@ function register(userName, password, confirmPassword) {
       },
     })
       .then(checkStatus)
-      .then(data => data.json())
+      .then(() => login(userName, password))
+      .then(() => resolve())
       .catch(e => reject(e));
   });
 }
