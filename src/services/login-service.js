@@ -34,6 +34,11 @@ function login(username, password) {
   });
 }
 
+function logout() {
+  Cookies.remove('token');
+  hardRedirectToMainPage();
+}
+
 function register(userName, password, confirmPassword) {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/account/register', {
@@ -55,7 +60,7 @@ function getUserName() {
     serviceFetch('/api/user')
       .then(checkStatus)
       .then(data => data.json())
-      .then(d => console.log(d))
+      .then(data => resolve(data.login))
       .catch(e => reject(e));
   });
 }
@@ -66,6 +71,7 @@ function isLoggedIn() {
 
 export {
   login,
+  logout,
   register,
   isLoggedIn,
   getUserName,

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { isLoggedIn, getUserName } from '../../services/login-service';
+import Button from '../Button/Button';
+import { isLoggedIn, getUserName, logout } from '../../services/login-service';
 import styles from './Header.css';
 
 class Header extends Component {
@@ -14,18 +15,22 @@ class Header extends Component {
 
   componentDidMount() {
     if (this.state.loggedIn) {
-      getUserName();
+      getUserName().then(username => this.setState({ username }));
     }
   }
 
   render() {
-    const { loggedIn } = this.state;
+    const { loggedIn, username } = this.state;
+    const hasUsername = (username !== '');
 
     return (
-      <header className={styles['card']}>
+      <header className={styles['container']}>
         <h1 className={styles['title']}>Co zjeść?</h1>
-        {!loggedIn && <NavLink to="/login">Zaloguj</NavLink>}
-        {loggedIn && <div>Zalogowany!</div>}
+        <div className={styles['container--right']}>
+          {!loggedIn && <NavLink to="/login">Zaloguj</NavLink>}
+          {hasUsername && <div>Witaj, {username}!</div>}
+          {loggedIn && <Button onClick={() => logout()}>Wyloguj</Button>}
+        </div>
       </header>
     );
   }

@@ -1,4 +1,4 @@
-.card {
+.container {
   display: flex;
   align-items: center;
   background-color: white;
@@ -6,6 +6,12 @@
   border-radius: 0 0 4px 4px;
   margin-bottom: 16px;
   width: 100%;
+
+  &--right {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+  }
 }
 
 .title {
@@ -15,4 +21,5 @@
   padding: 0;
   font-size: 48px;
   align-self: start;
+  flex-grow: 1;
 }
