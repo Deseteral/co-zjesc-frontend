@@ -50,6 +50,16 @@ function register(userName, password, confirmPassword) {
   });
 }
 
+function getUserName() {
+  return new Promise((resolve, reject) => {
+    serviceFetch('/api/user')
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(d => console.log(d))
+      .catch(e => reject(e));
+  });
+}
+
 function isLoggedIn() {
   return Cookies.get('token') !== undefined;
 }
@@ -58,4 +68,5 @@ export {
   login,
   register,
   isLoggedIn,
+  getUserName,
 };
