@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import RichTextEditor from 'react-rte';
 import Dropzone from 'react-dropzone';
 import Button from 'material-ui/Button';
+import shortid from 'shortid';
 import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
 import TextField from '../../components/TextField/TextField';
@@ -49,13 +50,21 @@ function mapStateToJson(state) {
   };
 }
 
+function getEmptyProduct() {
+  return {
+    id: shortid.generate(),
+    name: '',
+    amount: '',
+  };
+}
+
 class RecipeEditPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
       images: [],
-      products: [{ name: '', amount: '' }],
+      products: [getEmptyProduct()],
       description: RichTextEditor.createEmptyValue(),
       difficulty: '',
       estimatedCost: '',
@@ -97,7 +106,7 @@ class RecipeEditPage extends Component {
 
   addNewProduct() {
     const { products } = this.state;
-    products.push({ name: '', amount: '' });
+    products.push(getEmptyProduct());
     this.setState({ products });
   }
 
@@ -138,7 +147,7 @@ class RecipeEditPage extends Component {
           </div>
           <div className={styles['product-list']}>
             {this.state.products.map((p, index) => (
-              <div className={styles['product-list-element']}>
+              <div className={styles['product-list-element']} key={p.id}>
                 <TextField
                   label="Nazwa składnika"
                   value={this.state.products[index].name}
@@ -153,7 +162,7 @@ class RecipeEditPage extends Component {
                   />
                 </div>
                 <Select
-                  id={`product-${index}-unit`}
+                  id={`product-${p.id}-unit`}
                   label="Jednostka"
                   options={this.state.units}
                   onChange={value => this.handleChangeProducts(value, 'unit', index)}
