@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Autocomplete from 'react-autocomplete';
 import css from 'classnames';
-import SelectedProductsStripe from '../SelectedProductsStripe/SelectedProductsStripe';
 import styles from './ProductPicker.css';
 
 class ProductPicker extends Component {
@@ -23,7 +22,6 @@ class ProductPicker extends Component {
     super(props);
     this.state = {
       currentValue: '',
-      selectedProducts: [],
     };
 
     this.inputElement = null;
@@ -35,27 +33,14 @@ class ProductPicker extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({ products: nextProps.products });
+    this.refreshSuggestedProducts(nextProps.selectedProducts);
   }
 
   addProductByValue(value) {
     const newProduct = this.props.products.find(p => p.name === value);
-    const selectedProducts = [...this.state.selectedProducts, newProduct];
-    this.setState({
-      currentValue: '',
-      selectedProducts,
-    });
-
-    this.refreshSuggestedProducts(selectedProducts);
+    this.props.addSelectedProduct(newProduct);
+    this.setState({ currentValue: '' });
     this.inputElement.blur();
-  }
-
-  removeProduct(id) {
-    const selectedProducts = this.state.selectedProducts.slice();
-    const removeIndex = selectedProducts.findIndex(p => p.id === id);
-    selectedProducts.splice(removeIndex, 1);
-
-    this.setState({ selectedProducts });
-    this.refreshSuggestedProducts(selectedProducts);
   }
 
   refreshSuggestedProducts(selectedProducts) {
@@ -64,8 +49,9 @@ class ProductPicker extends Component {
   }
 
   render() {
-    const renderItems = this.props.products
-      .filter(p => !this.state.selectedProducts.find(s => s.id === p.id));
+    const renderItems = this.props
+      .products
+      .filter(p => !this.props.selectedProducts.find(s => s.id === p.id));
 
     return (
       <div>
@@ -102,21 +88,20 @@ class ProductPicker extends Component {
             placeholder: 'Wpisz nazwę składnika...',
           })}
         />
-        <SelectedProductsStripe
-          selectedProducts={this.state.selectedProducts}
-          onRemoveProduct={id => this.removeProduct(id)}
-        />
       </div>
     );
   }
 }
 
 ProductPicker.propTypes = {
+  selectedProducts: PropTypes.arrayOf(PropTypes.object),
   products: PropTypes.arrayOf(PropTypes.object),
   getSuggestedProducts: PropTypes.func.isRequired,
+  addSelectedProduct: PropTypes.func.isRequired,
 };
 
 ProductPicker.defaultProps = {
+  selectedProducts: [],
   products: [],
 };
 
