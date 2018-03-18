@@ -2,11 +2,10 @@
 import React, { Component } from 'react';
 import RichTextEditor from 'react-rte';
 import Dropzone from 'react-dropzone';
+import Button from 'material-ui/Button';
 import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
-import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
-import Button from '../../components/Button/Button';
 import Select from '../../components/Select/Select';
 import styles from './RecipeEditPage.css';
 
@@ -113,107 +112,112 @@ class RecipeEditPage extends Component {
   render() {
     return (
       <Card>
-        <CardHeader>Dodaj nowy przepis</CardHeader>
+        <div className={styles['card-header']}>
+          Dodaj nowy przepis
+        </div>
         <section>
           <TextField
-            name="title"
+            label="Tytuł przepisu"
             value={this.state.title}
-            placeholder="Tytuł przepisu"
             onChange={value => this.handleChange(value, 'title')}
+            fullWidth
           />
         </section>
         <section>
-          <CardHeader secondary>Zdjęcia</CardHeader>
+          <div className={styles['section--header']}>
+            Zdjęcia
+          </div>
           <Dropzone
             onDrop={files => this.onFileDrop(files)}
             accept="image/*"
           />
         </section>
         <section>
-          <CardHeader secondary>Składniki</CardHeader>
-          {this.state.products.map((p, index) => (
-            <div className={styles['product-list-element']}>
-              <TextField
-                name={`product-${index}-name`}
-                value={this.state.products[index].name}
-                placeholder="Nazwa składnika"
-                onChange={value => this.handleChangeProducts(value, 'name', index)}
-              />
-              <TextField
-                name={`product-${index}-amount`}
-                value={this.state.products[index].amount}
-                placeholder="Ilość"
-                onChange={value => this.handleChangeProducts(value, 'amount', index)}
-              />
-              <Select
-                name={`product-${index}-unit`}
-                options={this.state.units}
-                onChange={value => this.handleChangeProducts(value, 'unit', index)}
-              />
-            </div>
-          ))}
-          <Button onClick={() => this.addNewProduct()}>
+          <div className={styles['section--header']}>
+            Składniki
+          </div>
+          <div className={styles['product-list']}>
+            {this.state.products.map((p, index) => (
+              <div className={styles['product-list-element']}>
+                <TextField
+                  label="Nazwa składnika"
+                  value={this.state.products[index].name}
+                  onChange={value => this.handleChangeProducts(value, 'name', index)}
+                />
+                <div className={styles['product-list-element--amount']}>
+                  <TextField
+                    label="Ilość"
+                    value={this.state.products[index].amount}
+                    onChange={value => this.handleChangeProducts(value, 'amount', index)}
+                    fullWidth
+                  />
+                </div>
+                <Select
+                  id={`product-${index}-unit`}
+                  label="Jednostka"
+                  options={this.state.units}
+                  onChange={value => this.handleChangeProducts(value, 'unit', index)}
+                />
+              </div>
+            ))}
+          </div>
+          <Button color="primary" onClick={() => this.addNewProduct()}>
             Dodaj składnik
           </Button>
         </section>
         <section>
-          <CardHeader secondary>Opis</CardHeader>
+          <div className={styles['section--header']}>
+            Opis
+          </div>
           <RichTextEditor
             value={this.state.description}
             onChange={value => this.setState({ description: value })}
           />
         </section>
         <section>
-          <CardHeader secondary>Atrybuty</CardHeader>
-          <ul>
-            <li>
-              <span>Poziom trudności</span>
-              <Select
-                name="difficulty"
-                options={DIFFICULTY_LEVELS}
-                onChange={value => this.handleChange(value, 'difficulty')}
-              />
-            </li>
-            <li>
-              <TextField
-                name="estimatedCost"
-                value={this.state.estimatedCost}
-                placeholder="Przybliżony koszt"
-                onChange={value => this.handleChange(value, 'estimatedCost')}
-              />
-              zł
-            </li>
-            <li>
-              <TextField
-                name="portionCount"
-                value={this.state.portionCount}
-                placeholder="Liczba porcji"
-                onChange={value => this.handleChange(value, 'portionCount')}
-              />
-            </li>
-            <li>
-              <TextField
-                name="timeToPrepare"
-                value={this.state.timeToPrepare}
-                placeholder="Czas przygotowania"
-                onChange={value => this.handleChange(value, 'timeToPrepare')}
-              />
-              minut
-            </li>
-            <li>
-              <TextField
-                name="tags"
-                value={this.state.tags}
-                placeholder="Lista tagów"
-                onChange={value => this.handleChange(value, 'tags')}
-              />
-            </li>
-          </ul>
+          <div className={styles['section--header']}>
+            Atrybuty
+          </div>
+          <div className={styles['attribute-list']}>
+            <Select
+              id="difficulty"
+              label="Poziom trudności"
+              options={DIFFICULTY_LEVELS}
+              onChange={value => this.handleChange(value, 'difficulty')}
+            />
+            <TextField
+              label="Przybliżony koszt"
+              value={this.state.estimatedCost}
+              onChange={value => this.handleChange(value, 'estimatedCost')}
+              endAdornment="zł"
+              fullWidth
+            />
+            <TextField
+              label="Liczba porcji"
+              value={this.state.portionCount}
+              onChange={value => this.handleChange(value, 'portionCount')}
+              fullWidth
+            />
+            <TextField
+              label="Czas przygotowania"
+              value={this.state.timeToPrepare}
+              onChange={value => this.handleChange(value, 'timeToPrepare')}
+              endAdornment="minut"
+              fullWidth
+            />
+            <TextField
+              label="Lista tagów"
+              value={this.state.tags}
+              onChange={value => this.handleChange(value, 'tags')}
+              fullWidth
+            />
+          </div>
         </section>
-        <section>
+        <section className={styles['buttons']}>
           <Button
             onClick={() => this.submit()}
-            primary
+            color="primary"
+            variant="raised"
           >
             Dodaj przepis
           </Button>

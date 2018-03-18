@@ -1,3 +1,41 @@
-.product-list-element {
-  margin-left: 8px;
+.card-header {
+  color: black;
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.section--header {
+  font-size: 28px;
+  margin: 16px 0;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &-element {
+    display: flex;
+    align-items: baseline;
+    margin-left: 8px;
+
+    & * {
+      margin-right: 4px;
+    }
+
+    &--amount {
+      width: 42px;
+    }
+  }
+}
+
+.buttons {
+  margin-top: 16px;
+}
+
+.attribute-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  width: 100%;
 }

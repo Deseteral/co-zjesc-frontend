@@ -44,6 +44,7 @@ class LoginPage extends Component {
             value={this.state.username}
             label="Nazwa użytkownika"
             onChange={value => this.handleChange(value, 'username')}
+            fullWidth
           />
           <TextField
             value={this.state.password}
@@ -51,6 +52,7 @@ class LoginPage extends Component {
             onChange={value => this.handleChange(value, 'password')}
             onEnterPress={e => this.handleSubmit(e)}
             password
+            fullWidth
           />
           {error && <Typography color="error">{error}</Typography>}
           <div className={styles['button']}>
