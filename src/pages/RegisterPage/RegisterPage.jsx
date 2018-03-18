@@ -72,7 +72,7 @@ class RegisterPage extends Component {
               color="primary"
               onClick={e => this.handleSubmit(e)}
             >
-              Zarejestruj
+              Zarejestruj się
             </Button>
           </div>
         </div>

@@ -59,7 +59,7 @@ class LoginPage extends Component {
               color="primary"
               onClick={e => this.handleSubmit(e)}
             >
-              Zaloguj
+              Zaloguj się
             </Button>
           </div>
         </div>

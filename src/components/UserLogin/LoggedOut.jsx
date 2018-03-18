@@ -6,8 +6,12 @@ import Button from 'material-ui/Button';
 function LoggedOut({ className }) {
   return (
     <div className={className}>
-      <Button to="/register" component={NavLink}>Zarejestruj się</Button>
-      <Button to="/login" component={NavLink}>Zaloguj</Button>
+      <Button color="primary" to="/register" component={NavLink}>
+        Zarejestruj się
+      </Button>
+      <Button color="primary" to="/login" component={NavLink}>
+        Zaloguj
+      </Button>
     </div>
   );
 }
