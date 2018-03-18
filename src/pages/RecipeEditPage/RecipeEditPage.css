@@ -32,6 +32,14 @@
   margin-top: 16px;
 }
 
+.dropzone-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .attribute-list {
   display: flex;
   flex-direction: column;

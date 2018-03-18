@@ -6,10 +6,6 @@ function postImages(formData) {
     const options = {
       method: 'POST',
       body: formData,
-      headers: {
-        'Accept': 'application/json', // eslint-disable-line quote-props
-        'Content-Type': 'multipart/form-data',
-      },
     };
 
     serviceFetch('/api/recipes/uploadRecipeImages', options)

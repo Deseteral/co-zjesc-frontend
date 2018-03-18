@@ -88,10 +88,7 @@ class RecipeEditPage extends Component {
     CoZjescService.images
       .post(formData)
       .then((uploadedImages) => {
-        const { images } = this.state;
-        images.concat(uploadedImages);
-
-        console.log(images);
+        const images = this.state.images.concat(uploadedImages);
         this.setState({ images });
       });
   }
@@ -147,7 +144,20 @@ class RecipeEditPage extends Component {
           <Dropzone
             onDrop={files => this.onFileDrop(files)}
             accept="image/*"
-          />
+          >
+            <div className={styles['dropzone-placeholder']}>
+              {(this.state.images.length > 0) && (
+                <div>
+                  {this.state.images.map(i => (
+                    <img src={i} alt="" />
+                  ))}
+                </div>
+              )}
+              {(this.state.images.length === 0) && (
+                <div>Kliknij lub upuść zdjęcia</div>
+              )}
+            </div>
+          </Dropzone>
         </section>
         <section>
           <div className={styles['section--header']}>
