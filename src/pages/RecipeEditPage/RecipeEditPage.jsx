@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import RichTextEditor from 'react-rte';
 import Dropzone from 'react-dropzone';
 import Button from 'material-ui/Button';
+import Icon from 'material-ui/Icon';
+import IconButton from 'material-ui/IconButton';
 import shortid from 'shortid';
 import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
@@ -110,6 +112,12 @@ class RecipeEditPage extends Component {
     this.setState({ products });
   }
 
+  removeProduct(index) {
+    const { products } = this.state;
+    products.splice(index, 1);
+    this.setState({ products });
+  }
+
   submit() {
     const recipe = mapStateToJson(this.state);
     console.log(recipe);
@@ -167,6 +175,9 @@ class RecipeEditPage extends Component {
                   options={this.state.units}
                   onChange={value => this.handleChangeProducts(value, 'unit', index)}
                 />
+                <IconButton onClick={() => this.removeProduct(index)}>
+                  <Icon>close</Icon>
+                </IconButton>
               </div>
             ))}
           </div>
