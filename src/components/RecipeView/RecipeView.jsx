@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ImageGallery from 'react-image-gallery';
 import { DiscussionEmbed } from 'disqus-react';
 import Card from '../Card/Card';
-import CardHeader from '../CardHeader/CardHeader';
 import styles from './RecipeView.css';
 import './recipe-gallery.public.css';
 
@@ -16,7 +15,9 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
 
   return (
     <Card>
-      <CardHeader>{title}</CardHeader>
+      <div className={styles['card-header']}>
+        {title}
+      </div>
       <section>
         <ImageGallery
           items={images}
@@ -27,13 +28,17 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
         />
       </section>
       <section>
-        <h2>Składniki</h2>
+        <div className={styles['section--header']}>
+          Składniki
+        </div>
         <ul>
           {products.map(p => <li key={p.id}>{p.label}</li>)}
         </ul>
       </section>
       <section>
-        <h2>Opis przygotowania</h2>
+        <div className={styles['section--header']}>
+          Opis przygotowania
+        </div>
         <div>{description}</div>
       </section>
       <section className={styles['section--tiles']}>
