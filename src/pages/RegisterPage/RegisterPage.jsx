@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
 import Card from '../../components/Card/Card';
-import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
 import { register } from '../../services/login-service';
 import styles from './RegisterPage.css';
@@ -42,10 +42,10 @@ class RegisterPage extends Component {
     const { error } = this.state;
 
     return (
-      <Card className={styles['card']}>
-        <CardHeader>
+      <Card>
+        <Typography variant="headline" component="h2">
           Zarejestruj się
-        </CardHeader>
+        </Typography>
         <div className={styles['input-container']}>
           <TextField
             label="Nazwa użytkownika"
@@ -65,7 +65,7 @@ class RegisterPage extends Component {
             onEnterPress={e => this.handleSubmit(e)}
             password
           />
-          {error && <div className={styles['error-message']}>{error}</div>}
+          {error && <Typography color="error">{error}</Typography>}
           <div className={styles['button']}>
             <Button
               variant="raised"
