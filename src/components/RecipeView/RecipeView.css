@@ -1,3 +1,9 @@
+.card-header {
+  color: black;
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
 .section {
   &--tiles {
     display: flex;
@@ -9,6 +15,11 @@
     display: flex;
     margin-top: 16px;
     overflow: scroll;
+  }
+
+  &--header {
+    font-size: 28px;
+    margin: 16px 0;
   }
 }
 

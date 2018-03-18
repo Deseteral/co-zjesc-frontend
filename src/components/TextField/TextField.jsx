@@ -1,33 +1,45 @@
+/* eslint-disable import/no-named-default */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { default as MaterialTextField } from 'material-ui/TextField';
 import styles from './TextField.css';
 
-function TextField({ name, value, placeholder, onChange, password }) {
+function handleKeyPress(event, onEnterPress) {
+  if (event.key === 'Enter') {
+    onEnterPress(event);
+  }
+}
+
+function TextField({ value, label, onChange, onEnterPress, password }) {
   const type = password ? 'password' : 'text';
 
   return (
-    <input
-      className={styles['input']}
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={e => onChange(e.target.value)}
-      type={type}
-    />
+    <div className={styles['wrapper']}>
+      <MaterialTextField
+        label={label}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        inputProps={({
+          onKeyPress: (e => handleKeyPress(e, onEnterPress)),
+        })}
+        type={type}
+        fullWidth
+      />
+    </div>
   );
 }
 
 TextField.propTypes = {
-  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   value: PropTypes.string,
-  placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onEnterPress: PropTypes.func,
   password: PropTypes.bool,
 };
 
 TextField.defaultProps = {
   value: '',
-  placeholder: '',
+  onEnterPress: (() => {}),
   password: false,
 };
 
