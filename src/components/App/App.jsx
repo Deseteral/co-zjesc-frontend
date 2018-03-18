@@ -31,7 +31,7 @@ function App(props) {
         light: '#ff867f',
         main: '#ff5252',
         dark: '#c50e29',
-        contrastText: '#000000',
+        contrastText: '#ffffff',
       },
     },
   });

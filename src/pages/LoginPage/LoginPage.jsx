@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Card from '../../components/Card/Card';
@@ -53,6 +54,12 @@ class LoginPage extends Component {
             password
           />
           {error && <Typography color="error">{error}</Typography>}
+          <div className={styles['link-container']}>
+            Nie masz konta?&nbsp;
+            <NavLink to="register" className={styles['link']}>
+              Zarejestruj się!
+            </NavLink>
+          </div>
           <div className={styles['button']}>
             <Button
               variant="raised"

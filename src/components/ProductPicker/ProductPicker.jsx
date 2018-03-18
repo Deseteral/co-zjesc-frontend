@@ -25,6 +25,12 @@ class ProductPicker extends Component {
       currentValue: '',
       selectedProducts: [],
     };
+
+    this.inputElement = null;
+  }
+
+  componentDidMount() {
+    this.inputElement = document.getElementById('product-picker-input');
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +46,7 @@ class ProductPicker extends Component {
     });
 
     this.refreshSuggestedProducts(selectedProducts);
+    this.inputElement.blur();
   }
 
   removeProduct(id) {
@@ -72,11 +79,10 @@ class ProductPicker extends Component {
             <input id="product-picker-input" className={styles['input']} {...props} />
           )}
           renderMenu={(items, value, defaultStyle) => {
-            const input = document.getElementById('product-picker-input');
             const style = {
               top: defaultStyle.top,
-              width: input.offsetWidth,
-              left: input.offsetLeft,
+              width: this.inputElement.offsetWidth,
+              left: this.inputElement.offsetLeft,
             };
             return (
               <div style={style} className={styles['menu']}>{items}</div>

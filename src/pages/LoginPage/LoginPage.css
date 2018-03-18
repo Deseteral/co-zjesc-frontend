@@ -8,3 +8,11 @@
 .button {
   margin-top: 8px;
 }
+
+.link {
+  color: var(--accent-color);
+
+  &-container {
+    margin: 8px 0;
+  }
+}
