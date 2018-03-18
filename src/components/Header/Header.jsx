@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import Button from '../Button/Button';
+import Button from 'material-ui/Button';
 import { isLoggedIn, getUserName, logout } from '../../services/login-service';
 import styles from './Header.css';
 
