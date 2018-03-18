@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Autocomplete from 'react-autocomplete';
 import css from 'classnames';
-import SelectedProductsStripe from '../SelectedProductsStripe/SelectedProductsStripe';
 import styles from './ProductPicker.css';
 
 class ProductPicker extends Component {
@@ -23,32 +22,25 @@ class ProductPicker extends Component {
     super(props);
     this.state = {
       currentValue: '',
-      selectedProducts: [],
     };
+
+    this.inputElement = null;
+  }
+
+  componentDidMount() {
+    this.inputElement = document.getElementById('product-picker-input');
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({ products: nextProps.products });
+    this.refreshSuggestedProducts(nextProps.selectedProducts);
   }
 
   addProductByValue(value) {
     const newProduct = this.props.products.find(p => p.name === value);
-    const selectedProducts = [...this.state.selectedProducts, newProduct];
-    this.setState({
-      currentValue: '',
-      selectedProducts,
-    });
-
-    this.refreshSuggestedProducts(selectedProducts);
-  }
-
-  removeProduct(id) {
-    const selectedProducts = this.state.selectedProducts.slice();
-    const removeIndex = selectedProducts.findIndex(p => p.id === id);
-    selectedProducts.splice(removeIndex, 1);
-
-    this.setState({ selectedProducts });
-    this.refreshSuggestedProducts(selectedProducts);
+    this.props.addSelectedProduct(newProduct);
+    this.setState({ currentValue: '' });
+    this.inputElement.blur();
   }
 
   refreshSuggestedProducts(selectedProducts) {
@@ -57,8 +49,9 @@ class ProductPicker extends Component {
   }
 
   render() {
-    const renderItems = this.props.products
-      .filter(p => !this.state.selectedProducts.find(s => s.id === p.id));
+    const renderItems = this.props
+      .products
+      .filter(p => !this.props.selectedProducts.find(s => s.id === p.id));
 
     return (
       <div>
@@ -72,14 +65,15 @@ class ProductPicker extends Component {
             <input id="product-picker-input" className={styles['input']} {...props} />
           )}
           renderMenu={(items, value, defaultStyle) => {
-            const input = document.getElementById('product-picker-input');
             const style = {
               top: defaultStyle.top,
-              width: input.offsetWidth,
-              left: input.offsetLeft,
+              width: this.inputElement.offsetWidth,
+              left: this.inputElement.offsetLeft,
             };
             return (
-              <div style={style} className={styles['menu']}>{items}</div>
+              <div style={style} className={styles['menu-wrapper']}>
+                <div className={styles['menu']}>{items}</div>
+              </div>
             );
           }}
           value={this.state.currentValue}
@@ -94,21 +88,20 @@ class ProductPicker extends Component {
             placeholder: 'Wpisz nazwę składnika...',
           })}
         />
-        <SelectedProductsStripe
-          selectedProducts={this.state.selectedProducts}
-          onRemoveProduct={id => this.removeProduct(id)}
-        />
       </div>
     );
   }
 }
 
 ProductPicker.propTypes = {
+  selectedProducts: PropTypes.arrayOf(PropTypes.object),
   products: PropTypes.arrayOf(PropTypes.object),
   getSuggestedProducts: PropTypes.func.isRequired,
+  addSelectedProduct: PropTypes.func.isRequired,
 };
 
 ProductPicker.defaultProps = {
+  selectedProducts: [],
   products: [],
 };
 

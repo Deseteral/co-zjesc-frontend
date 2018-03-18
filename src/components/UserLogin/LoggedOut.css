@@ -1,0 +1,9 @@
+.register-button {
+  display: none;
+}
+
+@media(min-width: 590px) {
+  .register-button {
+    display: block;
+  }
+}
