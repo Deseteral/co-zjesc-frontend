@@ -85,7 +85,9 @@ class ProductPicker extends Component {
               left: this.inputElement.offsetLeft,
             };
             return (
-              <div style={style} className={styles['menu']}>{items}</div>
+              <div style={style} className={styles['menu-wrapper']}>
+                <div className={styles['menu']}>{items}</div>
+              </div>
             );
           }}
           value={this.state.currentValue}
