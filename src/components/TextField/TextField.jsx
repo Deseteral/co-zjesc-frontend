@@ -15,7 +15,7 @@ function TextField({ value, label, fullWidth, endAdornment, onChange, onEnterPre
   const type = password ? 'password' : 'text';
   const InputProps = endAdornment
     ? ({
-      endAdornment: (<InputAdornment position="end">{endAdornment}</InputAdornment>)
+      endAdornment: (<InputAdornment position="end">{endAdornment}</InputAdornment>),
     }) : ({});
 
   return (
