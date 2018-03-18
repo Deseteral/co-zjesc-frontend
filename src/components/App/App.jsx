@@ -28,9 +28,9 @@ function App(props) {
         contrastText: '#000000',
       },
       primary: {
-        light: '#ff867f',
-        main: '#ff5252',
-        dark: '#c50e29',
+        light: '#ff7961',
+        main: '#f44336',
+        dark: '#ba000d',
         contrastText: '#ffffff',
       },
     },
