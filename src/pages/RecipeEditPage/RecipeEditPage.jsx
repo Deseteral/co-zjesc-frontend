@@ -23,8 +23,8 @@ const toolbarConfig = {
   ],
   BLOCK_TYPE_BUTTONS: [
     { label: 'UL', style: 'unordered-list-item' },
-    { label: 'OL', style: 'ordered-list-item' }
-  ]
+    { label: 'OL', style: 'ordered-list-item' },
+  ],
 };
 
 const DIFFICULTY_LEVELS = [
