@@ -13,6 +13,20 @@ import TextField from '../../components/TextField/TextField';
 import Select from '../../components/Select/Select';
 import styles from './RecipeEditPage.css';
 
+const toolbarConfig = {
+  // Optionally specify the groups to display (displayed in the order listed).
+  display: ['HISTORY_BUTTONS', 'INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_BUTTONS'],
+  INLINE_STYLE_BUTTONS: [
+    { label: 'Bold', style: 'BOLD' },
+    { label: 'Italic', style: 'ITALIC' },
+    { label: 'Underline', style: 'UNDERLINE' },
+  ],
+  BLOCK_TYPE_BUTTONS: [
+    { label: 'UL', style: 'unordered-list-item' },
+    { label: 'OL', style: 'ordered-list-item' }
+  ]
+};
+
 const DIFFICULTY_LEVELS = [
   { id: 1, name: 'bardzo łatwy' },
   { id: 2, name: 'łatwy' },
@@ -216,8 +230,12 @@ class RecipeEditPage extends Component {
             Opis
           </div>
           <RichTextEditor
+            className={styles['editor-root']}
+            editorClassName={styles['editor-area']}
+            toolbarClassName={styles['editor-toolbar']}
             value={this.state.description}
             onChange={value => this.setState({ description: value })}
+            toolbarConfig={toolbarConfig}
           />
         </section>
         <section>
