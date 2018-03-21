@@ -13,8 +13,15 @@ import TextField from '../../components/TextField/TextField';
 import Select from '../../components/Select/Select';
 import styles from './RecipeEditPage.css';
 
-const toolbarConfig = {
-  // Optionally specify the groups to display (displayed in the order listed).
+const DIFFICULTY_LEVELS = [
+  { id: 1, name: 'bardzo łatwy' },
+  { id: 2, name: 'łatwy' },
+  { id: 3, name: 'średni' },
+  { id: 4, name: 'trudny' },
+  { id: 5, name: 'bardzo trudny' },
+];
+
+const EDITOR_TOOLBAR_CONFIG = {
   display: ['HISTORY_BUTTONS', 'INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_BUTTONS'],
   INLINE_STYLE_BUTTONS: [
     { label: 'Bold', style: 'BOLD' },
@@ -26,14 +33,6 @@ const toolbarConfig = {
     { label: 'OL', style: 'ordered-list-item' },
   ],
 };
-
-const DIFFICULTY_LEVELS = [
-  { id: 1, name: 'bardzo łatwy' },
-  { id: 2, name: 'łatwy' },
-  { id: 3, name: 'średni' },
-  { id: 4, name: 'trudny' },
-  { id: 5, name: 'bardzo trudny' },
-];
 
 function mapStateToJson(state) {
   const {
@@ -235,7 +234,7 @@ class RecipeEditPage extends Component {
             toolbarClassName={styles['editor-toolbar']}
             value={this.state.description}
             onChange={value => this.setState({ description: value })}
-            toolbarConfig={toolbarConfig}
+            toolbarConfig={EDITOR_TOOLBAR_CONFIG}
           />
         </section>
         <section>
