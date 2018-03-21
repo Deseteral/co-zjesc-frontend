@@ -200,23 +200,25 @@ class RecipeEditPage extends Component {
                   value={this.state.products[index].name}
                   onChange={value => this.handleChangeProducts(value, 'name', index)}
                 />
-                <div className={styles['product-list-element--amount']}>
-                  <TextField
-                    label="Ilość"
-                    value={this.state.products[index].amount}
-                    onChange={value => this.handleChangeProducts(value, 'amount', index)}
-                    fullWidth
+                <div className={styles['product-list-group']}>
+                  <div className={styles['product-list-element--amount']}>
+                    <TextField
+                      label="Ilość"
+                      value={this.state.products[index].amount}
+                      onChange={value => this.handleChangeProducts(value, 'amount', index)}
+                      fullWidth
+                    />
+                  </div>
+                  <Select
+                    id={`product-${p.id}-unit`}
+                    label="Jednostka"
+                    options={this.state.units}
+                    onChange={value => this.handleChangeProducts(value, 'unit', index)}
                   />
+                  <IconButton onClick={() => this.removeProduct(index)}>
+                    <Icon>close</Icon>
+                  </IconButton>
                 </div>
-                <Select
-                  id={`product-${p.id}-unit`}
-                  label="Jednostka"
-                  options={this.state.units}
-                  onChange={value => this.handleChangeProducts(value, 'unit', index)}
-                />
-                <IconButton onClick={() => this.removeProduct(index)}>
-                  <Icon>close</Icon>
-                </IconButton>
               </div>
             ))}
           </div>
