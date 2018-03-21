@@ -6,6 +6,7 @@ import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
 import IconButton from 'material-ui/IconButton';
 import shortid from 'shortid';
+import css from 'classnames';
 import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
 import TextField from '../../components/TextField/TextField';
@@ -83,7 +84,7 @@ class RecipeEditPage extends Component {
 
   onFileDrop(files) {
     const formData = new FormData();
-    files.forEach(file => formData.append('files', file));
+    files.forEach((file, index) => formData.append(`file-${index}`, file));
 
     CoZjescService.images
       .post(formData)
@@ -124,6 +125,11 @@ class RecipeEditPage extends Component {
   }
 
   render() {
+    const dropzonePlaceholderContainerClassName = css(
+      styles['dropzone-placeholder-container'],
+      this.state.images.length === 0 ? styles['dropzone-placeholder-container--center'] : null,
+    );
+
     return (
       <Card>
         <div className={styles['card-header']}>
@@ -142,19 +148,28 @@ class RecipeEditPage extends Component {
             Zdjęcia
           </div>
           <Dropzone
+            className={styles['dropzone']}
             onDrop={files => this.onFileDrop(files)}
             accept="image/*"
           >
-            <div className={styles['dropzone-placeholder']}>
+            <div className={dropzonePlaceholderContainerClassName}>
               {(this.state.images.length > 0) && (
-                <div>
+                <div className={styles['dropzone-stripe']}>
                   {this.state.images.map(i => (
-                    <img src={i} alt="" />
+                    <div
+                      style={({ backgroundImage: `url(${i.absoluteUrl})` })}
+                      className={styles['dropzone-image']}
+                    />
                   ))}
                 </div>
               )}
               {(this.state.images.length === 0) && (
-                <div>Kliknij lub upuść zdjęcia</div>
+                <div className={styles['dropzone-placeholder']}>
+                  <Icon>cloud_upload</Icon>
+                  <span className={styles['dropzone-placeholder-text']}>
+                    Kliknij lub upuść zdjęcia
+                  </span>
+                </div>
               )}
             </div>
           </Dropzone>
