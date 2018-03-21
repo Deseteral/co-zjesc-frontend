@@ -24,6 +24,7 @@ const DIFFICULTY_LEVELS = [
 function mapStateToJson(state) {
   const {
     title,
+    images,
     description,
     difficulty,
     estimatedCost,
@@ -42,7 +43,7 @@ function mapStateToJson(state) {
 
   return {
     title: title.trim(),
-    images: [],
+    images: images.map(p => p.relativeUrl),
     products,
     description: description.toString('markdown'),
     difficulty: parseInt(difficulty, 10),
