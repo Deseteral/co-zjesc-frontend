@@ -51,12 +51,14 @@ class RegisterPage extends Component {
             label="Nazwa użytkownika"
             value={this.state.username}
             onChange={value => this.handleChange(value, 'username')}
+            fullWidth
           />
           <TextField
             label="Hasło"
             value={this.state.password}
             onChange={value => this.handleChange(value, 'password')}
             password
+            fullWidth
           />
           <TextField
             label="Potwierdź hasło"
@@ -64,6 +66,7 @@ class RegisterPage extends Component {
             onChange={value => this.handleChange(value, 'confirmPassword')}
             onEnterPress={e => this.handleSubmit(e)}
             password
+            fullWidth
           />
           {error && <Typography color="error">{error}</Typography>}
           <div className={styles['button']}>

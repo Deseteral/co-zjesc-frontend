@@ -1,0 +1,114 @@
+.card-header {
+  color: black;
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.section--header {
+  font-size: 28px;
+  margin: 16px 0;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &-group {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &-element {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-bottom: 16px;
+
+    & * {
+      margin-right: 4px;
+    }
+
+    &--amount {
+      width: 42px;
+    }
+  }
+}
+
+.buttons {
+  margin-top: 16px;
+}
+
+.editor {
+  &-root {
+    height: 250px;
+  }
+
+  &-area {
+    height: 172px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  &-toolbar {
+    button {
+      border: none;
+      background: white;
+    }
+  }
+}
+
+.dropzone {
+  width: 100%;
+  height: 160px;
+  background: #EEEEEE;
+  border-radius: 4px;
+  color: var(--accent-color);
+
+  &-placeholder {
+    display: flex;
+    align-items: center;
+
+    &-text {
+      margin-left: 8px;
+    }
+  }
+
+  &-placeholder-container {
+    height: 100%;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    overflow: scroll;
+    cursor: pointer;
+
+    &--center {
+      justify-content: center;
+    }
+  }
+
+  &-stripe {
+    display: flex;
+  }
+
+  &-image {
+    height: 146px;
+    width: 146px;
+    margin-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.attribute-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  width: 100%;
+}
+
+@media(min-width: 450px) {
+  .product-list-element {
+    flex-direction: row;
+  }
+}

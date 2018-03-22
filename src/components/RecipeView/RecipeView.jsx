@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImageGallery from 'react-image-gallery';
+import RichTextEditor from 'react-rte';
 import { DiscussionEmbed } from 'disqus-react';
 import Card from '../Card/Card';
 import styles from './RecipeView.css';
@@ -12,6 +13,8 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
     identifier: `recipe-${id}`,
     title,
   };
+
+  const editorDescription = RichTextEditor.createValueFromString(description, 'markdown');
 
   return (
     <Card>
@@ -39,7 +42,12 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
         <div className={styles['section--header']}>
           Opis przygotowania
         </div>
-        <div>{description}</div>
+        <RichTextEditor
+          className={styles['description']}
+          value={editorDescription}
+          toolbarConfig={({})}
+          disabled
+        />
       </section>
       <section className={styles['section--tiles']}>
         {tiles.map(tile => (

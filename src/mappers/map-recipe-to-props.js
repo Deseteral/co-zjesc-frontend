@@ -9,7 +9,6 @@ function mapDifficultyLevel(level) {
 }
 
 // TODO: Foolproof it!
-// TODO: Move it!
 function mapRecipeToProps(recipe) {
   const { id, title, description, tags } = recipe;
 
