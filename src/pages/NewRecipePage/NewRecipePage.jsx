@@ -2,9 +2,7 @@ import React from 'react';
 import RecipeEditor from '../../components/RecipeEditor/RecipeEditor';
 
 function NewRecipePage() {
-  return (
-    <RecipeEditor />
-  );
+  return (<RecipeEditor />);
 }
 
 export default NewRecipePage;

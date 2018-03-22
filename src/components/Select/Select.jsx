@@ -5,7 +5,7 @@ import { default as MaterialSelect } from 'material-ui/Select';
 import { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 
-function Select({ id, label, options, onChange }) {
+function Select({ id, value, label, options, onChange }) {
   return (
     <FormControl>
       <InputLabel htmlFor={id}>
@@ -15,6 +15,7 @@ function Select({ id, label, options, onChange }) {
         native
         onChange={e => onChange(e.target.value)}
         inputProps={({ id })}
+        value={value}
       >
         <option value="" />
         {options.map(option => (
@@ -33,10 +34,15 @@ function Select({ id, label, options, onChange }) {
 Select.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  value: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string }),
   ).isRequired,
   onChange: PropTypes.func.isRequired,
+};
+
+Select.defaultProps = {
+  value: '',
 };
 
 export default Select;

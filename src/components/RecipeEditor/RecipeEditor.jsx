@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import RichTextEditor from 'react-rte';
 import Dropzone from 'react-dropzone';
 import Button from 'material-ui/Button';
@@ -72,13 +73,32 @@ function getEmptyProduct() {
     id: shortid.generate(),
     name: '',
     amount: '',
+    unit: null,
+  };
+}
+
+function stateFromProps(props) {
+  return {
+    id: props.id,
+    title: props.title,
+    images: props.images,
+    products: props.products.map(p => ({ id: p.id, name: p.name, amount: p.amount.toString(), unit: p.unit.id.toString() })),
+    description: RichTextEditor.createValueFromString(props.description, 'markdown'),
+    difficulty: props.difficulty.toString(),
+    estimatedCost: props.estimatedCost.toString(),
+    portionCount: props.portionCount.toString(),
+    timeToPrepare: props.timeToPrepare.toString(),
+    tags: props.tags.join(','),
+    units: [],
   };
 }
 
 class RecipeEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+
+    const EMPTY_STATE = {
+      id: null,
       title: '',
       images: [],
       products: [getEmptyProduct()],
@@ -90,6 +110,10 @@ class RecipeEditor extends Component {
       tags: '',
       units: [],
     };
+
+    this.state = props.id
+      ? stateFromProps(props)
+      : EMPTY_STATE;
   }
 
   componentDidMount() {
@@ -212,6 +236,7 @@ class RecipeEditor extends Component {
                   <Select
                     id={`product-${p.id}-unit`}
                     label="Jednostka"
+                    value={p.unit}
                     options={this.state.units}
                     onChange={value => this.handleChangeProducts(value, 'unit', index)}
                   />
@@ -247,6 +272,7 @@ class RecipeEditor extends Component {
             <Select
               id="difficulty"
               label="Poziom trudności"
+              value={this.state.difficulty}
               options={DIFFICULTY_LEVELS}
               onChange={value => this.handleChange(value, 'difficulty')}
             />
@@ -291,5 +317,13 @@ class RecipeEditor extends Component {
     );
   }
 }
+
+RecipeEditor.propTypes = {
+  id: PropTypes.number,
+};
+
+RecipeEditor.defaultProps = {
+  id: null,
+};
 
 export default RecipeEditor;
