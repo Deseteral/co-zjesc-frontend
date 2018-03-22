@@ -37,6 +37,7 @@ const EDITOR_TOOLBAR_CONFIG = {
 
 function mapStateToJson(state) {
   const {
+    id,
     title,
     images,
     description,
@@ -56,6 +57,7 @@ function mapStateToJson(state) {
     }));
 
   return {
+    id,
     title: title.trim(),
     images: images.map(p => p.relativeUrl),
     products,
@@ -73,7 +75,7 @@ function getEmptyProduct() {
     id: shortid.generate(),
     name: '',
     amount: '',
-    unit: null,
+    unit: '',
   };
 }
 
@@ -82,7 +84,12 @@ function stateFromProps(props) {
     id: props.id,
     title: props.title,
     images: props.images,
-    products: props.products.map(p => ({ id: p.id, name: p.name, amount: p.amount.toString(), unit: p.unit.id.toString() })),
+    products: props.products.map(p => ({
+      id: p.id,
+      name: p.name,
+      amount: p.amount.toString(),
+      unit: p.unit.id.toString(),
+    })),
     description: RichTextEditor.createValueFromString(props.description, 'markdown'),
     difficulty: props.difficulty.toString(),
     estimatedCost: props.estimatedCost.toString(),
@@ -156,13 +163,21 @@ class RecipeEditor extends Component {
 
   submit() {
     const recipe = mapStateToJson(this.state);
+    const method = this.props.id ? 'update' : 'add';
     console.log(recipe);
-    CoZjescService.recipes.add(recipe)
+
+    CoZjescService.recipes[method](recipe)
       .then(() => console.log('Added recipe'))
       .catch(e => console.log(e));
   }
 
   render() {
+    const submitButtonText = this.props.id
+      ? 'Edytuj przepis'
+      : 'Dodaj przepis';
+    const cardTitle = this.props.id
+      ? 'Edytuj przepis'
+      : 'Dodaj nowy przepis';
     const dropzonePlaceholderContainerClassName = css(
       styles['dropzone-placeholder-container'],
       this.state.images.length === 0 ? styles['dropzone-placeholder-container--center'] : null,
@@ -171,7 +186,7 @@ class RecipeEditor extends Component {
     return (
       <Card>
         <div className={styles['card-header']}>
-          Dodaj nowy przepis
+          {cardTitle}
         </div>
         <section>
           <TextField
@@ -195,6 +210,7 @@ class RecipeEditor extends Component {
                 <div className={styles['dropzone-stripe']}>
                   {this.state.images.map(i => (
                     <div
+                      key={i.relativeUrl}
                       style={({ backgroundImage: `url(${i.absoluteUrl})` })}
                       className={styles['dropzone-image']}
                     />
@@ -310,7 +326,7 @@ class RecipeEditor extends Component {
             color="primary"
             variant="raised"
           >
-            Dodaj przepis
+            {submitButtonText}
           </Button>
         </section>
       </Card>

@@ -78,6 +78,22 @@ function postRecipe(recipe) {
   });
 }
 
+function putRecipe(recipe) {
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify(recipe);
+    const options = {
+      body,
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+    };
+
+    serviceFetch(`/api/recipes/${recipe.id}`, options)
+      .then(checkStatus)
+      .then(() => resolve())
+      .catch(e => reject(e));
+  });
+}
+
 const CoZjescService = {
   images: {
     post: postImages,
@@ -92,6 +108,7 @@ const CoZjescService = {
     getByProducts: getRecipesByProducts,
     getById: getRecipe,
     add: postRecipe,
+    update: putRecipe,
   },
 };
 
