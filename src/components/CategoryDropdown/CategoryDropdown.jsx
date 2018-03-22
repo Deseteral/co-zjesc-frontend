@@ -69,6 +69,7 @@ class CategoryDropdown extends Component {
               component={NavLink}
               className={styles['item-link']}
               to={`/categories/${c.id}`}
+              onClick={() => this.onMenuClose()}
             >
               {c.name}
             </MenuItem>
