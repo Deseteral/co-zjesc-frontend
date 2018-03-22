@@ -11,7 +11,7 @@ import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
 import TextField from '../../components/TextField/TextField';
 import Select from '../../components/Select/Select';
-import styles from './RecipeEditPage.css';
+import styles from './RecipeEditor.css';
 
 const DIFFICULTY_LEVELS = [
   { id: 1, name: 'bardzo łatwy' },
@@ -75,7 +75,7 @@ function getEmptyProduct() {
   };
 }
 
-class RecipeEditPage extends Component {
+class RecipeEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -292,4 +292,4 @@ class RecipeEditPage extends Component {
   }
 }
 
-export default RecipeEditPage;
+export default RecipeEditor;

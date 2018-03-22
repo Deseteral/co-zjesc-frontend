@@ -8,7 +8,7 @@ import RecipeSuggesterPage from '../../pages/RecipeSuggesterPage/RecipeSuggester
 import RecipeViewPage from '../../pages/RecipeViewPage/RecipeViewPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage';
-import RecipeEditPage from '../../pages/RecipeEditPage/RecipeEditPage';
+import NewRecipePage from '../../pages/NewRecipePage/NewRecipePage';
 import styles from './App.css';
 
 const DEFAULT_ROUTE = '/suggester';
@@ -56,12 +56,16 @@ function App(props) {
                   />
                   <Route
                     path="/recipe/add"
-                    component={RecipeEditPage}
+                    component={NewRecipePage}
                   />
                   <Route
                     path="/recipe/:id"
                     component={p => extractIdFromUrl(p, id => <RecipeViewPage recipeId={id} />)}
                   />
+                  {/* <Route
+                    path="/recipe/:id/edit"
+                    component={p => extractIdFromUrl(p, id => <RecipeEditPage recipeId={id} />)}
+                  /> */}
                   <Route
                     path="/login"
                     component={LoginPage}
