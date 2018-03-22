@@ -39,6 +39,11 @@
   }
 }
 
+.description {
+  border: none;
+  font-family: 'Roboto', sans-serif;
+}
+
 .soap {
   color: white;
   background-color: var(--accent-color);
