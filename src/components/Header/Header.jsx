@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import UserLogin from '../UserLogin/UserLogin';
+import CategoryDropdown from '../CategoryDropdown/CategoryDropdown';
 import { isLoggedIn, getUserName } from '../../services/login-service';
 import styles from './Header.css';
 
@@ -27,6 +28,7 @@ class Header extends Component {
         <NavLink to="/" className={styles['title']}>
           Co zjeść?
         </NavLink>
+        <CategoryDropdown />
         <UserLogin
           className={styles['container--right']}
           loggedIn={loggedIn}
