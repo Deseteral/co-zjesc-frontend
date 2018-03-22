@@ -6,6 +6,12 @@
   margin-bottom: 16px;
   width: 100%;
 
+  &--grow {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
+
   &--right {
     display: flex;
     align-items: center;
@@ -20,6 +26,5 @@
   padding: 0;
   font-size: 36px;
   align-self: start;
-  flex-grow: 1;
   text-decoration: none;
 }

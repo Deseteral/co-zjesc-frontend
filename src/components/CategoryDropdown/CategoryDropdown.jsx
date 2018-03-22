@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Button from 'material-ui/Button';
 import Menu, { MenuItem } from 'material-ui/Menu';
+import Icon from 'material-ui/Icon';
 import styles from './CategoryDropdown.css';
 
 const categories = [
@@ -54,6 +55,7 @@ class CategoryDropdown extends Component {
           onClick={e => this.onMenuButtonClick(e)}
           color="primary"
         >
+          <Icon>keyboard_arrow_down</Icon>
           Kategorie
         </Button>
         <Menu

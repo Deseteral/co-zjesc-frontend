@@ -25,10 +25,12 @@ class Header extends Component {
 
     return (
       <header className={styles['container']}>
-        <NavLink to="/" className={styles['title']}>
-          Co zjeść?
-        </NavLink>
-        <CategoryDropdown />
+        <div className={styles['container--grow']}>
+          <NavLink to="/" className={styles['title']}>
+            Co zjeść?
+          </NavLink>
+          <CategoryDropdown />
+        </div>
         <UserLogin
           className={styles['container--right']}
           loggedIn={loggedIn}
