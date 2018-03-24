@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import UserLogin from '../UserLogin/UserLogin';
 import CategoryDropdown from '../CategoryDropdown/CategoryDropdown';
 import { isLoggedIn, getUserName } from '../../services/login-service';
+import CoZjescService from '../../services/co-zjesc-service';
 import styles from './Header.css';
 
 class Header extends Component {
@@ -11,30 +12,7 @@ class Header extends Component {
     this.state = {
       loggedIn: isLoggedIn(),
       username: '',
-      categories: [
-        {
-          id: 1,
-          name: 'Ciasta',
-        }, {
-          id: 2,
-          name: 'Zupy',
-        }, {
-          id: 3,
-          name: 'Wygłupy',
-        }, {
-          id: 4,
-          name: 'Pierniki',
-        }, {
-          id: 5,
-          name: 'Burgery',
-        }, {
-          id: 6,
-          name: 'Pizze',
-        }, {
-          id: 7,
-          name: 'Pierogi',
-        },
-      ],
+      categories: [],
     };
   }
 
@@ -42,6 +20,11 @@ class Header extends Component {
     if (this.state.loggedIn) {
       getUserName().then(username => this.setState({ username }));
     }
+
+    CoZjescService
+      .categories
+      .get()
+      .then(categories => this.setState({ categories }));
   }
 
   render() {
@@ -53,7 +36,7 @@ class Header extends Component {
           <NavLink to="/" className={styles['title']}>
             Co zjeść?
           </NavLink>
-          <CategoryDropdown categories={categories} />
+          <CategoryDropdown categories={this.state.categories} />
         </div>
         <UserLogin
           className={styles['container--right']}
