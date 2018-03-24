@@ -1,8 +1,8 @@
 .item {
   display: flex;
   align-items: center;
-  list-style: none;
   border-bottom: 1px lightgrey solid;
+  height: 128px;
 
   &:first-of-type {
     border-top-left-radius: 4px;
@@ -18,6 +18,11 @@
   &:hover {
     background-color: lightgrey;
   }
+}
+
+.image {
+  width: 128px;
+  height: 128px;
 }
 
 .link {

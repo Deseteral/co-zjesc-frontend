@@ -5,11 +5,15 @@ import styles from './RecipeListingItem.css';
 
 function RecipeListingItem({ recipe }) {
   return (
-    <li className={styles['item']}>
+    <div className={styles['item']}>
+      <div
+        className={styles['image']}
+        style={({ backgroundImage: `url(${recipe.image})` })}
+      />
       <NavLink to={`/recipe/${recipe.id}`} className={styles['link']}>
         {recipe.title}
       </NavLink>
-    </li>
+    </div>
   );
 }
 
