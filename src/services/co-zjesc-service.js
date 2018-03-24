@@ -73,7 +73,8 @@ function postRecipe(recipe) {
 
     serviceFetch('/api/recipes', options)
       .then(checkStatus)
-      .then(() => resolve())
+      .then(data => data.json())
+      .then(id => resolve(id))
       .catch(e => reject(e));
   });
 }
@@ -89,7 +90,8 @@ function putRecipe(recipe) {
 
     serviceFetch(`/api/recipes/${recipe.id}`, options)
       .then(checkStatus)
-      .then(() => resolve())
+      .then(data => data.json())
+      .then(id => resolve(id))
       .catch(e => reject(e));
   });
 }

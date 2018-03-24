@@ -95,7 +95,7 @@ function stateFromProps(props) {
     estimatedCost: props.estimatedCost.toString(),
     portionCount: props.portionCount.toString(),
     timeToPrepare: props.timeToPrepare.toString(),
-    tags: props.tags.join(','),
+    tags: props.tags.map(t => t.name).join(','),
     units: [],
   };
 }
@@ -167,7 +167,7 @@ class RecipeEditor extends Component {
     console.log(recipe);
 
     CoZjescService.recipes[method](recipe)
-      .then(() => console.log('Added recipe'))
+      .then(id => window.location.replace(`/recipe/${id}`))
       .catch(e => console.log(e));
   }
 
