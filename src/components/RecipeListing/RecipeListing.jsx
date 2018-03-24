@@ -5,13 +5,19 @@ import Card from '../Card/Card';
 import SuggesterSection from '../SuggesterSection/SuggesterSection';
 import styles from './RecipeListing.css';
 
-function RecipeListing({ recipes }) {
+function Container({ title, children }) { // eslint-disable-line react/prop-types
+  return title
+    ? <SuggesterSection title={title}>{children}</SuggesterSection>
+    : children;
+}
+
+function RecipeListing({ title, recipes }) {
   if (recipes.length === 0) {
     return <div />;
   }
 
   return (
-    <SuggesterSection title="Dobrane przepisy">
+    <Container title={title}>
       <Card className={styles['card']}>
         {recipes.map(recipe => (
           <li className={styles['item']} key={recipe.id}>
@@ -21,15 +27,17 @@ function RecipeListing({ recipes }) {
           </li>
         ))}
       </Card>
-    </SuggesterSection>
+    </Container>
   );
 }
 
 RecipeListing.propTypes = {
+  title: PropTypes.string,
   recipes: PropTypes.arrayOf(PropTypes.object),
 };
 
 RecipeListing.defaultProps = {
+  title: null,
   recipes: [],
 };
 
