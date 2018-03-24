@@ -46,8 +46,8 @@ function App(props) {
               exact
               component={(() => <Redirect to={DEFAULT_ROUTE} />)}
             />
+            <Header />
             <div className={styles['app-container']}>
-              <Header />
               <div className={styles['container']}>
                 <Switch>
                   <Route

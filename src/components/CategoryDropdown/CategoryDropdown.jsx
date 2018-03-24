@@ -54,6 +54,7 @@ class CategoryDropdown extends Component {
         <Button
           onClick={e => this.onMenuButtonClick(e)}
           color="primary"
+          style={({ paddingLeft: '0', paddingRight: '8px' })}
         >
           <Icon>keyboard_arrow_down</Icon>
           Kategorie
