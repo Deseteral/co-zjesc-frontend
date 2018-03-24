@@ -94,6 +94,16 @@ function putRecipe(recipe) {
   });
 }
 
+function getCategories() {
+  return new Promise((resolve, reject) => {
+    serviceFetch('/api/categories')
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(categories => resolve(categories))
+      .catch(e => reject(e));
+  });
+}
+
 const CoZjescService = {
   images: {
     post: postImages,
@@ -109,6 +119,9 @@ const CoZjescService = {
     getById: getRecipe,
     add: postRecipe,
     update: putRecipe,
+  },
+  categories: {
+    get: getCategories,
   },
 };
 
