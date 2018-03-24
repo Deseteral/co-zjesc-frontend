@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import Card from '../Card/Card';
 import SuggesterSection from '../SuggesterSection/SuggesterSection';
 import styles from './RecipeListing.css';
+import RecipeListingItem from '../RecipeListingItem/RecipeListingItem';
 
 function Container({ title, children }) { // eslint-disable-line react/prop-types
   return title
@@ -20,11 +20,7 @@ function RecipeListing({ title, recipes }) {
     <Container title={title}>
       <Card className={styles['card']}>
         {recipes.map(recipe => (
-          <li className={styles['item']} key={recipe.id}>
-            <NavLink to={`/recipe/${recipe.id}`} className={styles['link']}>
-              {recipe.title}
-            </NavLink>
-          </li>
+          <RecipeListingItem recipe={recipe} key={recipe.id} />
         ))}
       </Card>
     </Container>
