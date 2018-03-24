@@ -1,34 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Button from 'material-ui/Button';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import Icon from 'material-ui/Icon';
 import styles from './CategoryDropdown.css';
-
-const categories = [
-  {
-    id: 1,
-    name: 'Ciasta',
-  }, {
-    id: 2,
-    name: 'Zupy',
-  }, {
-    id: 3,
-    name: 'Wygłupy',
-  }, {
-    id: 4,
-    name: 'Pierniki',
-  }, {
-    id: 5,
-    name: 'Burgery',
-  }, {
-    id: 6,
-    name: 'Pizze',
-  }, {
-    id: 7,
-    name: 'Pierogi',
-  },
-];
 
 class CategoryDropdown extends Component {
   constructor(props) {
@@ -64,7 +40,7 @@ class CategoryDropdown extends Component {
           open={Boolean(anchorElement)}
           onClose={() => this.onMenuClose()}
         >
-          {categories.map(c => (
+          {this.props.categories.map(c => (
             <MenuItem
               key={c.id}
               component={NavLink}
@@ -80,5 +56,9 @@ class CategoryDropdown extends Component {
     );
   }
 }
+
+CategoryDropdown.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default CategoryDropdown;

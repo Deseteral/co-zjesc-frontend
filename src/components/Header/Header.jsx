@@ -11,6 +11,30 @@ class Header extends Component {
     this.state = {
       loggedIn: isLoggedIn(),
       username: '',
+      categories: [
+        {
+          id: 1,
+          name: 'Ciasta',
+        }, {
+          id: 2,
+          name: 'Zupy',
+        }, {
+          id: 3,
+          name: 'Wygłupy',
+        }, {
+          id: 4,
+          name: 'Pierniki',
+        }, {
+          id: 5,
+          name: 'Burgery',
+        }, {
+          id: 6,
+          name: 'Pizze',
+        }, {
+          id: 7,
+          name: 'Pierogi',
+        },
+      ],
     };
   }
 
@@ -29,7 +53,7 @@ class Header extends Component {
           <NavLink to="/" className={styles['title']}>
             Co zjeść?
           </NavLink>
-          <CategoryDropdown />
+          <CategoryDropdown categories={categories} />
         </div>
         <UserLogin
           className={styles['container--right']}
