@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import RichTextEditor from 'react-rte';
 import Dropzone from 'react-dropzone';
 import Button from 'material-ui/Button';
@@ -11,7 +12,7 @@ import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
 import TextField from '../../components/TextField/TextField';
 import Select from '../../components/Select/Select';
-import styles from './RecipeEditPage.css';
+import styles from './RecipeEditor.css';
 
 const DIFFICULTY_LEVELS = [
   { id: 1, name: 'bardzo łatwy' },
@@ -36,6 +37,7 @@ const EDITOR_TOOLBAR_CONFIG = {
 
 function mapStateToJson(state) {
   const {
+    id,
     title,
     images,
     description,
@@ -55,6 +57,7 @@ function mapStateToJson(state) {
     }));
 
   return {
+    id,
     title: title.trim(),
     images: images.map(p => p.relativeUrl),
     products,
@@ -72,13 +75,37 @@ function getEmptyProduct() {
     id: shortid.generate(),
     name: '',
     amount: '',
+    unit: '',
   };
 }
 
-class RecipeEditPage extends Component {
+function stateFromProps(props) {
+  return {
+    id: props.id,
+    title: props.title,
+    images: props.images,
+    products: props.products.map(p => ({
+      id: p.id,
+      name: p.name,
+      amount: p.amount.toString(),
+      unit: p.unit.id.toString(),
+    })),
+    description: RichTextEditor.createValueFromString(props.description, 'markdown'),
+    difficulty: props.difficulty.toString(),
+    estimatedCost: props.estimatedCost.toString(),
+    portionCount: props.portionCount.toString(),
+    timeToPrepare: props.timeToPrepare.toString(),
+    tags: props.tags.map(t => t.name).join(','),
+    units: [],
+  };
+}
+
+class RecipeEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+
+    const EMPTY_STATE = {
+      id: null,
       title: '',
       images: [],
       products: [getEmptyProduct()],
@@ -90,6 +117,10 @@ class RecipeEditPage extends Component {
       tags: '',
       units: [],
     };
+
+    this.state = props.id
+      ? stateFromProps(props)
+      : EMPTY_STATE;
   }
 
   componentDidMount() {
@@ -132,13 +163,21 @@ class RecipeEditPage extends Component {
 
   submit() {
     const recipe = mapStateToJson(this.state);
+    const method = this.props.id ? 'update' : 'add';
     console.log(recipe);
-    CoZjescService.recipes.add(recipe)
-      .then(() => console.log('Added recipe'))
+
+    CoZjescService.recipes[method](recipe)
+      .then(id => window.location.replace(`/recipe/${id}`))
       .catch(e => console.log(e));
   }
 
   render() {
+    const submitButtonText = this.props.id
+      ? 'Edytuj przepis'
+      : 'Dodaj przepis';
+    const cardTitle = this.props.id
+      ? 'Edytuj przepis'
+      : 'Dodaj nowy przepis';
     const dropzonePlaceholderContainerClassName = css(
       styles['dropzone-placeholder-container'],
       this.state.images.length === 0 ? styles['dropzone-placeholder-container--center'] : null,
@@ -147,7 +186,7 @@ class RecipeEditPage extends Component {
     return (
       <Card>
         <div className={styles['card-header']}>
-          Dodaj nowy przepis
+          {cardTitle}
         </div>
         <section>
           <TextField
@@ -171,6 +210,7 @@ class RecipeEditPage extends Component {
                 <div className={styles['dropzone-stripe']}>
                   {this.state.images.map(i => (
                     <div
+                      key={i.relativeUrl}
                       style={({ backgroundImage: `url(${i.absoluteUrl})` })}
                       className={styles['dropzone-image']}
                     />
@@ -212,6 +252,7 @@ class RecipeEditPage extends Component {
                   <Select
                     id={`product-${p.id}-unit`}
                     label="Jednostka"
+                    value={p.unit}
                     options={this.state.units}
                     onChange={value => this.handleChangeProducts(value, 'unit', index)}
                   />
@@ -247,6 +288,7 @@ class RecipeEditPage extends Component {
             <Select
               id="difficulty"
               label="Poziom trudności"
+              value={this.state.difficulty}
               options={DIFFICULTY_LEVELS}
               onChange={value => this.handleChange(value, 'difficulty')}
             />
@@ -284,7 +326,7 @@ class RecipeEditPage extends Component {
             color="primary"
             variant="raised"
           >
-            Dodaj przepis
+            {submitButtonText}
           </Button>
         </section>
       </Card>
@@ -292,4 +334,12 @@ class RecipeEditPage extends Component {
   }
 }
 
-export default RecipeEditPage;
+RecipeEditor.propTypes = {
+  id: PropTypes.number,
+};
+
+RecipeEditor.defaultProps = {
+  id: null,
+};
+
+export default RecipeEditor;

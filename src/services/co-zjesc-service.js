@@ -73,7 +73,25 @@ function postRecipe(recipe) {
 
     serviceFetch('/api/recipes', options)
       .then(checkStatus)
-      .then(() => resolve())
+      .then(data => data.json())
+      .then(id => resolve(id))
+      .catch(e => reject(e));
+  });
+}
+
+function putRecipe(recipe) {
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify(recipe);
+    const options = {
+      body,
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+    };
+
+    serviceFetch(`/api/recipes/${recipe.id}`, options)
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(id => resolve(id))
       .catch(e => reject(e));
   });
 }
@@ -102,6 +120,7 @@ const CoZjescService = {
     getByProducts: getRecipesByProducts,
     getById: getRecipe,
     add: postRecipe,
+    update: putRecipe,
   },
   categories: {
     get: getCategories,
