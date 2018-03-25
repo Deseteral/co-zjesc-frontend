@@ -8,7 +8,7 @@ function RecipeListingItem({ recipe }) {
     <div className={styles['item']}>
       <div
         className={styles['image']}
-        style={({ backgroundImage: `url(${recipe.image})` })}
+        style={({ backgroundImage: `url("${recipe.image}")` })}
       />
       <NavLink to={`/recipe/${recipe.id}`} className={styles['link']}>
         {recipe.title}
