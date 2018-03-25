@@ -45,7 +45,7 @@ class CategoryDropdown extends Component {
               key={c.id}
               component={NavLink}
               className={styles['item-link']}
-              to={`/categories/${c.id}`}
+              to={`/category/${c.id}`}
               onClick={() => this.onMenuClose()}
             >
               {c.name}
