@@ -3,6 +3,7 @@ import RecipeListing from '../components/RecipeListing/RecipeListing';
 
 function mapStateToProps(state) {
   return {
+    title: 'Dobrane przepisy',
     recipes: state.suggesterRecipes,
   };
 }
