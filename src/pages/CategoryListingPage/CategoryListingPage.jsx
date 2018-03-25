@@ -14,17 +14,30 @@ class CategoryListingPage extends Component {
   }
 
   componentDidMount() {
+    this.fetchRecipeList(this.props.categoryId);
+    this.fetchCategoryName(this.props.categoryId);
+  }
+
+  componentWillReceiveProps(props, nextProps) {
+    const categoryId = nextProps.categoryId || props.categoryId;
+    this.fetchRecipeList(categoryId);
+    this.fetchCategoryName(categoryId);
+  }
+
+  fetchRecipeList(categoryId) {
     CoZjescService
       .recipes
-      .getByCategoryId(this.props.categoryId)
+      .getByCategoryId(categoryId)
       .then(recipeList => this.setState({ recipeList }));
+  }
 
+  fetchCategoryName(categoryId) {
     CoZjescService
       .categories
       .get()
       .then((categories) => {
         const categoryName = categories
-          .filter(c => c.id === this.props.categoryId)[0]
+          .filter(c => c.id === categoryId)[0]
           .name
           .toLowerCase();
 
