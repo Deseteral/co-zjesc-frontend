@@ -4,6 +4,26 @@
   border-bottom: 1px lightgrey solid;
   height: 100px;
 
+  &:first-of-type {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    .image {
+      border-top-left-radius: 4px;
+    }
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: 4px;
+    border-bottom: none;
+
+    .image {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom: none;
+    }
+  }
+
   &:hover {
     background-color: lightgrey;
   }
@@ -15,20 +35,6 @@
   height: 100px;
   background-position: center;
   background-size: cover;
-}
-
-.item,
-.image {
-  &:first-of-type {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-  }
-
-  &:last-of-type {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-bottom: none;
-  }
 }
 
 .link {
