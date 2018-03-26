@@ -313,7 +313,7 @@ class RecipeEditor extends Component {
               fullWidth
             />
             <TextField
-              label="Lista tagów"
+              label="Lista tagów (po przecinku)"
               value={this.state.tags}
               onChange={value => this.handleChange(value, 'tags')}
               fullWidth
