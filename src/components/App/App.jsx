@@ -70,7 +70,9 @@ function App(props) {
                   />
                   <Route
                     path="/category/:id"
-                    component={p => extractIdFromUrl(p, id => <CategoryListingPage categoryId={id} />)}
+                    component={p => extractIdFromUrl(p, id => (
+                      <CategoryListingPage categoryId={id} />
+                    ))}
                   />
                   <Route
                     path="/login"
