@@ -25,6 +25,11 @@ class LoggedIn extends Component {
     this.onMenuClose();
   }
 
+  onAddRecipeClick() {
+    window.location.replace('/recipe/add');
+    this.onMenuClose();
+  }
+
   onLogoutClick() {
     logout();
     this.onMenuClose();
@@ -48,6 +53,9 @@ class LoggedIn extends Component {
         >
           <MenuItem onClick={() => this.onMyAccountClick()}>
             Moje konto
+          </MenuItem>
+          <MenuItem onClick={() => this.onAddRecipeClick()}>
+            Dodaj przepis
           </MenuItem>
           <MenuItem onClick={() => this.onLogoutClick()}>
             Wyloguj
