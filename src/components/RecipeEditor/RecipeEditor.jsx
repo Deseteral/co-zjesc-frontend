@@ -144,7 +144,7 @@ class RecipeEditor extends Component {
   }
 
   handleChangeProducts(value, part, index) {
-    const products = this.state.products;
+    const { products } = this.state;
     products[index][part] = value;
     this.setState({ products });
   }

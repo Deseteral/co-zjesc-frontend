@@ -32,7 +32,6 @@ class ProductPicker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ products: nextProps.products });
     this.refreshSuggestedProducts(nextProps.selectedProducts);
   }
 

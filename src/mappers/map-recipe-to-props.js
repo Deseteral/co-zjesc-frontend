@@ -1,4 +1,3 @@
-
 function mapDifficultyLevel(level) {
   if (level === 1) return 'bardzo łatwy';
   if (level === 2) return 'łatwy';

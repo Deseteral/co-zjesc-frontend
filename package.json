@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@deseteral/react-scripts": "1.0.13-11",
+    "@deseteral/react-scripts": "1.1.1-4",
     "classnames": "2.2.5",
     "disqus-react": "1.0.4",
     "fetch-check-http-status": "2.0.0",
