@@ -1,15 +1,40 @@
-import React from 'react';
-import Card from '../../components/Card/Card';
+import React, { Component, Fragment } from 'react';
+import RecipeListing from '../../components/RecipeListing/RecipeListing';
 import CardHeader from '../../components/CardHeader/CardHeader';
+import CoZjescService from '../../services/co-zjesc-service';
 
-function MyAccountPage() {
-  return (
-    <Card>
-      <CardHeader>
-        Moje konto
-      </CardHeader>
-    </Card>
-  );
+class MyAccountPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipes: null,
+    };
+  }
+
+  componentDidMount() {
+    CoZjescService
+      .recipes
+      .getFromCurrentUser()
+      .then(recipes => this.setState({ recipes }));
+  }
+
+  render() {
+    const { recipes } = this.state;
+
+    return (
+      <Fragment>
+        <CardHeader>
+          Moje konto
+        </CardHeader>
+        {recipes && (
+          <RecipeListing
+            title="Moje przepisy"
+            recipes={recipes}
+          />
+        )}
+      </Fragment>
+    );
+  }
 }
 
 export default MyAccountPage;
