@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import Header from '../Header/Header';
+import MainPage from '../../pages/MainPage/MainPage';
 import RecipeSuggesterPage from '../../pages/RecipeSuggesterPage/RecipeSuggesterPage';
 import RecipeViewPage from '../../pages/RecipeViewPage/RecipeViewPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
@@ -12,8 +13,6 @@ import NewRecipePage from '../../pages/NewRecipePage/NewRecipePage';
 import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
 import CategoryListingPage from '../../pages/CategoryListingPage/CategoryListingPage';
 import styles from './App.css';
-
-const DEFAULT_ROUTE = '/suggester';
 
 function extractIdFromUrl(props, callback) {
   const id = parseInt(props.match.params.id, 10);
@@ -43,15 +42,15 @@ function App(props) {
       <BrowserRouter>
         <div>
           <MuiThemeProvider theme={theme}>
-            <Route
-              path="/"
-              exact
-              component={(() => <Redirect to={DEFAULT_ROUTE} />)}
-            />
             <Header />
             <div className={styles['app-container']}>
               <div className={styles['container']}>
                 <Switch>
+                  <Route
+                    path="/"
+                    exact
+                    component={MainPage}
+                  />
                   <Route
                     path="/suggester"
                     component={RecipeSuggesterPage}
