@@ -12,11 +12,18 @@ import RegisterPage from '../../pages/RegisterPage/RegisterPage';
 import NewRecipePage from '../../pages/NewRecipePage/NewRecipePage';
 import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
 import CategoryListingPage from '../../pages/CategoryListingPage/CategoryListingPage';
+import SearchPage from '../../pages/SearchPage/SearchPage';
 import styles from './App.css';
 
 function extractIdFromUrl(props, callback) {
   const id = parseInt(props.match.params.id, 10);
   return callback(id);
+}
+
+function extractQueryFromUrl(props, callback) {
+  const encodedQuery = props.match.params.query;
+  const query = decodeURI(encodedQuery);
+  return callback(query);
 }
 
 function App(props) {
@@ -80,6 +87,16 @@ function App(props) {
                   <Route
                     path="/register"
                     component={RegisterPage}
+                  />
+                  <Route
+                    path="/search/:query"
+                    component={p => extractQueryFromUrl(p, query => (
+                      <SearchPage query={query} />
+                    ))}
+                  />
+                  <Route
+                    path="/search"
+                    component={SearchPage}
                   />
                 </Switch>
               </div>

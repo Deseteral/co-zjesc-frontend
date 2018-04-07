@@ -6,7 +6,7 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      value: props.initialValue,
     };
   }
 
@@ -20,6 +20,7 @@ class SearchBar extends Component {
     return (
       <input
         className={styles['input']}
+        value={this.state.value}
         placeholder="Szukaj przepisów!"
         onChange={e => this.setState({ value: e.target.value })}
         onKeyPress={e => this.onKeyPress(e)}
@@ -29,7 +30,12 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
+  initialValue: PropTypes.string,
   onEnterPress: PropTypes.func.isRequired,
+};
+
+SearchBar.defaultProps = {
+  initialValue: '',
 };
 
 export default SearchBar;
