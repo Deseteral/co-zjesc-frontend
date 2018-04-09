@@ -30,6 +30,7 @@ class MyAccountPage extends Component {
           <RecipeListing
             title="Moje przepisy"
             recipes={recipes}
+            withEditButtons
           />
         )}
       </Fragment>
