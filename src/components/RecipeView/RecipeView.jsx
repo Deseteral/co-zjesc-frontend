@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery';
 import RichTextEditor from 'react-rte';
 import { DiscussionEmbed } from 'disqus-react';
 import Card from '../Card/Card';
+import CardHeader from '../CardHeader/CardHeader';
 import styles from './RecipeView.css';
 import './recipe-gallery.public.css';
 
@@ -18,9 +19,9 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
 
   return (
     <Card>
-      <div className={styles['card-header']}>
+      <CardHeader>
         {title}
-      </div>
+      </CardHeader>
       <section>
         <ImageGallery
           items={images}

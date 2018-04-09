@@ -3,7 +3,6 @@
   align-items: center;
   border-bottom: 1px lightgrey solid;
   height: 100px;
-  text-decoration: none;
 
   &:first-of-type {
     border-top-left-radius: 4px;
@@ -30,6 +29,13 @@
   }
 }
 
+.link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .image {
   display: flex;
   width: 100%;
@@ -46,4 +52,8 @@
   color: black;
   width: 100%;
   padding: 16px;
+}
+
+.left-container {
+  padding-right: 8px;
 }

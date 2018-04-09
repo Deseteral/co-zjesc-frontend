@@ -22,6 +22,7 @@ class LoggedIn extends Component {
   }
 
   onMyAccountClick() {
+    window.location.replace('/my-account');
     this.onMenuClose();
   }
 

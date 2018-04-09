@@ -11,6 +11,7 @@ import RegisterPage from '../../pages/RegisterPage/RegisterPage';
 import NewRecipePage from '../../pages/NewRecipePage/NewRecipePage';
 import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
 import CategoryListingPage from '../../pages/CategoryListingPage/CategoryListingPage';
+import MyAccountPage from '../../pages/MyAccountPage/MyAccountPage';
 import styles from './App.css';
 
 const DEFAULT_ROUTE = '/suggester';
@@ -81,6 +82,10 @@ function App(props) {
                   <Route
                     path="/register"
                     component={RegisterPage}
+                  />
+                  <Route
+                    path="/my-account"
+                    component={MyAccountPage}
                   />
                 </Switch>
               </div>

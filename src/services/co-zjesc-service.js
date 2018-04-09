@@ -62,6 +62,16 @@ function getRecipesByCategory(categoryId) {
   });
 }
 
+function getRecipesWithUser() {
+  return new Promise((resolve, reject) => {
+    serviceFetch('/api/user/recipes')
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(recipes => resolve(recipes))
+      .catch(e => reject(e));
+  });
+}
+
 function getRecipe(recipeId) {
   return new Promise((resolve, reject) => {
     serviceFetch(`/api/recipes/${recipeId}`)
@@ -130,6 +140,7 @@ const CoZjescService = {
     getByProducts: getRecipesByProducts,
     getById: getRecipe,
     getByCategoryId: getRecipesByCategory,
+    getFromCurrentUser: getRecipesWithUser,
     add: postRecipe,
     update: putRecipe,
   },
