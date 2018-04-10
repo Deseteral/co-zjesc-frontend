@@ -92,7 +92,7 @@ function App(props) {
                   <Route
                     path="/search/:query"
                     component={p => extractQueryFromUrl(p, query => (
-                      <SearchPage query={query} />
+                      <SearchPage {...p} query={query} />
                     ))}
                   />
                   <Route
