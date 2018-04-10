@@ -10,6 +10,7 @@ import shortid from 'shortid';
 import css from 'classnames';
 import CoZjescService from '../../services/co-zjesc-service';
 import Card from '../../components/Card/Card';
+import CardHeader from '../../components/CardHeader/CardHeader';
 import TextField from '../../components/TextField/TextField';
 import Select from '../../components/Select/Select';
 import styles from './RecipeEditor.css';
@@ -185,9 +186,9 @@ class RecipeEditor extends Component {
 
     return (
       <Card>
-        <div className={styles['card-header']}>
+        <CardHeader>
           {cardTitle}
-        </div>
+        </CardHeader>
         <section>
           <TextField
             label="Tytuł przepisu"

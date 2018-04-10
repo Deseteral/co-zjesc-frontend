@@ -11,7 +11,7 @@ function Container({ title, children }) { // eslint-disable-line react/prop-type
     : children;
 }
 
-function RecipeListing({ title, recipes }) {
+function RecipeListing({ title, recipes, withEditButtons }) {
   if (recipes.length === 0) {
     return <div />;
   }
@@ -20,7 +20,11 @@ function RecipeListing({ title, recipes }) {
     <Container title={title}>
       <Card className={styles['card']}>
         {recipes.map(recipe => (
-          <RecipeListingItem recipe={recipe} key={recipe.id} />
+          <RecipeListingItem
+            recipe={recipe}
+            withEditButton={withEditButtons}
+            key={recipe.id}
+          />
         ))}
       </Card>
     </Container>
@@ -30,11 +34,13 @@ function RecipeListing({ title, recipes }) {
 RecipeListing.propTypes = {
   title: PropTypes.string,
   recipes: PropTypes.arrayOf(PropTypes.object),
+  withEditButtons: PropTypes.bool,
 };
 
 RecipeListing.defaultProps = {
   title: null,
   recipes: [],
+  withEditButtons: false,
 };
 
 export default RecipeListing;
