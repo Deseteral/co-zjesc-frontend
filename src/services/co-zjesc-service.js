@@ -52,6 +52,18 @@ function getRecipesByProducts(productIds) {
   });
 }
 
+function getRecipesByQuery(query) {
+  const encodedQuery = encodeURI(query);
+
+  return new Promise((resolve, reject) => {
+    serviceFetch(`/api/recipes?search=${encodedQuery}`)
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(recipes => resolve(recipes))
+      .catch(e => reject(e));
+  });
+}
+
 function getRecipesByCategory(categoryId) {
   return new Promise((resolve, reject) => {
     serviceFetch(`/api/recipes?category=${categoryId}`)
@@ -143,6 +155,7 @@ const CoZjescService = {
     getFromCurrentUser: getRecipesWithUser,
     add: postRecipe,
     update: putRecipe,
+    search: getRecipesByQuery,
   },
   categories: {
     get: getCategories,
