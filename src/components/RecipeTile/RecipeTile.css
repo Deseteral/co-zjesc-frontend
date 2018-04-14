@@ -1,0 +1,16 @@
+.tile {
+  float: left;
+}
+
+.photo {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  height: 128px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.title {
+  margin-bottom: 8px;
+}

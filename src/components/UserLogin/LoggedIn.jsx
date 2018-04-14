@@ -22,12 +22,12 @@ class LoggedIn extends Component {
   }
 
   onMyAccountClick() {
-    window.location.replace('/my-account');
+    window.location.assign('/my-account');
     this.onMenuClose();
   }
 
   onAddRecipeClick() {
-    window.location.replace('/recipe/add');
+    window.location.assign('/recipe/add');
     this.onMenuClose();
   }
 

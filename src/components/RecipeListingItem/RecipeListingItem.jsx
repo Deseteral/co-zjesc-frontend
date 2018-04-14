@@ -6,7 +6,7 @@ import Icon from 'material-ui/Icon';
 import styles from './RecipeListingItem.css';
 
 function redirectToEditPage(recipeId) {
-  window.location.replace(`/recipe/${recipeId}/edit`);
+  window.location.assign(`/recipe/${recipeId}/edit`);
 }
 
 function RecipeListingItem({ recipe, withEditButton }) {

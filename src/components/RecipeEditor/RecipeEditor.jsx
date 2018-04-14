@@ -168,7 +168,7 @@ class RecipeEditor extends Component {
     console.log(recipe);
 
     CoZjescService.recipes[method](recipe)
-      .then(id => window.location.replace(`/recipe/${id}`))
+      .then(id => window.location.assign(`/recipe/${id}`))
       .catch(e => console.log(e));
   }
 
