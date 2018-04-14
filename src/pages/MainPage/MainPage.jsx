@@ -30,7 +30,11 @@ class MainPage extends Component {
         <SearchBar
           onEnterPress={query => redirectToSearchPage(query)}
         />
-        <RecipeCarousel recipes={this.state.testRecipes} />
+        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
+        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
+        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
+        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
+        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
       </Fragment>
     );
   }

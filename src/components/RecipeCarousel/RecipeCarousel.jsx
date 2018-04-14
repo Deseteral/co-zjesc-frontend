@@ -24,7 +24,7 @@ class RecipeCarousel extends Component {
     return (
       <Card className={styles['card']}>
         {title && (
-          <CardHeader>{title}</CardHeader>
+          <div className={styles['title']}>{title}</div>
         )}
         <div className={styles['slider-container']}>
           <Siema

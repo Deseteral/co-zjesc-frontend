@@ -2,6 +2,11 @@
   margin-top: 16px;
 }
 
+.title {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
 .slider-container {
   position: relative;
 }
