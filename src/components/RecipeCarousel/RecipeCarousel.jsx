@@ -5,15 +5,21 @@ import Siema from 'react-siema';
 import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
 import Card from '../Card/Card';
-import CardHeader from '../CardHeader/CardHeader';
 import RecipeTile from '../RecipeTile/RecipeTile';
 import styles from './RecipeCarousel.css';
+
+function calculatePerPage(width) {
+  if (width <= 320) return 1;
+  if (width <= 470) return 2;
+  return 3;
+}
 
 class RecipeCarousel extends Component {
   constructor(props) {
     super(props);
     this.siema = null;
   }
+
   render() {
     const { title, recipes } = this.props;
 
@@ -29,7 +35,7 @@ class RecipeCarousel extends Component {
         <div className={styles['slider-container']}>
           <Siema
             ref={(q) => { this.siema = q; }}
-            perPage={3}
+            perPage={calculatePerPage(window.innerWidth)}
             loop
           >
             {recipes.map(recipe => (
