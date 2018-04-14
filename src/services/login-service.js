@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import serviceFetch from './service-fetch';
 
 function hardRedirectToMainPage() {
-  window.location.replace('/');
+  window.location.assign('/');
 }
 
 function login(username, password) {

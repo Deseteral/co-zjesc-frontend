@@ -1,0 +1,25 @@
+.card {
+  margin-top: 16px;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.slider-container {
+  position: relative;
+}
+
+.nav-button {
+  position: absolute;
+  top: 70px;
+
+  &--left {
+    left: 4px;
+  }
+
+  &--right {
+    right: 4px;
+  }
+}
