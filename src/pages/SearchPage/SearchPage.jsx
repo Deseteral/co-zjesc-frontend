@@ -55,7 +55,7 @@ class SearchPage extends Component {
             recipes={recipes}
           />
         )}
-        {(!isLoading && recipes.length === 0) && (
+        {(!isLoading && recipes.length === 0 && query !== '') && (
           <div className={styles['no-results']}>
             Brak przepisów dla podanej frazy
           </div>
