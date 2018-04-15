@@ -83,7 +83,6 @@ function getEmptyProduct() {
 }
 
 function stateFromProps(props) {
-  console.log(props);
   return {
     id: props.id,
     title: props.title,
