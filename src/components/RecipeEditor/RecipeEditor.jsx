@@ -40,6 +40,7 @@ function mapStateToJson(state) {
   const {
     id,
     title,
+    category,
     images,
     description,
     difficulty,
@@ -60,6 +61,7 @@ function mapStateToJson(state) {
   return {
     id,
     title: title.trim(),
+    category,
     images: images.map(p => p.relativeUrl),
     products,
     description: description.toString('markdown'),
@@ -81,9 +83,11 @@ function getEmptyProduct() {
 }
 
 function stateFromProps(props) {
+  console.log(props);
   return {
     id: props.id,
     title: props.title,
+    category: props.category.id.toString(),
     images: props.images,
     products: props.products.map(p => ({
       id: p.id,
@@ -98,6 +102,7 @@ function stateFromProps(props) {
     timeToPrepare: props.timeToPrepare.toString(),
     tags: props.tags.map(t => t.name).join(','),
     units: [],
+    categories: [],
   };
 }
 
@@ -108,6 +113,7 @@ class RecipeEditor extends Component {
     const EMPTY_STATE = {
       id: null,
       title: '',
+      category: '',
       images: [],
       products: [getEmptyProduct()],
       description: RichTextEditor.createEmptyValue(),
@@ -117,6 +123,7 @@ class RecipeEditor extends Component {
       timeToPrepare: '',
       tags: '',
       units: [],
+      categories: [],
     };
 
     this.state = props.id
@@ -126,6 +133,7 @@ class RecipeEditor extends Component {
 
   componentDidMount() {
     CoZjescService.units.get().then(units => this.setState({ units }));
+    CoZjescService.categories.get().then(categories => this.setState({ categories }));
   }
 
   onFileDrop(files) {
@@ -195,6 +203,13 @@ class RecipeEditor extends Component {
             value={this.state.title}
             onChange={value => this.handleChange(value, 'title')}
             fullWidth
+          />
+          <Select
+            id="category-select"
+            label="Kategoria"
+            value={this.state.category}
+            options={this.state.categories}
+            onChange={value => this.handleChange(value, 'category')}
           />
         </section>
         <section>
