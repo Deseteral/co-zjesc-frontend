@@ -94,6 +94,16 @@ function getRecipe(recipeId) {
   });
 }
 
+function getCarousels() {
+  return new Promise((resolve, reject) => {
+    serviceFetch('/api/carousels')
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(carousels => resolve(carousels))
+      .catch(e => reject(e));
+  });
+}
+
 function postRecipe(recipe) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify(recipe);
@@ -159,6 +169,9 @@ const CoZjescService = {
   },
   categories: {
     get: getCategories,
+  },
+  carousels: {
+    get: getCarousels,
   },
 };
 

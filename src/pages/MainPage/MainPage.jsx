@@ -13,28 +13,32 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      testRecipes: [],
+      carousels: [],
     };
   }
 
   componentDidMount() {
     CoZjescService
-      .recipes
-      .search('test')
-      .then(recipes => this.setState({ testRecipes: recipes }));
+      .carousels
+      .get()
+      .then(carousels => this.setState({ carousels }));
   }
 
   render() {
+    const { carousels } = this.state;
+
     return (
       <Fragment>
         <SearchBar
           onEnterPress={query => redirectToSearchPage(query)}
         />
-        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
-        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
-        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
-        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
-        <RecipeCarousel title="Testowe przepisy" recipes={this.state.testRecipes} />
+        {carousels.map(carousel => (
+          <RecipeCarousel
+            key={carousel.name}
+            title={carousel.name}
+            recipes={carousel.recipes}
+          />
+        ))}
       </Fragment>
     );
   }
