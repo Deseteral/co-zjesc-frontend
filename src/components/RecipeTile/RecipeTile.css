@@ -13,4 +13,7 @@
 
 .title {
   margin-bottom: 8px;
+  margin-right: 8px;
+  height: 38px;
+  max-height: 38px;
 }
