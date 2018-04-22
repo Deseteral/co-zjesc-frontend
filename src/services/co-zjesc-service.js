@@ -94,6 +94,16 @@ function getRecipe(recipeId) {
   });
 }
 
+function getRandomRecipe() {
+  return new Promise((resolve, reject) => {
+    serviceFetch('/api/recipes/random')
+      .then(checkStatus)
+      .then(data => data.text())
+      .then(recipeId => resolve(recipeId))
+      .catch(e => reject(e));
+  });
+}
+
 function getCarousels() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/carousels')
@@ -166,6 +176,7 @@ const CoZjescService = {
     add: postRecipe,
     update: putRecipe,
     search: getRecipesByQuery,
+    getRandom: getRandomRecipe,
   },
   categories: {
     get: getCategories,
