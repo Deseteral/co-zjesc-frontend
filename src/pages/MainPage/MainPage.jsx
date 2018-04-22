@@ -46,11 +46,11 @@ class MainPage extends Component {
         />
         <div className={styles['buttons-containers']}>
           <NavLink to="/suggester" className={css(styles['button'], styles['button--left'])}>
-            <Icon style={({ fontSize: '110px' })}>lightbulb_outline</Icon>
+            <Icon style={({ fontSize: '110px', marginBottom: '16px' })}>lightbulb_outline</Icon>
             Zrób coś do jedzenia z tego co masz w lodówce!
           </NavLink>
           <button className={styles['button']} onClick={() => redirectToRandomRecipe()}>
-            <Icon style={({ fontSize: '110px' })}>swap_calls</Icon>
+            <Icon style={({ fontSize: '110px', marginBottom: '16px' })}>swap_calls</Icon>
             Losowy przepis!
           </button>
         </div>
