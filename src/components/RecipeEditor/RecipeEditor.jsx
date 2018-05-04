@@ -41,13 +41,11 @@ function mapStateToJson(state) {
     id,
     title,
     category,
-    images,
     description,
     difficulty,
     estimatedCost,
     portionCount,
     timeToPrepare,
-    tags,
   } = state;
 
   const products = state.products
@@ -59,18 +57,29 @@ function mapStateToJson(state) {
       unit: parseInt(p.unit, 10),
     }));
 
+  const images = state.images
+    .map(i => ({
+      id: i.id,
+      relativeUrl: i.relativeUrl,
+    }));
+
+  const tags = state.tags
+    .split(',')
+    .map(s => s.trim())
+    .filter(s => s.length);
+
   return {
     id,
     title: title.trim(),
     category,
-    images: images.map(p => p.relativeUrl),
+    images,
     products,
     description: description.toString('markdown'),
     difficulty: parseInt(difficulty, 10),
     estimatedCost: parseInt(estimatedCost, 10),
     portionCount: parseInt(portionCount, 10),
     timeToPrepare: parseInt(timeToPrepare, 10),
-    tags: tags.split(',').map(s => s.trim()).filter(s => s.length),
+    tags,
   };
 }
 
@@ -100,7 +109,7 @@ function stateFromProps(props) {
     estimatedCost: props.estimatedCost.toString(),
     portionCount: props.portionCount.toString(),
     timeToPrepare: props.timeToPrepare.toString(),
-    tags: props.tags.map(t => t.name).join(','),
+    tags: props.tags,
     units: [],
     categories: [],
   };
