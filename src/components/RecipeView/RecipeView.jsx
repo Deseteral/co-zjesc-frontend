@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import ImageGallery from 'react-image-gallery';
 import RichTextEditor from 'react-rte';
 import { DiscussionEmbed } from 'disqus-react';
+import ReactStars from 'react-stars';
 import Card from '../Card/Card';
 import CardHeader from '../CardHeader/CardHeader';
 import styles from './RecipeView.css';
 import './recipe-gallery.public.css';
 
-function RecipeView({ id, title, images, products, description, tiles, tags }) {
+function RecipeView({ id, title, images, products, description, tiles, tags, rating }) {
   const disqusConfig = {
     url: `http://cozjesc.netlify.com/recipe/${id}`,
     identifier: `recipe-${id}`,
@@ -29,6 +30,17 @@ function RecipeView({ id, title, images, products, description, tiles, tags }) {
           showThumbnails={false}
           showFullscreenButton={false}
           showPlayButton={false}
+        />
+      </section>
+      <section>
+        <ReactStars
+          count={5}
+          value={rating}
+          onChange={r => console.log(r)}
+          size={24}
+          edit={false}
+          color1="var(--disabled-text-color)"
+          color2="var(--accent-color)"
         />
       </section>
       <section>
@@ -76,6 +88,7 @@ RecipeView.propTypes = {
   description: PropTypes.string.isRequired,
   tiles: PropTypes.arrayOf(PropTypes.object).isRequired,
   tags: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rating: PropTypes.number.isRequired,
 };
 
 export default RecipeView;
