@@ -16,7 +16,7 @@ class RecipeView extends Component {
     super(props);
     this.state = {
       isFavorite: props.isFavorite,
-      canRate: true,
+      canRate: props.canVote,
     };
   }
 
@@ -150,6 +150,11 @@ RecipeView.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.object).isRequired,
   rating: PropTypes.number.isRequired,
   isFavorite: PropTypes.bool, // eslint-disable-line react/require-default-props
+  canVote: PropTypes.bool,
+};
+
+RecipeView.defaultProps = {
+  canVote: false,
 };
 
 export default RecipeView;
