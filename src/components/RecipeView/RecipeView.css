@@ -1,4 +1,9 @@
 .section {
+  &--stars {
+    display: flex;
+    align-items: center;
+  }
+
   &--tiles {
     display: flex;
     margin-top: 16px;
@@ -31,6 +36,10 @@
   &--value {
     color: var(--accent-color);
   }
+}
+
+.stars-container {
+  flex: 1;
 }
 
 div.description {

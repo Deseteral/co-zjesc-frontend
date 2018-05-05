@@ -68,16 +68,18 @@ class RecipeView extends Component {
             showPlayButton={false}
           />
         </section>
-        <section>
-          <ReactStars
-            count={5}
-            value={rating}
-            onChange={r => console.log(r)}
-            size={24}
-            edit={false}
-            color1="var(--disabled-text-color)"
-            color2="var(--accent-color)"
-          />
+        <section className={styles['section--stars']}>
+          <div className={styles['stars-container']}>
+            <ReactStars
+              count={5}
+              value={rating}
+              onChange={r => console.log(r)}
+              size={24}
+              edit={false}
+              color1="var(--disabled-text-color)"
+              color2="var(--accent-color)"
+            />
+          </div>
           {isFavorite !== null && (
             <FavoriteButton
               active={isFavorite}
