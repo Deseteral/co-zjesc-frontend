@@ -16,6 +16,7 @@ class RecipeView extends Component {
     super(props);
     this.state = {
       isFavorite: props.isFavorite,
+      canRate: true,
     };
   }
 
@@ -32,6 +33,16 @@ class RecipeView extends Component {
       .then(result => result && this.setState({ isFavorite: !isFavorite }));
   }
 
+  onRecipeRate(rating) {
+    const { id } = this.props;
+
+    CoZjescService
+      .recipes
+      .rate(id, rating)
+      .then(() => this.setState({ canRate: false }))
+      .catch(() => this.setState({ canRate: false }));
+  }
+
   render() {
     const {
       id,
@@ -44,7 +55,7 @@ class RecipeView extends Component {
       rating,
     } = this.props;
 
-    const { isFavorite } = this.state;
+    const { canRate, isFavorite } = this.state;
 
     const disqusConfig = {
       url: `http://cozjesc.netlify.com/recipe/${id}`,
@@ -73,9 +84,10 @@ class RecipeView extends Component {
             <ReactStars
               count={5}
               value={rating}
-              onChange={r => console.log(r)}
+              onChange={r => this.onRecipeRate(r)}
               size={24}
-              edit={false}
+              edit={canRate}
+              half={false}
               color1="var(--disabled-text-color)"
               color2="var(--accent-color)"
             />
