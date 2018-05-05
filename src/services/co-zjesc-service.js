@@ -158,6 +158,30 @@ function getCategories() {
   });
 }
 
+function addRecipeToFavorites(recipeId) {
+  return new Promise((resolve, reject) => {
+    serviceFetch(`/api/recipes/favorite/add?id=${recipeId}`, {
+      method: 'POST',
+    })
+      .then(checkStatus)
+      .then(data => data.text())
+      .then(text => resolve(JSON.parse(text)))
+      .catch(e => reject(e));
+  });
+}
+
+function removeRecipeFromFavorites(recipeId) {
+  return new Promise((resolve, reject) => {
+    serviceFetch(`/api/recipes/favorite/remove?id=${recipeId}`, {
+      method: 'POST',
+    })
+      .then(checkStatus)
+      .then(data => data.text())
+      .then(text => resolve(JSON.parse(text)))
+      .catch(e => reject(e));
+  });
+}
+
 const CoZjescService = {
   images: {
     post: postImages,
@@ -177,6 +201,10 @@ const CoZjescService = {
     update: putRecipe,
     search: getRecipesByQuery,
     getRandom: getRandomRecipe,
+    favorites: {
+      add: addRecipeToFavorites,
+      remove: removeRecipeFromFavorites,
+    },
   },
   categories: {
     get: getCategories,

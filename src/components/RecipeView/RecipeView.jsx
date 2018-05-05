@@ -8,6 +8,7 @@ import CardHeader from '../CardHeader/CardHeader';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import styles from './RecipeView.css';
 import './recipe-gallery.public.css';
+import CoZjescService from '../../services/co-zjesc-service';
 
 class RecipeView extends Component {
   constructor(props) {
@@ -15,6 +16,17 @@ class RecipeView extends Component {
     this.state = {
       isFavorite: props.isFavorite,
     };
+  }
+
+  onFavoritesPress() {
+    const { id } = this.props;
+    const { isFavorite } = this.state;
+    const method = isFavorite ? 'remove' : 'add';
+
+    CoZjescService
+      .recipes
+      .favorites[method](id)
+      .then(result => result && this.setState({ isFavorite: !isFavorite }));
   }
 
   render() {
@@ -53,10 +65,12 @@ class RecipeView extends Component {
           />
         </section>
         <section>
-          <FavoriteButton
-            active={isFavorite}
-            onClick={() => this.setState({ isFavorite: !isFavorite })}
-          />
+          {isFavorite !== null && (
+            <FavoriteButton
+              active={isFavorite}
+              onClick={() => this.onFavoritesPress()}
+            />
+          )}
         </section>
         <section>
           <div className={styles['section--header']}>
