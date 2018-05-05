@@ -23,6 +23,8 @@ class RecipeView extends Component {
     const { isFavorite } = this.state;
     const method = isFavorite ? 'remove' : 'add';
 
+    if (isFavorite === null) return;
+
     CoZjescService
       .recipes
       .favorites[method](id)
