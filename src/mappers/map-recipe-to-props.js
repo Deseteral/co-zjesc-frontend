@@ -35,6 +35,7 @@ function mapRecipeToProps(recipe) {
     tiles,
     tags,
     rating: recipe.averageRate,
+    isFavorite: recipe.isInFavorites,
   };
 }
 
