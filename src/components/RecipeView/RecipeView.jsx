@@ -57,6 +57,8 @@ class RecipeView extends Component {
 
     const { canRate, isFavorite } = this.state;
 
+    const normalizedRating = rating.toFixed(2);
+
     const disqusConfig = {
       url: `http://cozjesc.netlify.com/recipe/${id}`,
       identifier: `recipe-${id}`,
@@ -70,15 +72,6 @@ class RecipeView extends Component {
         <CardHeader>
           {title}
         </CardHeader>
-        <section>
-          <ImageGallery
-            items={images}
-            showNav
-            showThumbnails={false}
-            showFullscreenButton={false}
-            showPlayButton={false}
-          />
-        </section>
         <section className={styles['section--stars']}>
           <div className={styles['stars-container']}>
             <ReactStars
@@ -91,6 +84,7 @@ class RecipeView extends Component {
               color1="var(--disabled-text-color)"
               color2="var(--accent-color)"
             />
+            <div>Ocena: {normalizedRating}</div>
           </div>
           {isFavorite !== null && (
             <FavoriteButton
@@ -98,6 +92,15 @@ class RecipeView extends Component {
               onClick={() => this.onFavoritesPress()}
             />
           )}
+        </section>
+        <section>
+          <ImageGallery
+            items={images}
+            showNav
+            showThumbnails={false}
+            showFullscreenButton={false}
+            showPlayButton={false}
+          />
         </section>
         <section>
           <div className={styles['section--header']}>
@@ -129,7 +132,7 @@ class RecipeView extends Component {
         <section className={styles['section--tags']}>
           {tags.map(t => <div key={t.id} className={styles['soap']}>{t.name}</div>)}
         </section>
-        <section>
+        <section className={styles['section--comments']}>
           <DiscussionEmbed config={disqusConfig} shortname="cozjesc" />
         </section>
       </Card>

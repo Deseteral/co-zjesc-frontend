@@ -2,6 +2,7 @@
   &--stars {
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
   }
 
   &--tiles {
@@ -19,6 +20,10 @@
   &--header {
     font-size: 28px;
     margin: 16px 0;
+  }
+
+  &--comments {
+    margin-top: 64px;
   }
 }
 
