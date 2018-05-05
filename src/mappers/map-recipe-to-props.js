@@ -34,6 +34,8 @@ function mapRecipeToProps(recipe) {
     description,
     tiles,
     tags,
+    canVote: recipe.canVote,
+    rating: recipe.averageRate,
     isFavorite: recipe.isInFavorites,
   };
 }

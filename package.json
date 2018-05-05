@@ -20,6 +20,7 @@
     "react-router-dom": "4.2.2",
     "react-rte": "0.16.1",
     "react-siema": "git+https://github.com/sorodrigo/react-siema.git",
+    "react-stars": "2.2.5",
     "redux": "3.7.2",
     "redux-saga": "0.16.0",
     "shortid": "2.2.8"

@@ -1,4 +1,10 @@
 .section {
+  &--stars {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
   &--tiles {
     display: flex;
     margin-top: 16px;
@@ -14,6 +20,10 @@
   &--header {
     font-size: 28px;
     margin: 16px 0;
+  }
+
+  &--comments {
+    margin-top: 64px;
   }
 }
 
@@ -31,6 +41,10 @@
   &--value {
     color: var(--accent-color);
   }
+}
+
+.stars-container {
+  flex: 1;
 }
 
 div.description {

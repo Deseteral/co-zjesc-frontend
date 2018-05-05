@@ -158,6 +158,17 @@ function getCategories() {
   });
 }
 
+function rateRecipe(recipeId, rating) {
+  return new Promise((resolve, reject) => {
+    serviceFetch(`/api/recipes/${recipeId}/${rating}`, {
+      method: 'POST',
+    })
+      .then(checkStatus)
+      .then(() => resolve())
+      .catch(e => reject(e));
+  });
+}
+
 function addRecipeToFavorites(recipeId) {
   return new Promise((resolve, reject) => {
     serviceFetch(`/api/recipes/favorite/add?id=${recipeId}`, {
@@ -201,6 +212,7 @@ const CoZjescService = {
     update: putRecipe,
     search: getRecipesByQuery,
     getRandom: getRandomRecipe,
+    rate: rateRecipe,
     favorites: {
       add: addRecipeToFavorites,
       remove: removeRecipeFromFavorites,
