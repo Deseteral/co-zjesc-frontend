@@ -43,6 +43,7 @@ RecipeTile.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
 };
 
 export default RecipeTile;
