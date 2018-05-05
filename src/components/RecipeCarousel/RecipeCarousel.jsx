@@ -44,6 +44,7 @@ class RecipeCarousel extends Component {
                 id={recipe.id}
                 title={recipe.title}
                 imageUrl={recipe.image}
+                rating={recipe.averageRate}
               />
             ))}
           </Siema>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactStars from 'react-stars';
 import Button from 'material-ui/Button';
 import styles from './RecipeTile.css';
 
@@ -8,12 +9,21 @@ function redirectToRecipeView(id) {
   window.location.assign(recipeUrl);
 }
 
-function RecipeTile({ id, title, imageUrl }) {
+function RecipeTile({ id, title, imageUrl, rating }) {
   return (
     <div className={styles['tile']}>
       <div
         style={({ backgroundImage: `url("${imageUrl}")` })}
         className={styles['photo']}
+      />
+      <ReactStars
+        count={5}
+        value={rating}
+        size={21}
+        edit={false}
+        half={false}
+        color1="var(--disabled-text-color)"
+        color2="var(--accent-color)"
       />
       <div className={styles['title']}>
         {title}
