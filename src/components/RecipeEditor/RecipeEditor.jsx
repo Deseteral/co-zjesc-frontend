@@ -71,7 +71,7 @@ function mapStateToJson(state) {
   return {
     id,
     title: title.trim(),
-    category,
+    category: parseInt(category, 10),
     images,
     products,
     description: description.toString('markdown'),
@@ -109,7 +109,7 @@ function stateFromProps(props) {
     estimatedCost: props.estimatedCost.toString(),
     portionCount: props.portionCount.toString(),
     timeToPrepare: props.timeToPrepare.toString(),
-    tags: props.tags,
+    tags: props.tags.join(', '),
     units: [],
     categories: [],
   };
