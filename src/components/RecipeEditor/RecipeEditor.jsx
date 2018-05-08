@@ -109,7 +109,7 @@ function stateFromProps(props) {
     estimatedCost: props.estimatedCost.toString(),
     portionCount: props.portionCount.toString(),
     timeToPrepare: props.timeToPrepare.toString(),
-    tags: props.tags.join(', '),
+    tags: props.tags.map(t => t.name).join(', '),
     units: [],
     categories: [],
   };
