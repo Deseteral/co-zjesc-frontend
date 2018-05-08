@@ -51,7 +51,7 @@ function mapStateToJson(state) {
   const products = state.products
     .filter(p => (p.name.length > 0 && !!p.amount && !!p.unit))
     .map(p => ({
-      id: p.id,
+      id: typeof p.id === 'number' ? p.id : null,
       name: p.name,
       amount: parseFloat(p.amount),
       unit: parseInt(p.unit, 10),
