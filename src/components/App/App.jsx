@@ -14,6 +14,7 @@ import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
 import CategoryListingPage from '../../pages/CategoryListingPage/CategoryListingPage';
 import SearchPage from '../../pages/SearchPage/SearchPage';
 import MyRecipesPage from '../../pages/MyRecipesPage/MyRecipesPage';
+import MyFavoritesPage from '../../pages/MyFavoritesPage/MyFavoritesPage';
 import styles from './App.css';
 
 function extractIdFromUrl(props, callback) {
@@ -102,6 +103,10 @@ function App(props) {
                   <Route
                     path="/my-recipes"
                     component={MyRecipesPage}
+                  />
+                  <Route
+                    path="/my-favorites"
+                    component={MyFavoritesPage}
                   />
                 </Switch>
               </div>

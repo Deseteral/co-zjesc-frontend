@@ -195,6 +195,16 @@ function removeRecipeFromFavorites(recipeId) {
   });
 }
 
+function getFavoriteRecipes() {
+  return new Promise((resolve, reject) => {
+    serviceFetch('/api/recipes/favorites')
+      .then(checkStatus)
+      .then(data => data.json())
+      .then(recipes => resolve(recipes))
+      .catch(e => reject(e));
+  });
+}
+
 const CoZjescService = {
   images: {
     post: postImages,
@@ -218,6 +228,7 @@ const CoZjescService = {
     favorites: {
       add: addRecipeToFavorites,
       remove: removeRecipeFromFavorites,
+      getAll: getFavoriteRecipes,
     },
   },
   categories: {

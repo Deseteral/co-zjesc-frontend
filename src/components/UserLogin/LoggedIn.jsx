@@ -21,6 +21,11 @@ class LoggedIn extends Component {
     this.setState({ anchorElement: null });
   }
 
+  onMyFavoritesClick() {
+    window.location.assign('/my-favorites');
+    this.onMenuClose();
+  }
+
   onMyRecipesClick() {
     window.location.assign('/my-recipes');
     this.onMenuClose();
@@ -52,6 +57,9 @@ class LoggedIn extends Component {
           open={Boolean(anchorElement)}
           onClose={() => this.onMenuClose()}
         >
+          <MenuItem onClick={() => this.onMyFavoritesClick()}>
+            Moje ulubione
+          </MenuItem>
           <MenuItem onClick={() => this.onMyRecipesClick()}>
             Moje przepisy
           </MenuItem>
