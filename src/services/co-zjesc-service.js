@@ -164,7 +164,9 @@ function rateRecipe(recipeId, rating) {
       method: 'POST',
     })
       .then(checkStatus)
-      .then(() => resolve())
+      .then(res => res.text())
+      .then(data => parseFloat(data))
+      .then(rate => resolve(rate))
       .catch(e => reject(e));
   });
 }

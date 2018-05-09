@@ -17,6 +17,7 @@ class RecipeView extends Component {
     this.state = {
       isFavorite: props.isFavorite,
       canRate: props.canVote,
+      rating: props.rating,
     };
   }
 
@@ -39,7 +40,7 @@ class RecipeView extends Component {
     CoZjescService
       .recipes
       .rate(id, rating)
-      .then(() => this.setState({ canRate: false }))
+      .then(newRate => this.setState({ canRate: false, rating: newRate }))
       .catch(() => this.setState({ canRate: false }));
   }
 
@@ -52,10 +53,13 @@ class RecipeView extends Component {
       description,
       tiles,
       tags,
-      rating,
     } = this.props;
 
-    const { canRate, isFavorite } = this.state;
+    const {
+      canRate,
+      rating,
+      isFavorite,
+    } = this.state;
 
     const normalizedRating = rating.toFixed(2);
 
