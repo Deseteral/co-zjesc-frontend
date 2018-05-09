@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import RecipeListing from '../../components/RecipeListing/RecipeListing';
-import CardHeader from '../../components/CardHeader/CardHeader';
 import CoZjescService from '../../services/co-zjesc-service';
+import SuggesterSection from '../../components/SuggesterSection/SuggesterSection';
 
-class MyAccountPage extends Component {
+class MyRecipesPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,21 +21,20 @@ class MyAccountPage extends Component {
   render() {
     const { recipes } = this.state;
 
+    if (recipes) {
+      return (
+        <RecipeListing
+          title="Moje przepisy"
+          recipes={recipes}
+          withEditButtons
+        />
+      );
+    }
+
     return (
-      <Fragment>
-        <CardHeader>
-          Moje konto
-        </CardHeader>
-        {recipes && (
-          <RecipeListing
-            title="Moje przepisy"
-            recipes={recipes}
-            withEditButtons
-          />
-        )}
-      </Fragment>
+      <SuggesterSection title="Nie dodałeś żadnych przepisów" />
     );
   }
 }
 
-export default MyAccountPage;
+export default MyRecipesPage;

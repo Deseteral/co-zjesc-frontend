@@ -13,7 +13,7 @@ import NewRecipePage from '../../pages/NewRecipePage/NewRecipePage';
 import EditRecipePage from '../../pages/EditRecipePage/EditRecipePage';
 import CategoryListingPage from '../../pages/CategoryListingPage/CategoryListingPage';
 import SearchPage from '../../pages/SearchPage/SearchPage';
-import MyAccountPage from '../../pages/MyAccountPage/MyAccountPage';
+import MyRecipesPage from '../../pages/MyRecipesPage/MyRecipesPage';
 import styles from './App.css';
 
 function extractIdFromUrl(props, callback) {
@@ -100,8 +100,8 @@ function App(props) {
                     component={SearchPage}
                   />
                   <Route
-                    path="/my-account"
-                    component={MyAccountPage}
+                    path="/my-recipes"
+                    component={MyRecipesPage}
                   />
                 </Switch>
               </div>

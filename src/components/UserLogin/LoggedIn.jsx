@@ -21,8 +21,8 @@ class LoggedIn extends Component {
     this.setState({ anchorElement: null });
   }
 
-  onMyAccountClick() {
-    window.location.assign('/my-account');
+  onMyRecipesClick() {
+    window.location.assign('/my-recipes');
     this.onMenuClose();
   }
 
@@ -52,8 +52,8 @@ class LoggedIn extends Component {
           open={Boolean(anchorElement)}
           onClose={() => this.onMenuClose()}
         >
-          <MenuItem onClick={() => this.onMyAccountClick()}>
-            Moje konto
+          <MenuItem onClick={() => this.onMyRecipesClick()}>
+            Moje przepisy
           </MenuItem>
           <MenuItem onClick={() => this.onAddRecipeClick()}>
             Dodaj przepis
