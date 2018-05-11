@@ -74,3 +74,10 @@ div.description {
     align-items: center;
   }
 }
+
+@media print {
+  .favorites-container,
+  .section--comments {
+    display: none;
+  }
+}

@@ -26,7 +26,7 @@ class CategoryDropdown extends Component {
     const { anchorElement } = this.state;
 
     return (
-      <div>
+      <div className={styles['container']}>
         <Button
           onClick={e => this.onMenuButtonClick(e)}
           color="primary"

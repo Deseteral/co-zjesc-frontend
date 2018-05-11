@@ -42,3 +42,13 @@
     align-items: center;
   }
 }
+
+@media print {
+  .container {
+    box-shadow: none;
+
+    &--right {
+      display: none;
+    }
+  }
+}

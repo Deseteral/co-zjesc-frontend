@@ -4,6 +4,8 @@ import ImageGallery from 'react-image-gallery';
 import RichTextEditor from 'react-rte';
 import { DiscussionEmbed } from 'disqus-react';
 import ReactStars from 'react-stars';
+import IconButton from 'material-ui/IconButton';
+import Icon from 'material-ui/Icon';
 import Card from '../Card/Card';
 import CardHeader from '../CardHeader/CardHeader';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
@@ -90,12 +92,20 @@ class RecipeView extends Component {
             />
             <div>Ocena: {normalizedRating}</div>
           </div>
-          {isFavorite !== null && (
-            <FavoriteButton
-              active={isFavorite}
-              onClick={() => this.onFavoritesPress()}
-            />
-          )}
+          <div className={styles['favorites-container']}>
+            <IconButton
+              onClick={() => window.print()}
+              color="primary"
+            >
+              <Icon>print</Icon>
+            </IconButton>
+            {isFavorite !== null && (
+              <FavoriteButton
+                active={isFavorite}
+                onClick={() => this.onFavoritesPress()}
+              />
+            )}
+          </div>
         </section>
         <section>
           <ImageGallery
