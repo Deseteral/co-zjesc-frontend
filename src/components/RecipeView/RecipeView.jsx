@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ImageGallery from 'react-image-gallery';
 import RichTextEditor from 'react-rte';
@@ -74,82 +74,87 @@ class RecipeView extends Component {
     const editorDescription = RichTextEditor.createValueFromString(description, 'markdown');
 
     return (
-      <Card>
-        <CardHeader>
-          {title}
-        </CardHeader>
-        <section className={styles['section--stars']}>
-          <div className={styles['stars-container']}>
-            <ReactStars
-              count={5}
-              value={rating}
-              onChange={r => this.onRecipeRate(r)}
-              size={24}
-              edit={canRate}
-              half={false}
-              color1="var(--disabled-text-color)"
-              color2="var(--accent-color)"
-            />
-            <div>Ocena: {normalizedRating}</div>
-          </div>
-          <div className={styles['favorites-container']}>
-            <IconButton
-              onClick={() => window.print()}
-              color="primary"
-            >
-              <Icon>print</Icon>
-            </IconButton>
-            {isFavorite !== null && (
-              <FavoriteButton
-                active={isFavorite}
-                onClick={() => this.onFavoritesPress()}
+      <Fragment>
+        <Card>
+          <CardHeader>
+            {title}
+          </CardHeader>
+          <section className={styles['section--stars']}>
+            <div className={styles['stars-container']}>
+              <ReactStars
+                count={5}
+                value={rating}
+                onChange={r => this.onRecipeRate(r)}
+                size={24}
+                edit={canRate}
+                half={false}
+                color1="var(--disabled-text-color)"
+                color2="var(--accent-color)"
               />
-            )}
-          </div>
-        </section>
-        <section>
-          <ImageGallery
-            items={images}
-            showNav
-            showThumbnails={false}
-            showFullscreenButton={false}
-            showPlayButton={false}
-          />
-        </section>
-        <section>
-          <div className={styles['section--header']}>
-            Składniki
-          </div>
-          <ul>
-            {products.map(p => <li key={p.id}>{p.label}</li>)}
-          </ul>
-        </section>
-        <section>
-          <div className={styles['section--header']}>
-            Opis przygotowania
-          </div>
-          <RichTextEditor
-            className={styles['description']}
-            value={editorDescription}
-            toolbarConfig={({})}
-            disabled
-          />
-        </section>
-        <section className={styles['section--tiles']}>
-          {tiles.map(tile => (
-            <div className={styles['tile']} key={tile.id}>
-              <div className={styles['tile--value']}>{tile.value}</div>
-              <div className={styles['tile--title']}>{tile.title}</div>
+              <div>Ocena: {normalizedRating}</div>
             </div>
-          ))}
-        </section>
-        <section className={styles['section--tags']}>
-          {tags.map(t => <div key={t.id} className={styles['soap']}>{t.name}</div>)}
-        </section>
-        <section className={styles['section--comments']}>
-          <DiscussionEmbed config={disqusConfig} shortname="cozjesc" />
-        </section>
-      </Card>
+            <div className={styles['favorites-container']}>
+              <IconButton
+                onClick={() => window.print()}
+                color="primary"
+              >
+                <Icon>print</Icon>
+              </IconButton>
+              {isFavorite !== null && (
+                <FavoriteButton
+                  active={isFavorite}
+                  onClick={() => this.onFavoritesPress()}
+                />
+              )}
+            </div>
+          </section>
+          <section>
+            <ImageGallery
+              items={images}
+              showNav
+              showThumbnails={false}
+              showFullscreenButton={false}
+              showPlayButton={false}
+            />
+          </section>
+          <section>
+            <div className={styles['section--header']}>
+              Składniki
+            </div>
+            <ul>
+              {products.map(p => <li key={p.id}>{p.label}</li>)}
+            </ul>
+          </section>
+          <section>
+            <div className={styles['section--header']}>
+              Opis przygotowania
+            </div>
+            <RichTextEditor
+              className={styles['description']}
+              value={editorDescription}
+              toolbarConfig={({})}
+              disabled
+            />
+          </section>
+          <section className={styles['section--tiles']}>
+            {tiles.map(tile => (
+              <div className={styles['tile']} key={tile.id}>
+                <div className={styles['tile--value']}>{tile.value}</div>
+                <div className={styles['tile--title']}>{tile.title}</div>
+              </div>
+            ))}
+          </section>
+          <section className={styles['section--tags']}>
+            {tags.map(t => <div key={t.id} className={styles['soap']}>{t.name}</div>)}
+          </section>
+          <section className={styles['section--comments']}>
+            <DiscussionEmbed config={disqusConfig} shortname="cozjesc" />
+          </section>
+        </Card>
+        <p className={styles['license-info']}>
+          Przepisy ze zmianami i zdjęcia z <a href="https://pl.wikibooks.org/wiki/Książka_kucharska">https://pl.wikibooks.org/wiki/Książka_kucharska</a> na licencji <a href="https://creativecommons.org/licenses/by-sa/3.0/legalcode.pl">Creative Commons</a>.
+        </p>
+      </Fragment>
     );
   }
 }
