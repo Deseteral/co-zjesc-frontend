@@ -26,12 +26,14 @@
     "shortid": "2.2.8"
   },
   "devDependencies": {
-    "cross-env": "5.1.1"
+    "cross-env": "5.1.1",
+    "jsdoc": "3.5.5"
   },
   "scripts": {
     "start": "cross-env SERVICE_URL=http://cozjesc.azurewebsites.net react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "lint": "eslint src --ext js,jsx"
+    "lint": "eslint src --ext js,jsx",
+    "doc": "rm -rf ./docs && jsdoc -c ./jsdoc.json"
   }
 }
