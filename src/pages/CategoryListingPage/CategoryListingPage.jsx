@@ -1,9 +1,17 @@
+/**
+ * @module pages/CategoryListingPage
+ */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RecipeListing from '../../components/RecipeListing/RecipeListing';
 import Spinner from '../../components/Spinner/Spinner';
 import CoZjescService from '../../services/co-zjesc-service';
 
+/**
+ * Component used to render recipe listing in specified category.
+ * It is capable of rendering loading spinner while fetching recipes and category name.
+ */
 class CategoryListingPage extends Component {
   constructor(props) {
     super(props);

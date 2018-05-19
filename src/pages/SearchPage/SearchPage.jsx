@@ -1,3 +1,7 @@
+/**
+ * @module pages/SearchPage
+ */
+
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -6,6 +10,10 @@ import Spinner from '../../components/Spinner/Spinner';
 import CoZjescService from '../../services/co-zjesc-service';
 import styles from './SearchPage.css';
 
+/**
+ * Search page form component.
+ * It handles fetching recipes and rendering them.
+ */
 class SearchPage extends Component {
   constructor(props) {
     super(props);

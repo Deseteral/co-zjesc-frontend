@@ -1,8 +1,16 @@
+/**
+ * @module pages/MyFavoritesPage
+ */
+
 import React, { Component } from 'react';
 import RecipeListing from '../../components/RecipeListing/RecipeListing';
 import CoZjescService from '../../services/co-zjesc-service';
 import SuggesterSection from '../../components/SuggesterSection/SuggesterSection';
 
+/**
+ * Component used to render recipe listing with users favorite recipes.
+ * It handles fetching recipes for currently logged user.
+ */
 class MyFavoritesPage extends Component {
   constructor(props) {
     super(props);

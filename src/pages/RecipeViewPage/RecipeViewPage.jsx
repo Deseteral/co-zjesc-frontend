@@ -1,3 +1,7 @@
+/**
+ * @module pages/RecipeViewPage
+ */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RecipeView from '../../components/RecipeView/RecipeView';
@@ -5,6 +9,9 @@ import Spinner from '../../components/Spinner/Spinner';
 import mapRecipeToProps from '../../mappers/map-recipe-to-props';
 import CoZjescService from '../../services/co-zjesc-service';
 
+/**
+ * Component used to fetch and render recipe.
+ */
 class RecipeViewPage extends Component {
   constructor(props) {
     super(props);

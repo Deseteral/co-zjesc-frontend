@@ -1,3 +1,7 @@
+/**
+ * @module pages/MainPage
+ */
+
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import css from 'classnames';
@@ -7,12 +11,19 @@ import RecipeCarousel from '../../components/RecipeCarousel/RecipeCarousel';
 import CoZjescService from '../../services/co-zjesc-service';
 import styles from './MainPage.css';
 
+/**
+ * Redirects search results page for given query.
+ * @param {string} query - search query
+ */
 function redirectToSearchPage(query) {
   const encodedQuery = encodeURI(query);
   const redirectUrl = `/search/${encodedQuery}`;
   window.location.assign(redirectUrl);
 }
 
+/**
+ * Fetches random recipe id and redirects to its page.
+ */
 function redirectToRandomRecipe() {
   CoZjescService
     .recipes
@@ -20,6 +31,9 @@ function redirectToRandomRecipe() {
     .then(id => window.location.assign(`/recipe/${id}`));
 }
 
+/**
+ * Component used to render main page.
+ */
 class MainPage extends Component {
   constructor(props) {
     super(props);

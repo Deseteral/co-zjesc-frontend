@@ -1,3 +1,7 @@
+/**
+ * @module pages/RegisterPage
+ */
+
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
@@ -6,6 +10,9 @@ import TextField from '../../components/TextField/TextField';
 import { register } from '../../services/login-service';
 import styles from './RegisterPage.css';
 
+/**
+ * User sign up form component.
+ */
 class RegisterPage extends Component {
   constructor(props) {
     super(props);

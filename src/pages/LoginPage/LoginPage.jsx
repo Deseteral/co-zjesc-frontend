@@ -1,3 +1,7 @@
+/**
+ * @module pages/LoginPage
+ */
+
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Button from 'material-ui/Button';
@@ -7,6 +11,9 @@ import TextField from '../../components/TextField/TextField';
 import { login } from '../../services/login-service';
 import styles from './LoginPage.css';
 
+/**
+ * Login form page.
+ */
 class LoginPage extends Component {
   constructor(props) {
     super(props);
