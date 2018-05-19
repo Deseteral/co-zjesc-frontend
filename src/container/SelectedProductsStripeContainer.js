@@ -1,3 +1,7 @@
+/**
+ * @module container/SelectedProductsStripeContainer
+ */
+
 import { connect } from 'react-redux';
 import SelectedProductsStripe from '../components/SelectedProductsStripe/SelectedProductsStripe';
 import { removeProduct } from '../actions/selected-products';
@@ -19,4 +23,8 @@ const SelectedProductsStripeContainer = connect(
   mapDispatchToProps,
 )(SelectedProductsStripe);
 
+
+/**
+ * SelectedProductsStripe component connected to the application store
+ */
 export default SelectedProductsStripeContainer;

@@ -1,3 +1,7 @@
+/**
+ * @module container/SuggesterRecipeListing
+ */
+
 import { connect } from 'react-redux';
 import RecipeListing from '../components/RecipeListing/RecipeListing';
 
@@ -17,4 +21,8 @@ const SuggesterRecipeListing = connect(
   mapDispatchToProps,
 )(RecipeListing);
 
+/**
+ * RecipeListing component connected to the application store
+ * Renders recipes that were suggested by the service
+ */
 export default SuggesterRecipeListing;

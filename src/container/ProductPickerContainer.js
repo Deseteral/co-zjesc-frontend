@@ -1,3 +1,7 @@
+/**
+ * @module container/ProductPickerContainer
+ */
+
 import { connect } from 'react-redux';
 import ProductPicker from '../components/ProductPicker/ProductPicker';
 import { recipesByProductsFetch } from '../actions/recipes-by-products';
@@ -22,4 +26,7 @@ const ProductPickerContainer = connect(
   mapDispatchToProps,
 )(ProductPicker);
 
+/**
+ * ProductPicker component connected to the application store
+ */
 export default ProductPickerContainer;
