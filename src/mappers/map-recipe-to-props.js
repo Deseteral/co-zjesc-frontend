@@ -1,3 +1,11 @@
+/**
+ * @module mappers/map-recipe-to-props
+ */
+
+/**
+ * Maps difficulty level to corresponding name
+ * @param {number} level - difficulty level
+ */
 function mapDifficultyLevel(level) {
   if (level === 1) return 'bardzo łatwy';
   if (level === 2) return 'łatwy';
@@ -7,7 +15,10 @@ function mapDifficultyLevel(level) {
   return null;
 }
 
-// TODO: Foolproof it!
+/**
+ * Maps recipe service object to RecipeView props
+ * @param {object} recipe - Recipe object from service
+ */
 function mapRecipeToProps(recipe) {
   const { id, title, description, tags } = recipe;
 
