@@ -11,6 +11,9 @@ import {
   RECIPES_BY_PRODUCTS_FETCH_REQUESTED,
 } from '../actions/recipes-by-products';
 
+/**
+ * When requested calls service to get product list and dispatches action when finished.
+ */
 function* fetchProducts() {
   try {
     const products = yield call(CoZjescService.products.get);
@@ -20,6 +23,10 @@ function* fetchProducts() {
   }
 }
 
+/**
+ * When requested calls service to get recipes from suggester and dispatches action when finished.
+ * @param {object} action - redux standard action
+ */
 function* fetchRecipesByProducts(action) {
   try {
     const productIds = action.payload;
