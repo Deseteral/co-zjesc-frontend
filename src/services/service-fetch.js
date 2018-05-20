@@ -1,5 +1,10 @@
 import Cookies from 'js-cookie';
 
+/**
+ * Performs fetch to co-zjesc service with authentication.
+ * @param {string} url - relative url to resource location
+ * @param {object} options - fetch API options
+ */
 function serviceFetch(url, options = {}) {
   const optionsWithAuthorization = options;
   const token = Cookies.get('token');

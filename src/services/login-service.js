@@ -2,10 +2,19 @@ import checkStatus from 'fetch-check-http-status';
 import Cookies from 'js-cookie';
 import serviceFetch from './service-fetch';
 
+/**
+ * Forces redirect to main page.
+ */
 function hardRedirectToMainPage() {
   window.location.assign('/');
 }
 
+/**
+ * Tries to get users token given username and password.
+ * When successful user token is saved as cookie and used in future requests.
+ * @param {string} username - login username
+ * @param {string} password - login password
+ */
 function login(username, password) {
   return new Promise((resolve, reject) => {
     const formData = new URLSearchParams();
@@ -34,11 +43,20 @@ function login(username, password) {
   });
 }
 
+/**
+ * Removes user token cookie.
+ */
 function logout() {
   Cookies.remove('token');
   hardRedirectToMainPage();
 }
 
+/**
+ * Tries to register a new user in service and when successful logs new user in.
+ * @param {string} userName - username of new user
+ * @param {*} password - password for new user
+ * @param {*} confirmPassword - password for new user
+ */
 function register(userName, password, confirmPassword) {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/account/register', {
@@ -55,6 +73,9 @@ function register(userName, password, confirmPassword) {
   });
 }
 
+/**
+ * Resolves with username of logged user.
+ */
 function getUserName() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/user')
@@ -65,6 +86,10 @@ function getUserName() {
   });
 }
 
+/**
+ * Checks whether user is logged in.
+ * @return {boolean} - true is user is logged in, false otherwise
+ */
 function isLoggedIn() {
   return Cookies.get('token') !== undefined;
 }

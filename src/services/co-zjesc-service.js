@@ -1,6 +1,10 @@
 import checkStatus from 'fetch-check-http-status';
 import serviceFetch from './service-fetch';
 
+/**
+ * Posts new images for recipe.
+ * @param {object} formData - form data with file objects
+ */
 function postImages(formData) {
   return new Promise((resolve, reject) => {
     const options = {
@@ -16,6 +20,9 @@ function postImages(formData) {
   });
 }
 
+/**
+ * Resolves with every unit available for the recipes.
+ */
 function getUnits() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/units')
@@ -26,6 +33,9 @@ function getUnits() {
   });
 }
 
+/**
+ * Resolves with every product available for the recipes.
+ */
 function getProducts() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/products')
@@ -36,6 +46,10 @@ function getProducts() {
   });
 }
 
+/**
+ * Resolves with recipes returned from suggester based on given product IDs.
+ * @param {number[]} productIds - IDs of the products
+ */
 function getRecipesByProducts(productIds) {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/recipes/getRecipesByProducts', {
@@ -52,6 +66,10 @@ function getRecipesByProducts(productIds) {
   });
 }
 
+/**
+ * Searches recipes based on given search query.
+ * @param {string} query - search query
+ */
 function getRecipesByQuery(query) {
   const encodedQuery = encodeURI(query);
 
@@ -64,6 +82,10 @@ function getRecipesByQuery(query) {
   });
 }
 
+/**
+ * Resolves with recipes in given category.
+ * @param {number} categoryId - ID of the category
+ */
 function getRecipesByCategory(categoryId) {
   return new Promise((resolve, reject) => {
     serviceFetch(`/api/recipes?category=${categoryId}`)
@@ -74,6 +96,9 @@ function getRecipesByCategory(categoryId) {
   });
 }
 
+/**
+ * Resolved with list of recipes submitted by currently logged in user.
+ */
 function getRecipesWithUser() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/user/recipes')
@@ -84,6 +109,10 @@ function getRecipesWithUser() {
   });
 }
 
+/**
+ * Resolved with recipe data for given recipe ID.
+ * @param {number} recipeId - ID of the recipe
+ */
 function getRecipe(recipeId) {
   return new Promise((resolve, reject) => {
     serviceFetch(`/api/recipes/${recipeId}`)
@@ -94,6 +123,9 @@ function getRecipe(recipeId) {
   });
 }
 
+/**
+ * Resolves with random recipe ID.
+ */
 function getRandomRecipe() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/recipes/random')
@@ -104,6 +136,9 @@ function getRandomRecipe() {
   });
 }
 
+/**
+ * Resolves with list of carousels for the main page.
+ */
 function getCarousels() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/carousels')
@@ -114,6 +149,10 @@ function getCarousels() {
   });
 }
 
+/**
+ * Creates new recipe and resolves with its ID.
+ * @param {object} recipe - recipe data object
+ */
 function postRecipe(recipe) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify(recipe);
@@ -131,6 +170,10 @@ function postRecipe(recipe) {
   });
 }
 
+/**
+ * Updates (inplace) recipe with new recipe.
+ * @param {object} recipe - updated recipe data
+ */
 function putRecipe(recipe) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify(recipe);
@@ -148,6 +191,9 @@ function putRecipe(recipe) {
   });
 }
 
+/**
+ * Resolves with list of categories.
+ */
 function getCategories() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/categories')
@@ -158,6 +204,12 @@ function getCategories() {
   });
 }
 
+/**
+ * Sends vote to rate the recipe.
+ * Resolves with new average recipe rating.
+ * @param {number} recipeId - ID of the recipe to rate
+ * @param {number} rating - new recipe rating (from 1 to 5)
+ */
 function rateRecipe(recipeId, rating) {
   return new Promise((resolve, reject) => {
     serviceFetch(`/api/recipes/${recipeId}/${rating}`, {
@@ -171,6 +223,10 @@ function rateRecipe(recipeId, rating) {
   });
 }
 
+/**
+ * Adds specified recipe to favorites for currently logged in user.
+ * @param {number} recipeId - ID of the recipe
+ */
 function addRecipeToFavorites(recipeId) {
   return new Promise((resolve, reject) => {
     serviceFetch(`/api/recipes/favorite/add?id=${recipeId}`, {
@@ -183,6 +239,10 @@ function addRecipeToFavorites(recipeId) {
   });
 }
 
+/**
+ * Removes specified recipe from favorites of currently logged in user.
+ * @param {number} recipeId - ID of the recipe
+ */
 function removeRecipeFromFavorites(recipeId) {
   return new Promise((resolve, reject) => {
     serviceFetch(`/api/recipes/favorite/remove?id=${recipeId}`, {
@@ -195,6 +255,9 @@ function removeRecipeFromFavorites(recipeId) {
   });
 }
 
+/**
+ * Resolves with a list of favorite recipes of currently logged in user.
+ */
 function getFavoriteRecipes() {
   return new Promise((resolve, reject) => {
     serviceFetch('/api/recipes/favorites')
