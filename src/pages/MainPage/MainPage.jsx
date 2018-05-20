@@ -43,12 +43,18 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
+    this.fetchCarousels();
+  }
+
+  /**
+   * Used to fetch and save list of carouserls to the state.
+   */
+  fetchCarousels() {
     CoZjescService
       .carousels
       .get()
       .then(carousels => this.setState({ carousels }));
   }
-
 
   render() {
     const { carousels } = this.state;

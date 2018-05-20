@@ -19,9 +19,17 @@ class EditRecipePage extends Component {
   }
 
   componentDidMount() {
+    this.fetchRecipe(this.props.id);
+  }
+
+  /**
+   * Fetches recipe and saves it to the state.
+   * @param {number} id - ID of the recipe to fetch.
+   */
+  fetchRecipe(id) {
     CoZjescService
       .recipes
-      .getById(this.props.id)
+      .getById(id)
       .then(recipe => this.setState({ recipe }));
   }
 

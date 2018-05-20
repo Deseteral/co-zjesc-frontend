@@ -20,6 +20,13 @@ class MyFavoritesPage extends Component {
   }
 
   componentDidMount() {
+    this.fetchAllRecipes();
+  }
+
+  /**
+   * Fetches all recipes and persists them to the state.
+   */
+  fetchAllRecipes() {
     CoZjescService
       .recipes
       .favorites

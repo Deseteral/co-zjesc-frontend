@@ -32,6 +32,10 @@ class CategoryListingPage extends Component {
     this.fetchCategoryName(categoryId);
   }
 
+  /**
+   * Fetches recipes and saves result to the state.
+   * @param {number} categoryId - ID of category to fetch recipes from.
+   */
   fetchRecipeList(categoryId) {
     CoZjescService
       .recipes
@@ -39,6 +43,10 @@ class CategoryListingPage extends Component {
       .then(recipeList => this.setState({ recipeList }));
   }
 
+  /**
+   * Fetches category name and saves it to the state.
+   * @param {number} categoryId - ID of category to fetch recipes from.
+   */
   fetchCategoryName(categoryId) {
     CoZjescService
       .categories

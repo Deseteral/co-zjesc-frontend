@@ -24,10 +24,19 @@ class RegisterPage extends Component {
     };
   }
 
+  /**
+   * Handles change in text input component.
+   * @param {string} value - new value from input.
+   * @param {string} part - actual component to save the value to.
+   */
   handleChange(value, part) {
     this.setState({ [part]: value });
   }
 
+  /**
+   * Handles form submission.
+   * @param {object} event - submit event.
+   */
   handleSubmit(event) {
     event.preventDefault();
 

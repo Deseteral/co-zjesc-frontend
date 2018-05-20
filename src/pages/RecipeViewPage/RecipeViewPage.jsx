@@ -21,9 +21,17 @@ class RecipeViewPage extends Component {
   }
 
   componentDidMount() {
+    this.fetchRecipeById(this.props.recipeId);
+  }
+
+  /**
+   * Fetch recipe data by its ID and persist it to the state.
+   * @param {number} id - recipe ID
+   */
+  fetchRecipeById(id) {
     CoZjescService
       .recipes
-      .getById(this.props.recipeId)
+      .getById(id)
       .then(recipe => this.setState({ recipe }));
   }
 

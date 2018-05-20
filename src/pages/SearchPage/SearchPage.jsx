@@ -30,11 +30,19 @@ class SearchPage extends Component {
     }
   }
 
+  /**
+   * Handle enter key press on search input.
+   * @param {string} query - search query
+   */
   onEnterPress(query) {
     this.setState({ query });
     this.refreshRecipes(query);
   }
 
+  /**
+   * Fetches new recipes that match given search query and persists them to the state.
+   * @param {string} query - search query
+   */
   refreshRecipes(query) {
     this.setState({ isLoading: true });
 

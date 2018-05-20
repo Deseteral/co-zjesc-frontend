@@ -20,6 +20,13 @@ class MyRecipesPage extends Component {
   }
 
   componentDidMount() {
+    this.fetchUserRecipes();
+  }
+
+  /**
+   * Fetch recipes submited by currently logged-in user and persist them to the state.
+   */
+  fetchUserRecipes() {
     CoZjescService
       .recipes
       .getFromCurrentUser()
