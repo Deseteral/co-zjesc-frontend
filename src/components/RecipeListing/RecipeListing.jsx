@@ -21,7 +21,11 @@ function Container({ title, children }) { // eslint-disable-line react/prop-type
  */
 function RecipeListing({ title, recipes, withEditButtons }) {
   if (recipes.length === 0) {
-    return <div />;
+    return (
+      <div className={styles['message']}>
+        Tutaj nie ma żadnych przepisów, spróbuj poszukać gdzie indziej...
+      </div>
+    );
   }
 
   return (
