@@ -19,6 +19,7 @@ import CategoryListingPage from '../../pages/CategoryListingPage/CategoryListing
 import SearchPage from '../../pages/SearchPage/SearchPage';
 import MyRecipesPage from '../../pages/MyRecipesPage/MyRecipesPage';
 import MyFavoritesPage from '../../pages/MyFavoritesPage/MyFavoritesPage';
+import Maintenance from '../../pages/Maintenance/Maintenance';
 import styles from './App.css';
 
 /**
@@ -125,6 +126,10 @@ function App(props) {
                   <Route
                     path="/my-favorites"
                     component={MyFavoritesPage}
+                  />
+                  <Route
+                    path="/maintenance"
+                    component={Maintenance}
                   />
                 </Switch>
               </div>
