@@ -5,6 +5,9 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import Icon from 'material-ui/Icon';
 import { logout } from '../../services/login-service';
 
+/**
+ * User login component for logged in user.
+ */
 class LoggedIn extends Component {
   constructor(props) {
     super(props);
@@ -13,29 +16,48 @@ class LoggedIn extends Component {
     };
   }
 
+  /**
+   * Handles menu button click.
+   * @param {object} event - click event
+   */
   onMenuButtonClick(event) {
     this.setState({ anchorElement: event.currentTarget });
   }
 
+  /**
+   * Handles closing the menu.
+   */
   onMenuClose() {
     this.setState({ anchorElement: null });
   }
 
+  /**
+   * Handles clicking on the my favorites item.
+   */
   onMyFavoritesClick() {
     window.location.assign('/my-favorites');
     this.onMenuClose();
   }
 
+  /**
+   * Handles clicking on the my recipes item.
+   */
   onMyRecipesClick() {
     window.location.assign('/my-recipes');
     this.onMenuClose();
   }
 
+  /**
+   * Handles clicking on the add new recipe item.
+   */
   onAddRecipeClick() {
     window.location.assign('/recipe/add');
     this.onMenuClose();
   }
 
+  /**
+   * Handles clicking on the logout item.
+   */
   onLogoutClick() {
     logout();
     this.onMenuClose();

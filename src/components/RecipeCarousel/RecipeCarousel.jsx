@@ -8,12 +8,19 @@ import Card from '../Card/Card';
 import RecipeTile from '../RecipeTile/RecipeTile';
 import styles from './RecipeCarousel.css';
 
+/**
+ * Returns number of items in carousel based on screen width.
+ * @param {number} width - screen width
+ */
 function calculatePerPage(width) {
   if (width <= 320) return 1;
   if (width <= 470) return 2;
   return 3;
 }
 
+/**
+ * Carousel component which holds recipe tiles.
+ */
 class RecipeCarousel extends Component {
   constructor(props) {
     super(props);

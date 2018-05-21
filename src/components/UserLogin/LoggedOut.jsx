@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 import Button from 'material-ui/Button';
 import styles from './LoggedOut.css';
 
+/**
+ * User login component for logged out user.
+ */
 function LoggedOut({ className }) {
   return (
     <div className={className}>

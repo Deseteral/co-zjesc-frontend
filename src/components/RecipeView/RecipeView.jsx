@@ -13,6 +13,9 @@ import styles from './RecipeView.css';
 import './recipe-gallery.public.css';
 import CoZjescService from '../../services/co-zjesc-service';
 
+/**
+ * Recipe view component.
+ */
 class RecipeView extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +26,9 @@ class RecipeView extends Component {
     };
   }
 
+  /**
+   * Handles adding recipe to favorites.
+   */
   onFavoritesPress() {
     const { id } = this.props;
     const { isFavorite } = this.state;
@@ -36,6 +42,10 @@ class RecipeView extends Component {
       .then(result => result && this.setState({ isFavorite: !isFavorite }));
   }
 
+  /**
+   * Handles voting on recipe rating.
+   * @param {number} rating - new rating for the recipe
+   */
   onRecipeRate(rating) {
     const { id } = this.props;
 

@@ -17,17 +17,31 @@ import MyRecipesPage from '../../pages/MyRecipesPage/MyRecipesPage';
 import MyFavoritesPage from '../../pages/MyFavoritesPage/MyFavoritesPage';
 import styles from './App.css';
 
+/**
+ * Extracts resource ID from URL.
+ * @param {object} props - router props
+ * @param {object} callback - callback function
+ */
 function extractIdFromUrl(props, callback) {
   const id = parseInt(props.match.params.id, 10);
   return callback(id);
 }
 
+/**
+ * Extracts query string from URL.
+ * @param {object} props - router props
+ * @param {object} callback - callback function
+ */
 function extractQueryFromUrl(props, callback) {
   const encodedQuery = props.match.params.query;
   const query = decodeURI(encodedQuery);
   return callback(query);
 }
 
+/**
+ * Main application component. Serves as an entry point.
+ * @param {object} props - component props
+ */
 function App(props) {
   const theme = createMuiTheme({
     palette: {

@@ -11,6 +11,10 @@ function Container({ title, children }) { // eslint-disable-line react/prop-type
     : children;
 }
 
+/**
+ * Component that renders list of recipes.
+ * @param {object} props - component props
+ */
 function RecipeListing({ title, recipes, withEditButtons }) {
   if (recipes.length === 0) {
     return <div />;

@@ -4,7 +4,15 @@ import Autocomplete from 'react-autocomplete';
 import css from 'classnames';
 import styles from './ProductPicker.css';
 
+/**
+ * Suggester's product picker.
+ */
 class ProductPicker extends Component {
+  /**
+   * Returns picker list element.
+   * @param {object} item - an item to render
+   * @param {boolean} highlighted - is this item highlighted
+   */
   static renderItem(item, highlighted) {
     const className = css(
       styles['item'],

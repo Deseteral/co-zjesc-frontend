@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './SuggesterSection.css';
 
+/**
+ * Section for the suggester page.
+ * @param {object} props - component props
+ */
 function SuggesterSection({ title, children }) {
   return (
     <section className={styles['section']}>

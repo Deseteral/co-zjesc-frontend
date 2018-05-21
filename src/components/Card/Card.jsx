@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import css from 'classnames';
 import styles from './Card.css';
 
+/**
+ * Card component. Piece of paper with shadow with slot for its children.
+ * @param {object} props - component props
+ */
 function Card({ className, children }) {
   const cardClassName = css(
     styles['card'],

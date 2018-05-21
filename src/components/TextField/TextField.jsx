@@ -11,6 +11,10 @@ function handleKeyPress(event, onEnterPress) {
   }
 }
 
+/**
+ * Material Design text field component.
+ * @param {object} props - component props
+ */
 function TextField({ value, label, fullWidth, endAdornment, onChange, onEnterPress, password }) {
   const type = password ? 'password' : 'text';
   const InputProps = endAdornment

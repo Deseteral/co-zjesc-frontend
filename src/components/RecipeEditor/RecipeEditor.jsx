@@ -36,6 +36,10 @@ const EDITOR_TOOLBAR_CONFIG = {
   ],
 };
 
+/**
+ * Maps component's state to service object.
+ * @param {object} state - component's state
+ */
 function mapStateToJson(state) {
   const {
     id,
@@ -82,6 +86,9 @@ function mapStateToJson(state) {
   };
 }
 
+/**
+ * Creates empty product.
+ */
 function getEmptyProduct() {
   return {
     id: shortid.generate(),
@@ -91,6 +98,10 @@ function getEmptyProduct() {
   };
 }
 
+/**
+ * Maps component props to its internal state.
+ * @param {object} props - component props
+ */
 function stateFromProps(props) {
   return {
     id: props.id,
@@ -114,6 +125,9 @@ function stateFromProps(props) {
   };
 }
 
+/**
+ * Recipe editor form component.
+ */
 class RecipeEditor extends Component {
   constructor(props) {
     super(props);
@@ -144,6 +158,10 @@ class RecipeEditor extends Component {
     CoZjescService.categories.get().then(categories => this.setState({ categories }));
   }
 
+  /**
+   * Handles file upload on drop.
+   * @param {object[]} files - list of files to upload
+   */
   onFileDrop(files) {
     const formData = new FormData();
     files.forEach((file, index) => formData.append(`file-${index}`, file));
@@ -156,28 +174,45 @@ class RecipeEditor extends Component {
       });
   }
 
+  /** Handles change in input text component */
   handleChange(value, part) {
     this.setState({ [part]: value });
   }
 
+  /**
+   * Handles product change.
+   * @param {string} value - value to be set
+   * @param {string} part - fragment the value is going to be set to
+   * @param {number} index - element index
+   */
   handleChangeProducts(value, part, index) {
     const { products } = this.state;
     products[index][part] = value;
     this.setState({ products });
   }
 
+  /**
+   * Adds empty product to the list.
+   */
   addNewProduct() {
     const { products } = this.state;
     products.push(getEmptyProduct());
     this.setState({ products });
   }
 
+  /**
+   * Removes product from the list at specified position.
+   * @param {number} index - index of element to be deleted
+   */
   removeProduct(index) {
     const { products } = this.state;
     products.splice(index, 1);
     this.setState({ products });
   }
 
+  /**
+   * Submits the form.
+   */
   submit() {
     const recipe = mapStateToJson(this.state);
     const method = this.props.id ? 'update' : 'add';

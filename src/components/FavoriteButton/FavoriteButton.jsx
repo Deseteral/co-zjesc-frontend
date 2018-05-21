@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import Icon from 'material-ui/Icon';
 import IconButton from 'material-ui/IconButton';
 
+/**
+ * Button for adding recipe to the favorites.
+ * @param {object} props - component props
+ */
 function FavoriteButton({ active, onClick }) {
   const iconType = active
     ? 'favorite'

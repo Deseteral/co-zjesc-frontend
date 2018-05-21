@@ -6,6 +6,9 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import Icon from 'material-ui/Icon';
 import styles from './CategoryDropdown.css';
 
+/**
+ * Dropdown menu component.
+ */
 class CategoryDropdown extends Component {
   constructor(props) {
     super(props);
@@ -14,10 +17,17 @@ class CategoryDropdown extends Component {
     };
   }
 
+  /**
+   * Handles clicking on the menu button.
+   * @param {object} event - click event
+   */
   onMenuButtonClick(event) {
     this.setState({ anchorElement: event.currentTarget });
   }
 
+  /**
+   * Handles closing the menu.
+   */
   onMenuClose() {
     this.setState({ anchorElement: null });
   }

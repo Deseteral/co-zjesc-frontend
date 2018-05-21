@@ -5,6 +5,9 @@ import { default as MaterialSelect } from 'material-ui/Select';
 import { InputLabel } from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 
+/**
+ * Material Design select component.
+ */
 function Select({ id, value, label, options, onChange }) {
   return (
     <FormControl>

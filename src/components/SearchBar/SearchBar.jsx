@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './SearchBar.css';
 
+/**
+ * Search input field component.
+ */
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +13,10 @@ class SearchBar extends Component {
     };
   }
 
+  /**
+   * Handles key press.
+   * @param {object} e - key press event
+   */
   onKeyPress(e) {
     const { onEnterPress } = this.props;
     const { value } = this.state;

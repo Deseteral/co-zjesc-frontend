@@ -5,6 +5,10 @@ import Card from '../Card/Card';
 import SuggesterSection from '../SuggesterSection/SuggesterSection';
 import styles from './SelectedProductsStripe.css';
 
+/**
+ * Renders products selected as input for the recipe suggester.
+ * @param {object} props - component props
+ */
 function SelectedProductsStripe({ selectedProducts, onRemoveProduct }) {
   if (selectedProducts.length === 0) {
     return <div />;

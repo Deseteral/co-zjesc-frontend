@@ -5,10 +5,18 @@ import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
 import styles from './RecipeListingItem.css';
 
+/**
+ * Redirects to edit page for specified recipe.
+ * @param {number} recipeId - ID of the recipe.
+ */
 function redirectToEditPage(recipeId) {
   window.location.assign(`/recipe/${recipeId}/edit`);
 }
 
+/**
+ * Recipe item for recipe list.
+ * @param {object} props - component props
+ */
 function RecipeListingItem({ recipe, withEditButton }) {
   return (
     <div className={styles['item']}>
