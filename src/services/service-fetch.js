@@ -1,3 +1,7 @@
+/**
+ * @module services/service-fetch
+ */
+
 import Cookies from 'js-cookie';
 
 /**

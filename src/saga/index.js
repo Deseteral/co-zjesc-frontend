@@ -1,3 +1,7 @@
+/**
+ * @module saga/index
+ */
+
 import { call, put, takeEvery } from 'redux-saga/effects';
 import CoZjescService from '../services/co-zjesc-service';
 import {

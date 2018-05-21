@@ -1,3 +1,7 @@
+/**
+ * @module components/Header
+ */
+
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import UserLogin from '../UserLogin/UserLogin';

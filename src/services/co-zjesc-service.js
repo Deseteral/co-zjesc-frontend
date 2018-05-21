@@ -1,3 +1,7 @@
+/**
+ * @module services/co-zjesc-service
+ */
+
 import checkStatus from 'fetch-check-http-status';
 import serviceFetch from './service-fetch';
 

@@ -1,3 +1,7 @@
+/**
+ * @module services/login-service
+ */
+
 import checkStatus from 'fetch-check-http-status';
 import Cookies from 'js-cookie';
 import serviceFetch from './service-fetch';

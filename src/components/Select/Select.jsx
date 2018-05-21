@@ -1,3 +1,7 @@
+/**
+ * @module components/Select
+ */
+
 /* eslint-disable import/no-named-default */
 import React from 'react';
 import PropTypes from 'prop-types';

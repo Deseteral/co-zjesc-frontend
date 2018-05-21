@@ -1,3 +1,7 @@
+/**
+ * @module components/TextField
+ */
+
 /* eslint-disable import/no-named-default, react/jsx-no-duplicate-props */
 import React from 'react';
 import PropTypes from 'prop-types';

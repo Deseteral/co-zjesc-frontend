@@ -1,3 +1,7 @@
+/**
+ * @module components/RecipeEditor
+ */
+
 /* eslint-disable no-console */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';

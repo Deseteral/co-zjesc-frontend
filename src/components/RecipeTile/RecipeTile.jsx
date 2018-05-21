@@ -1,3 +1,7 @@
+/**
+ * @module components/RecipeTile
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactStars from 'react-stars';

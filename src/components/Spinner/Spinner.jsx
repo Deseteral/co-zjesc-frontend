@@ -1,3 +1,7 @@
+/**
+ * @module components/Spinner
+ */
+
 import React from 'react';
 import styles from './Spinner.css';
 
