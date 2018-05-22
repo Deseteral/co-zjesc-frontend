@@ -28,7 +28,7 @@ function mapRecipeToProps(recipe) {
 
   const products = recipe
     .products
-    .map(p => ({ id: p.id, label: `${p.name} ${p.amount}${p.unit.label}` }));
+    .map(p => ({ id: p.id, label: `${p.name} ${p.amount} ${p.unit.label}` }));
 
   const tiles = [
     { title: 'stopień trudności', value: mapDifficultyLevel(recipe.difficulty) },
