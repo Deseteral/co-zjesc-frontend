@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import RecipeListing from '../../components/RecipeListing/RecipeListing';
+import Spinner from '../../components/Spinner/Spinner';
 import CoZjescService from '../../services/co-zjesc-service';
 import SuggesterSection from '../../components/SuggesterSection/SuggesterSection';
 
@@ -16,6 +17,7 @@ class MyRecipesPage extends Component {
     super(props);
     this.state = {
       recipes: null,
+      loading: true,
     };
   }
 
@@ -30,11 +32,13 @@ class MyRecipesPage extends Component {
     CoZjescService
       .recipes
       .getFromCurrentUser()
-      .then(recipes => this.setState({ recipes }));
+      .then(recipes => this.setState({ recipes, loading: false }));
   }
 
   render() {
-    const { recipes } = this.state;
+    const { recipes, loading } = this.state;
+
+    if (loading) return (<Spinner />);
 
     if (recipes) {
       return (
