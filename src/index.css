@@ -18,3 +18,13 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--primary-background-color);
 }
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 0;
+  background: transparent;
+}
