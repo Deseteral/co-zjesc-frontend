@@ -221,6 +221,7 @@ class RecipeEditor extends Component {
     const recipe = mapStateToJson(this.state);
     const method = this.props.id ? 'update' : 'add';
     console.log(recipe);
+    console.log(JSON.stringify(recipe));
 
     CoZjescService.recipes[method](recipe)
       .then(id => window.location.assign(`/recipe/${id}`))

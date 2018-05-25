@@ -131,14 +131,16 @@ class RecipeView extends Component {
               showPlayButton={false}
             />
           </section>
-          <section>
-            <div className={styles['section--header']}>
-              Składniki
-            </div>
-            <ul>
-              {products.map(p => <li key={p.id}>{p.label}</li>)}
-            </ul>
-          </section>
+          {(products && products.length > 0) && (
+            <section>
+              <div className={styles['section--header']}>
+                Składniki
+              </div>
+              <ul>
+                {products.map(p => <li key={p.id}>{p.label}</li>)}
+              </ul>
+            </section>
+          )}
           <section>
             <div className={styles['section--header']}>
               Opis przygotowania
